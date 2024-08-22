@@ -17,8 +17,8 @@ public class DonorManagement {
         donorStack = new LinkedStack<>();
     }
     
-    public void addDonor(String name, Category category, String phoneNumber,Gender gender){
-        Donor newDonor = new Donor(name,category,phoneNumber,gender);
+    public void addDonor(String name, Category category, String contactNumber){
+        Donor newDonor = new Donor(name,category,contactNumber);
         donorStack.push(newDonor);
     }
     
@@ -48,6 +48,36 @@ public class DonorManagement {
         }
     }
     
+    public Donor foundDonor(String donorId){
+        Donor donor =null;
+        if (donorStack.isEmpty()) {
+            System.out.println("No donors available to remove.");
+        }
+        LinkedStack<Donor> tempStack = new LinkedStack<>();
+        boolean found = false;
+        
+        while (!donorStack.isEmpty()) {
+            donor = donorStack.pop();
+            if (donor.getDonorId().equalsIgnoreCase(donorId)) {
+                tempStack.push(donor);
+                found = true;
+                break;
+            } else {
+                tempStack.push(donor);
+            }
+        }
+        while (!tempStack.isEmpty()) {
+            donorStack.push(tempStack.pop());
+        }
+
+        if (!found) {
+            System.out.println("Donor with ID " + donorId + " not found.");
+        }
+        return donor;
+    }
+    
+    
+    
     public void viewMostRecentDonor() {
         if (donorStack.isEmpty()) {
             System.out.println("No donors available.");
@@ -56,7 +86,7 @@ public class DonorManagement {
             System.out.println("Most recent donor: " + recentDonor);
         }
     }
-       public void listAllDonors() {
+    public void listAllDonors() {
         if (donorStack.isEmpty()) {
             System.out.println("No donors available.");
         } else {
@@ -64,12 +94,32 @@ public class DonorManagement {
             LinkedStack<Donor> tempStack = new LinkedStack<>();
             while (!donorStack.isEmpty()) {
                 Donor donor = donorStack.pop();
-                System.out.println(donor);
-                tempStack.push(donor);  // Save donor to tempStack to preserve original stack
+                System.out.println(donor.toString());
+                tempStack.push(donor);  
             }
             while (!tempStack.isEmpty()) {
-                donorStack.push(tempStack.pop());  // Restore original stack order
+                donorStack.push(tempStack.pop());  
             }
         }
     }
+    
+    public void filterOnCriteria(Category categorise) {
+        if (donorStack.isEmpty()) {
+            System.out.println("No donors available.");
+        } else {
+            System.out.println("Listing all donors:");
+            LinkedStack<Donor> tempStack = new LinkedStack<>();
+            while (!donorStack.isEmpty()) {
+                Donor donor = donorStack.pop();
+                if(donor.getCategory().equals(categorise)){
+                    System.out.println(donor.toString());
+                }
+                tempStack.push(donor);  
+            }
+            while (!tempStack.isEmpty()) {
+                donorStack.push(tempStack.pop());  
+            }
+        }
+    }
+    
 }

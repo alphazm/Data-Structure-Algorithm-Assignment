@@ -5,27 +5,25 @@
 package DonorManagement;
 
 import java.time.LocalDate;
-enum Gender {MELA,FEMELA};
-enum Category {INDIVIDUAL,CORPORATE,INSTITUTIONAL}; 
+enum Category {PRIVATE,PUBLIC,GOVERMENT}; 
 /**
  *
  * @author Lenovo
  */
 public class Donor{
+    
     private static int idCounter = 1000;
     String name;
     String donorID;
     Category category;
-    String phoneNumber;
-    Gender gender;
+    String contactNumber;
     LocalDate datejoin;
-
-    public Donor(String name, Category category, String phoneNumber,Gender gender) {
+    
+    public Donor(String name, Category category, String contactNumber /*,Donation donation*/) {
         this.name = name;
         this.donorID = generatedId();
         this.category = category;
-        this.phoneNumber = phoneNumber;
-        this.gender = gender;
+        this.contactNumber = contactNumber;
         this.datejoin = LocalDate.now();
     }
     
@@ -57,12 +55,12 @@ public class Donor{
         this.category = category;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getContactNumber() {
+        return contactNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
     }
 
     public LocalDate getDatejoin() {
@@ -72,18 +70,20 @@ public class Donor{
     public void setDatejoin(LocalDate datejoin) {
         this.datejoin = datejoin;
     }
-
-    public Gender getGender() {
-        return gender;
-    }
-
-    public void setGender(Gender gender) {
-        this.gender = gender;
+    
+    private String categoryToString(Category category){
+        String str = "";
+        switch(category){
+            case PRIVATE -> str = "Private";
+            case PUBLIC -> str = "Public";
+            case GOVERMENT -> str = "Goverment";
+        }
+        return str;
     }
 
     @Override
     public String toString() {
-        return "Donor's name=" + name + ", donorID=" + donorID + ", category=" + category + ", phoneNumber=" + phoneNumber + ", gender=" + gender + ", datejoin=" + datejoin ;
+        return "Donor's name=" + name + ", donorID=" + donorID + ", category=" + categoryToString(category) + ", contactNumber=" + contactNumber + ", datejoin=" + datejoin ;
     }
     
     
