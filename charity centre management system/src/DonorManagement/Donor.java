@@ -1,25 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package DonorManagement;
 
 import java.time.LocalDate;
 enum Category {PRIVATE,PUBLIC,GOVERMENT}; 
-/**
- *
- * @author Lenovo
- */
+
 public class Donor{
     
     private static int idCounter = 1000;
     String name;
     String donorID;
     Category category;
-    String contactNumber;
+    int contactNumber;
     LocalDate datejoin;
     
-    public Donor(String name, Category category, String contactNumber /*,Donation donation*/) {
+    public Donor(String name, Category category, int contactNumber /*,Donation donation*/) {
         this.name = name;
         this.donorID = generatedId();
         this.category = category;
@@ -47,6 +40,10 @@ public class Donor{
         return donorID;
     }
 
+    public void setDonorID(String donorID) {
+        this.donorID = donorID;
+    }
+    
     public Category getCategory() {
         return category;
     }
@@ -55,11 +52,11 @@ public class Donor{
         this.category = category;
     }
 
-    public String getContactNumber() {
+    public int getContactNumber() {
         return contactNumber;
     }
 
-    public void setContactNumber(String contactNumber) {
+    public void setContactNumber(int contactNumber) {
         this.contactNumber = contactNumber;
     }
 
@@ -83,7 +80,7 @@ public class Donor{
 
     @Override
     public String toString() {
-        return "Donor's name=" + name + ", donorID=" + donorID + ", category=" + categoryToString(category) + ", contactNumber=" + contactNumber + ", datejoin=" + datejoin ;
+        return "Donor's name=" + name + ", donorID=" + donorID + ", category=" + categoryToString(category) + ", contactNumber=60" + contactNumber + ", datejoin=" + datejoin ;
     }
     
     
