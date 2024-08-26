@@ -1,6 +1,10 @@
-package DonorManagement;
+package Managment;
 
-import donor.adt.LinkedStack;
+import Entity.Donor;
+import Entity.Category;
+import ADT.LinkedStack;
+import Entity.Donation;
+
 
 public class DonorManagement {
     private LinkedStack<Donor> donorStack;
@@ -9,8 +13,9 @@ public class DonorManagement {
         donorStack = new LinkedStack<>();
     }
     
-    public void addDonor(String name, Category category, int contactNumber){
-        Donor newDonor = new Donor(name,category,contactNumber);
+    public void addDonor(String name, Category category, int contactNumber,LinkedStack<Donation> donations){
+        
+        Donor newDonor = new Donor(name,category,contactNumber,donations);
         donorStack.push(newDonor);
     }
     
@@ -57,8 +62,7 @@ public class DonorManagement {
                 newDonor.setCategory(category);
                 newDonor.setContactNumber(ContactNumber);
                 newDonor.setDatejoin(donor.getDatejoin());
-                donor = newDonor;
-                tempStack.push(donor);
+                tempStack.push(newDonor);
                 found = true;
                 break;
             } else {
@@ -74,16 +78,18 @@ public class DonorManagement {
         }
     }
     
-    public void searchDonor(String donorId){
+    public Donor searchDonor(String donorId){
         if (donorStack.isEmpty()) {
-            System.out.println("No donors available to remove.");
+            System.out.println("No donors yet.");
         }
         LinkedStack<Donor> tempStack = new LinkedStack<>();
+        Donor tempDonor = null;
         boolean found = false;
         
         while (!donorStack.isEmpty()) {
             Donor donor = donorStack.pop();
             if (donor.getDonorId().equalsIgnoreCase(donorId)) {
+                tempDonor = donor;
                 System.out.println(donor.toString());
                 tempStack.push(donor);
                 found = true;
@@ -99,16 +105,17 @@ public class DonorManagement {
         if (!found) {
             System.out.println("Donor with ID " + donorId + " not found.");
         }
+        return tempDonor;
     }
-    
-    public void viewMostRecentDonor() {
-        if (donorStack.isEmpty()) {
-            System.out.println("No donors available.");
-        } else {
-            Donor recentDonor = donorStack.peek();
-            System.out.println("Most recent donor: " + recentDonor);
+    public void listAllDonationByDonor(String donorId){
+        Donor donor = searchDonor(donorId);
+        System.out.println("Donatio make by "+donor.getName());
+        while(!donor.donations.isEmpty()){
+            Donation donation = donor.donations.pop();
+            System.out.println(donation.toString());
         }
     }
+    
     public void listAllDonors() {
         if (donorStack.isEmpty()) {
             System.out.println("No donors available.");
@@ -145,24 +152,7 @@ public class DonorManagement {
         }
     }
     
-    public void filterOnCriteria(String donorID) {
-        if (donorStack.isEmpty()) {
-            System.out.println("No donors available.");
-        } else {
-            System.out.println("Listing all donors:");
-            LinkedStack<Donor> tempStack = new LinkedStack<>();
-            while (!donorStack.isEmpty()) {
-                Donor donor = donorStack.pop();
-                if(donorID.equals(donorID)){
-                    System.out.println(donor.toString());
-                }
-                tempStack.push(donor);  
-            }
-            while (!tempStack.isEmpty()) {
-                donorStack.push(tempStack.pop());  
-            }
-        }
-    }
+ 
     
     public void generateReport(){
         //no idea

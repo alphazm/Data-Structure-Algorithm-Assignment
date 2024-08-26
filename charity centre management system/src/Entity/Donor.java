@@ -1,7 +1,7 @@
-package DonorManagement;
+package Entity;
 
+import ADT.LinkedStack;
 import java.time.LocalDate;
-enum Category {PRIVATE,PUBLIC,GOVERMENT}; 
 
 public class Donor{
     
@@ -11,13 +11,15 @@ public class Donor{
     Category category;
     int contactNumber;
     LocalDate datejoin;
-    
-    public Donor(String name, Category category, int contactNumber /*,Donation donation*/) {
+    LinkedStack<Donation> donations;
+
+    public Donor(String name, Category category, int contactNumber , LinkedStack<Donation> donations) {
         this.name = name;
         this.donorID = generatedId();
         this.category = category;
         this.contactNumber = contactNumber;
         this.datejoin = LocalDate.now();
+        this.donations = donations;
     }
     
     private String generatedId(){
