@@ -11,5 +11,5 @@ package Entity;
 public enum Category {
     PRIVATE,
     PUBLIC,
-    GOVERMENT
+    GOVERNMENT
 }

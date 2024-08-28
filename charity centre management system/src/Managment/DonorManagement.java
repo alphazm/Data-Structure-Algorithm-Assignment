@@ -154,10 +154,51 @@ public class DonorManagement {
     
  
     
-    public void generateReport(){
-        //no idea
+    public void generateDonorSummaryReport() {
+        if (donorStack.isEmpty()) {
+            System.out.println("No donors in the system.");
+            return;
+        }
+
+        int totalDonors = 0;
+        int privateCount = 0;
+        int publicCount = 0;
+        int governmentCount = 0;
+
+        LinkedStack<Donor> tempStack = new LinkedStack<>();
+
+        // Traverse the stack to count donors and categorize them
+        while (!donorStack.isEmpty()) {
+            Donor donor = donorStack.pop();
+            totalDonors++;
+
+            // Increment the corresponding category counter
+            switch (donor.getCategory()) {
+                case PRIVATE:
+                    privateCount++;
+                    break;
+                case PUBLIC:
+                    publicCount++;
+                    break;
+                case GOVERNMENT:
+                    governmentCount++;
+                    break;
+            }
+
+            tempStack.push(donor);
+        }
+
+        // Restore the stack to its original state
+        while (!tempStack.isEmpty()) {
+            donorStack.push(tempStack.pop());
+        }
+        // Print the report
+        System.out.println("Donor Summary Report:");
+        System.out.println("Total Donors: " + totalDonors);
+        System.out.println("Category: PRIVATE - " + privateCount + " donors");
+        System.out.println("Category: PUBLIC - " + publicCount + " donors");
+        System.out.println("Category: GOVERNMENT - " + governmentCount + " donors");
     }
-    
  
     
 }

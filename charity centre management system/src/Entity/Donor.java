@@ -11,7 +11,7 @@ public class Donor{
     Category category;
     int contactNumber;
     LocalDate datejoin;
-    LinkedStack<Donation> donations;
+    public LinkedStack<Donation> donations;
 
     public Donor(String name, Category category, int contactNumber , LinkedStack<Donation> donations) {
         this.name = name;
@@ -19,6 +19,15 @@ public class Donor{
         this.category = category;
         this.contactNumber = contactNumber;
         this.datejoin = LocalDate.now();
+        this.donations = donations;
+    }
+    
+    public Donor(String name, Category category, int contactNumber ,LocalDate date ,LinkedStack<Donation> donations) {
+        this.name = name;
+        this.donorID = generatedId();
+        this.category = category;
+        this.contactNumber = contactNumber;
+        this.datejoin = date;
         this.donations = donations;
     }
     
@@ -75,7 +84,7 @@ public class Donor{
         switch(category){
             case PRIVATE -> str = "Private";
             case PUBLIC -> str = "Public";
-            case GOVERMENT -> str = "Goverment";
+            case GOVERNMENT -> str = "Government";
         }
         return str;
     }
