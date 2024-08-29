@@ -2,11 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DonationManagement;
+package ADT;
+
+import Entity.Donation;
 
 /**
  *
- * @author User
+ * @author Heng Wei Long
  * @param <T>
  */
 public class CircularLinkedList<T> implements ListInterface<T> {

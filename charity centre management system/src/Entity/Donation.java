@@ -2,11 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package DonationManagement;
+package Entity;
 
 /**
  *
- * @author User
+ * @author Heng Wei Long
  */
 public class Donation {
     private String donationCategory;// string donationCategory: Funds, Supplies
