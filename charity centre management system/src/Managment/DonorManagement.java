@@ -1,5 +1,8 @@
 package Managment;
-
+/**
+ *
+ * @author Chong Zhi Ming
+ */
 import Entity.Donor;
 import Entity.Category;
 import ADT.LinkedStack;
@@ -160,7 +163,7 @@ public class DonorManagement {
             return;
         }
 
-        int totalDonors = 0;
+        int totalDonors = donorStack.getSize();
         int privateCount = 0;
         int publicCount = 0;
         int governmentCount = 0;

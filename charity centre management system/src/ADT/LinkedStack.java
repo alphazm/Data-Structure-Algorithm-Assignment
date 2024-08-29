@@ -1,5 +1,8 @@
 package ADT;
-
+/**
+ *
+ * @author Chong Zhi Ming
+ */
 public class LinkedStack<T> implements StackInterface<T>{
     private class Node{
         T data;

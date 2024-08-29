@@ -6,7 +6,7 @@ package Entity;
 
 /**
  *
- * @author Lenovo
+ * @author Chong Zhi Ming
  */
 public enum Category {
     PRIVATE,
