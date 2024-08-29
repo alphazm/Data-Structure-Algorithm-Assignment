@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Entity;
+package DonationManagement;
 
 /**
  *
@@ -27,6 +27,13 @@ public class Donation {
         this.itemDescription = itemDescription;
         this.itemQuantity = itemQuantity;
         this.amount = amount;
+    }
+
+    public Donation() {
+        this.donationCategory = null;
+        this.itemDescription = null;
+        this.itemQuantity = 0;
+        this.amount = 0.0;
     }
 
     public String getDonationCategory() {
@@ -60,10 +67,10 @@ public class Donation {
     public void setAmount(double amount) {
         this.amount = amount;
     }
-
+    
     @Override
     public String toString() {
-        return "Donation{" + "donationCategory=" + donationCategory + ", itemDescription=" + itemDescription + ", itemQuantity=" + itemQuantity + ", amount=" + amount + '}';
+        return String.format("%-23s %-23s %-15d %10.2f", donationCategory, itemDescription, itemQuantity, amount);
     }
     
     
