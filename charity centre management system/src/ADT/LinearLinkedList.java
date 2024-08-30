@@ -8,7 +8,7 @@ package ADT;
  *
  * @author winyit
  */
-public class LinearLinkedList<T> implements LinearLinkedListInterface<T> {
+public class LinearLinkedList<T> implements ListInterface<T> {
     private Node firstNode;
     private int numberOfEntries;
     private class Node {
