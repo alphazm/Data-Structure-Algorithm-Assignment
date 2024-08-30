@@ -1,11 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
+
 package ADT;
 
 /**
  *
+
  * @author Heng Wei Long
  */
 public interface ListInterface<T> {
@@ -21,4 +19,5 @@ public interface ListInterface<T> {
     public void replace(T oldEntry, T newEntry);//
     public int getNumElement();//
     public boolean isEmpty();//
+
 }
