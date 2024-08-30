@@ -130,7 +130,7 @@ public class CircularLinkedList<T> implements ListInterface<T> {
     
     // search by donationId
     @Override
-    public CircularLinkedList search(T entryType,T anEntry){
+    public T search(T entryType,T anEntry){
         if (isEmpty()) {
             System.out.println("The List Is Empty!");
             return null;
@@ -145,7 +145,7 @@ public class CircularLinkedList<T> implements ListInterface<T> {
                 // get donation id of donation
                 int i = (Integer) temp.getFirst();
                 if (i == (Integer) anEntry) {
-                    return temp;
+                    return (T) temp;
                 }
             }
             else if (((String) entryType).equals("category")) {
@@ -161,13 +161,13 @@ public class CircularLinkedList<T> implements ListInterface<T> {
         } while (current != lastNode.next);
         
         if (((String) entryType).equals("category")) {
-            return result;
+            return (T) result;
         }
         return null;
     }
     
     @Override
-    public CircularLinkedList filter(T anEntry) {
+    public T filter(T anEntry) {
         CircularLinkedList result = new CircularLinkedList();
         Node current = lastNode.next;
         
@@ -192,11 +192,11 @@ public class CircularLinkedList<T> implements ListInterface<T> {
             current = current.next;
         } while (current != lastNode.next);
                 
-        return result;
+        return (T) result;
     }
     
     @Override
-    public CircularLinkedList filter(T entryType, T anEntry) {
+    public T filter(T entryType, T anEntry) {
         CircularLinkedList result = new CircularLinkedList();
         Node current = lastNode.next;
         
@@ -220,7 +220,7 @@ public class CircularLinkedList<T> implements ListInterface<T> {
             
             current = current.next;
         } while (current != lastNode.next);
-        return result;
+        return (T) result;
     }
     
     // remove the group by the donationId
