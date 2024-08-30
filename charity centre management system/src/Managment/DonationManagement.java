@@ -28,7 +28,7 @@ public class DonationManagement {
     }
     
     public static void donationMenu(){
-        clearJavaConsoleScreen();
+        //clearJavaConsoleScreen();
         //from donor
         int donorId = 0;
         int choice;
@@ -271,7 +271,7 @@ public class DonationManagement {
         int inputDonationId = s.nextInt(); // accept input and store to inputDonationId
         s.nextLine(); // clear enter key
         
-        CircularLinkedList searchResult = cll.search("donationId",inputDonationId);
+        CircularLinkedList searchResult = (CircularLinkedList) cll.search("donationId",inputDonationId);
         if (searchResult != null) {
             searchResult.display();
         }
@@ -282,7 +282,7 @@ public class DonationManagement {
         int inputDonationId = s.nextInt(); // accept input and store to inputDonationId
         s.nextLine(); // clear enter key
         
-        CircularLinkedList searchResult = cll.search("donationId",inputDonationId);
+        CircularLinkedList searchResult = (CircularLinkedList) cll.search("donationId",inputDonationId);
         if (!searchResult.isEmpty()) {
             CircularLinkedList newResult = updateDonation(searchResult);
             if (newResult != null) {
@@ -377,11 +377,11 @@ public class DonationManagement {
                 s.nextLine();
                 switch (choice) {
                     case 1:
-                        searchResult = cll.search("category","Funds");
+                        searchResult = (CircularLinkedList) cll.search("category","Funds");
                         searchResult.displayAll();
                         break;
                     case 2:
-                        searchResult = cll.search("category","Supplies");
+                        searchResult = (CircularLinkedList) cll.search("category","Supplies");
                         searchResult.displayAll();
                         break;
             }
