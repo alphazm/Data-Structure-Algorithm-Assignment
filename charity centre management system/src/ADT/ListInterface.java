@@ -15,6 +15,7 @@ public interface ListInterface<T> {
     public T getFirst();
     public CircularLinkedList search(T entryType,T anEntry);
     public CircularLinkedList filter(T anEntry);
+    public CircularLinkedList filter(T entryType, T anEntry);
     public boolean remove(T anEntry);
     public void removeLast();
     public void clear();

@@ -195,6 +195,34 @@ public class CircularLinkedList<T> implements ListInterface<T> {
         return result;
     }
     
+    @Override
+    public CircularLinkedList filter(T entryType, T anEntry) {
+        CircularLinkedList result = new CircularLinkedList();
+        Node current = lastNode.next;
+        
+        do {
+            CircularLinkedList temp = (CircularLinkedList) current.data;
+            Node currentData = temp.lastNode.next;
+            do {
+                if (currentData.data.getClass() == Donation.class) {
+                    System.out.println("Is Donation");
+                    Donation donation = (Donation) currentData.data;
+                    
+                    if (donation.getItemQuantity() > (Integer) anEntry) {
+                        result.add(temp);
+                    }
+                    else if (donation.getAmount() > (double) anEntry) {
+                        result.add(temp);
+                    }
+                }
+                currentData = currentData.next;
+            } while (currentData != temp.lastNode.next);
+            
+            current = current.next;
+        } while (current != lastNode.next);
+        return result;
+    }
+    
     // remove the group by the donationId
     @Override
     public boolean remove(T anEntry){
