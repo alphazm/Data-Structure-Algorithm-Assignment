@@ -6,7 +6,7 @@ package Entity;
 
 /**
  *
- * @author User
+ * @author Heng Wei Long
  */
 public class Donation {
     private String donationCategory;// string donationCategory: Funds, Supplies
@@ -27,6 +27,13 @@ public class Donation {
         this.itemDescription = itemDescription;
         this.itemQuantity = itemQuantity;
         this.amount = amount;
+    }
+
+    public Donation() {
+        this.donationCategory = null;
+        this.itemDescription = null;
+        this.itemQuantity = 0;
+        this.amount = 0.0;
     }
 
     public String getDonationCategory() {
@@ -60,10 +67,10 @@ public class Donation {
     public void setAmount(double amount) {
         this.amount = amount;
     }
-
+    
     @Override
     public String toString() {
-        return "Donation{" + "donationCategory=" + donationCategory + ", itemDescription=" + itemDescription + ", itemQuantity=" + itemQuantity + ", amount=" + amount + '}';
+        return String.format("%-23s %-23s %-15d %10.2f", donationCategory, itemDescription, itemQuantity, amount);
     }
     
     
