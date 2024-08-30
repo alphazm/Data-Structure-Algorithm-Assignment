@@ -133,12 +133,16 @@ public class DonationManagement {
         insertDonation(240820, 1014, new Donation("Supplies", "Food: Biscuits", 35, 0.00));
     }
     
-    public static int getNewtestDonationId() {
-        return 0;
+    public static int getNewestDonationId() {
+        // get last donation
+        CircularLinkedList temp = (CircularLinkedList) cll.getEntry(cll.getNumElement());
+        // get donation details
+        int x = (Integer) temp.getEntry(1);
+        return x+1;
     }
     
     public static void addDonation(int donorId){
-        int donationId = getNewtestDonationId();
+        int donationId = 0;//getNewestDonationId();
         Donation donation = new Donation();
         int x = chooseCategory();
         switch(x) {
@@ -399,10 +403,82 @@ public class DonationManagement {
     public static void listAllDonation(){
         System.out.println("Donation Id\tDonor Id\tDonation Category\tItem Description\tItem Quantity\t    Amount");
         cll.displayAll();
+        int x = 1;
+        do {
+            System.out.println("Filter? (0 = cancel)");
+            x = s.nextInt();
+            s.nextLine();
+            if (x != 0) {
+                filterDonation();
+            }
+        } while (x != 0);
     }
     
     public static void filterDonation(){
+        System.out.println(" Filter menu");
+        System.out.println(" 1. Filter Category");
+        System.out.println(" 2. Filter Description");
+        int a = s.nextInt();
+        s.nextLine();
+        if (a == 1) {
+            filterCategory();
+        }
+        else if (a == 2) {
+            filterDescription();
+        }
         
+    }
+    
+    public static void filterCategory() {
+        CircularLinkedList result = null;
+        System.out.println(" 1. Funds");
+        System.out.println(" 2. Supplies");
+        System.out.print("Choose donation category: ");
+        int x = s.nextInt();
+        s.nextLine();
+        switch(x) {
+            case 1:
+                result = (CircularLinkedList) cll.filter("Fund");
+                break;
+            case 2:
+                result = (CircularLinkedList) cll.filter("Supplie");
+                break;
+        }
+        result.displayAll();
+    }
+    
+    public static void filterDescription() {
+        CircularLinkedList result = null;
+        System.out.println(" 1. Cash");
+        System.out.println(" 2. Card");
+        System.out.println(" 3. Online Banking");
+        System.out.println(" 4. Food");
+        System.out.println(" 5. Drinks");
+        System.out.println(" 6. Other");
+        System.out.print("Choose donation Type: ");
+        int x = s.nextInt();
+        s.nextLine();
+        switch(x) {
+            case 1:
+                result = (CircularLinkedList) cll.filter("Cash");
+                break;
+            case 2:
+                result = (CircularLinkedList) cll.filter("Card");
+                break;
+            case 3:
+                result = (CircularLinkedList) cll.filter("Online");
+                break;
+            case 4:
+                result = (CircularLinkedList) cll.filter("Food");
+                break;
+            case 5:
+                result = (CircularLinkedList) cll.filter("Drinks");
+                break;
+            case 6:
+                result = (CircularLinkedList) cll.filter("Other");
+                break;
+        }
+        result.displayAll();
     }
     
     public static void generateDonationManagementReport(){

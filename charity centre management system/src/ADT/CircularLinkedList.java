@@ -159,7 +159,6 @@ public class CircularLinkedList<T> implements ListInterface<T> {
             Node currentData = temp.lastNode.next;
             do {
                 if (currentData.data.getClass() == Donation.class) {
-                    System.out.println("Is Donation");
                     Donation donation = (Donation) currentData.data;
                     
                     if (donation.getDonationCategory().contains((String) anEntry)) {
