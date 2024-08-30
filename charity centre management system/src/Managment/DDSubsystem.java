@@ -142,7 +142,7 @@ public class DDSubsystem {
             String sureYa = scanner.next();
 
             // comfrim remove 
-            if (sureYa == "y" || sureYa == "Y") {
+            if ("Y".equals(sureYa) || "y".equals(sureYa)) {
                 donationDistributions.remove(index);
                 System.out.println("Donation Distribution removed successfully!");
             } else {
