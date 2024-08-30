@@ -94,38 +94,21 @@ public class CircularLinkedList<T> implements ListInterface<T> {
             current = current.next;
         } while (current != lastNode.next);
     }
- 
-    public void generateDonationManagementReport() {
-        if (isEmpty()) {
-            System.out.println("No donations to report.");
-            return;
-        }
-
-        Node current = lastNode;
-        double totalAmount = 0;
-        int totalItems = 0;
-        do {
-            CircularLinkedList temp = (CircularLinkedList) current.data;
-            Node currentData = temp.lastNode;
-            Donation donation = (Donation) currentData.data;
-            
-            totalAmount += donation.getAmount();
-            totalItems += donation.getItemQuantity();
-            current = current.next;
-        } while (current != lastNode);
-        System.out.println("Total Donations: " + getNumElement());
-        System.out.println("Total Item Quantity: " + totalItems);
-        System.out.println("Total Amount: $" + totalAmount);
-    }
     
     // get the first node data --> donation id/ first donation
     @Override
-    public T getFirst(){
-        T firstData = null;
-        if (!isEmpty()) {
-            firstData = lastNode.next.data;
+    public T getEntry(int givenPos){
+        T result = null;
+        Node current = lastNode.next;
+        if ((givenPos >= 1) && (givenPos <= getNumElement())) {
+                givenPos -= 1;
+            do {
+                givenPos -= 1;
+                current = current.next;
+            } while (givenPos != 0);
+            result = current.data;
         }
-        return firstData;
+        return result;
     }
     
     // search by donationId
@@ -143,7 +126,7 @@ public class CircularLinkedList<T> implements ListInterface<T> {
             CircularLinkedList temp = (CircularLinkedList) current.data;
             if (((String) entryType).equals("donationId")){
                 // get donation id of donation
-                int i = (Integer) temp.getFirst();
+                int i = (Integer) temp.getEntry(1);
                 if (i == (Integer) anEntry) {
                     return (T) temp;
                 }
@@ -176,7 +159,6 @@ public class CircularLinkedList<T> implements ListInterface<T> {
             Node currentData = temp.lastNode.next;
             do {
                 if (currentData.data.getClass() == Donation.class) {
-                    System.out.println("Is Donation");
                     Donation donation = (Donation) currentData.data;
                     
                     if (donation.getDonationCategory().contains((String) anEntry)) {
@@ -238,9 +220,9 @@ public class CircularLinkedList<T> implements ListInterface<T> {
             CircularLinkedList temp = (CircularLinkedList) current.data;
 
             // turn the data into integer
-            int i = (Integer) temp.getFirst();
+            int i = (Integer) temp.getEntry(1);
             if ( i == (Integer) anEntry) { //turn the input from T to integer
-                System.out.println(temp.getFirst());
+                System.out.println(temp.getEntry(1));
                 //System.out.println(); // display remove data
 
                 // if the node is last node
@@ -317,7 +299,6 @@ public class CircularLinkedList<T> implements ListInterface<T> {
         add((T) oriDonation);
     }
     
-    
     @Override
     public void replace(T newEntry){
         Node current = lastNode.next;
@@ -327,13 +308,13 @@ public class CircularLinkedList<T> implements ListInterface<T> {
         // old donation
         CircularLinkedList donation = (CircularLinkedList) newEntry;
         // old donationId & donation details
-        int id = (Integer) donation.getFirst();
+        int id = (Integer) donation.getEntry(1);
 
         do {
             // to catch out the old donation position 
             CircularLinkedList temp = (CircularLinkedList) current.data;        
 
-            if ((Integer) temp.getFirst() == id) {
+            if ((Integer) temp.getEntry(1) == id) {
                 newNode.next = current.next;
                 current = newNode;
                 previous.next = current;
@@ -360,7 +341,7 @@ public class CircularLinkedList<T> implements ListInterface<T> {
         do {
             num ++;
             current = current.next;
-        } while (current != lastNode);
+        } while (current != lastNode.next);
         
         return num;
     }

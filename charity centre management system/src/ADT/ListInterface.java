@@ -10,7 +10,7 @@ public interface ListInterface<T> {
     public void add(T newEntry);
     public void displayAll();
     public void display();
-    public T getFirst();
+    public T getEntry(int givenPos);
     public T search(T entryType,T anEntry);
     public T filter(T anEntry);
     public T filter(T entryType, T anEntry);
