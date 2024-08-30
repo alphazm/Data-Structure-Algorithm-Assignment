@@ -33,7 +33,7 @@ public class CircularLinkedList<T> implements ListInterface<T> {
     
     // add newNode at the end of list
     @Override
-    public void add(T newEntry){
+    public boolean add(T newEntry){
         // create newNode
         Node newNode = new Node(newEntry);
         
@@ -52,67 +52,26 @@ public class CircularLinkedList<T> implements ListInterface<T> {
             // newNode become last      // 1(2), 2(3), 3(4), 4(1)
             lastNode = newNode;
         }
+        return true;
     }
-    
-    // display all in circular linked list
-    @Override
-    public void displayAll(){
-        CircularLinkedList temp;
-        
-        if (isEmpty()) {
-            System.out.println("Empty!");
-        }
-        Node current = lastNode.next;
-        do {
-            temp = (CircularLinkedList) current.data;
-            Node currentData = temp.lastNode.next;
-            do {
-                if (currentData.data.getClass() == Donation.class) {
-                    Donation d = (Donation) currentData.data;
-                    System.out.println(d.toString());
-                }
-                else {
-                    System.out.print(currentData.data + "\t\t");
-                }
-                currentData = currentData.next;
-            } while (currentData != temp.lastNode.next);
-            current = current.next;
-        } while (current != lastNode.next);
-    }
-    
-    @Override
-    public void display() {
-        Node current = lastNode.next;
-        do {
-                if (current.data.getClass() == Donation.class) {
-                    Donation d = (Donation) current.data;
-                    System.out.println(d.toString());
-                }
-                else {
-                    System.out.print(current.data + "\t\t");
-                }
-            current = current.next;
-        } while (current != lastNode.next);
-    }
-    
+
     // get the first node data --> donation id/ first donation
     @Override
-    public T getEntry(int givenPos){
+    public T getEntry(int givenPosition){
         T result = null;
         Node current = lastNode.next;
-        if ((givenPos >= 1) && (givenPos <= getNumElement())) {
-                givenPos -= 1;
-            do {
-                givenPos -= 1;
+        if ((givenPosition >= 1) && (givenPosition <= getNumElement())) {
+                givenPosition -= 1;
+            while (givenPosition != 0) {
+                givenPosition -= 1;
                 current = current.next;
-            } while (givenPos != 0);
+            }
             result = current.data;
         }
         return result;
     }
     
     // search by donationId
-    @Override
     public T search(T entryType,T anEntry){
         if (isEmpty()) {
             System.out.println("The List Is Empty!");
@@ -149,67 +108,12 @@ public class CircularLinkedList<T> implements ListInterface<T> {
         return null;
     }
     
-    @Override
-    public T filter(T anEntry) {
-        CircularLinkedList result = new CircularLinkedList();
-        Node current = lastNode.next;
-        
-        do {
-            CircularLinkedList temp = (CircularLinkedList) current.data;
-            Node currentData = temp.lastNode.next;
-            do {
-                if (currentData.data.getClass() == Donation.class) {
-                    Donation donation = (Donation) currentData.data;
-                    
-                    if (donation.getDonationCategory().contains((String) anEntry)) {
-                        result.add(temp);
-                    }
-                    else if (donation.getItemDescription().contains((String) anEntry)) {
-                        result.add(temp);
-                    }
-                }
-                currentData = currentData.next;
-            } while (currentData != temp.lastNode.next);
-            
-            current = current.next;
-        } while (current != lastNode.next);
-                
-        return (T) result;
-    }
-    
-    @Override
-    public T filter(T entryType, T anEntry) {
-        CircularLinkedList result = new CircularLinkedList();
-        Node current = lastNode.next;
-        
-        do {
-            CircularLinkedList temp = (CircularLinkedList) current.data;
-            Node currentData = temp.lastNode.next;
-            do {
-                if (currentData.data.getClass() == Donation.class) {
-                    System.out.println("Is Donation");
-                    Donation donation = (Donation) currentData.data;
-                    
-                    if (donation.getItemQuantity() > (Integer) anEntry) {
-                        result.add(temp);
-                    }
-                    else if (donation.getAmount() > (double) anEntry) {
-                        result.add(temp);
-                    }
-                }
-                currentData = currentData.next;
-            } while (currentData != temp.lastNode.next);
-            
-            current = current.next;
-        } while (current != lastNode.next);
-        return (T) result;
-    }
-    
     // remove the group by the donationId
     @Override
-    public boolean remove(T anEntry){
+    public T remove(T anEntry){
+        T result = null;
         if(isEmpty()) {
-            return false;
+            return result;
         }
         // Start with the first node
         Node current = lastNode.next;
@@ -240,34 +144,20 @@ public class CircularLinkedList<T> implements ListInterface<T> {
                 else {
                     previous.next = current.next;
                 }
-                return true;
+                result = (T) temp.getEntry(1);
+                return result;
             }
             // Update previous only after checking, to correctly track the previous node
             previous = current;
             current = current.next;
         } while (current != lastNode.next);
         
-        return false;
-    }
-    
-    @Override
-    public void removeLast(){
-        Node current = lastNode.next;
-        Node previous = lastNode;
-
-        // Traverse the list to find the node before the last node
-        while (current != lastNode) {
-            previous = current;
-            current = current.next;
-        }
-        // Update the lastNode reference and the next pointer of the new last node
-        previous.next = lastNode.next;
-        lastNode = previous;
+        return result;
     }
     
     // update the element input by replace the data
     @Override
-    public void replace(T entryType, T newEntry){
+    public boolean replace(T entryType, T newEntry){
         // ori lastNode(donation)
         Donation oriDonation = (Donation) lastNode.data;
         Node current = lastNode.next.next; // donorId
@@ -295,34 +185,34 @@ public class CircularLinkedList<T> implements ListInterface<T> {
                 oriDonation.setAmount((double) newEntry);
                 break;
         }
-        removeLast();
+        remove((T) "3");
         add((T) oriDonation);
+        return true;
     }
     
-    @Override
-    public void replace(T newEntry){
-        Node current = lastNode.next;
-        Node previous = lastNode;
-        Node newNode = (Node) newEntry;
-        
-        // old donation
-        CircularLinkedList donation = (CircularLinkedList) newEntry;
-        // old donationId & donation details
-        int id = (Integer) donation.getEntry(1);
-
-        do {
-            // to catch out the old donation position 
-            CircularLinkedList temp = (CircularLinkedList) current.data;        
-
-            if ((Integer) temp.getEntry(1) == id) {
-                newNode.next = current.next;
-                current = newNode;
-                previous.next = current;
-            }
-            previous = current;
-            current = current.next;
-        } while (current != lastNode.next);
-    }
+//    public void replace(T newEntry){
+//        Node current = lastNode.next;
+//        Node previous = lastNode;
+//        Node newNode = (Node) newEntry;
+//        
+//        // old donation
+//        CircularLinkedList donation = (CircularLinkedList) newEntry;
+//        // old donationId & donation details
+//        int id = (Integer) donation.getEntry(1);
+//
+//        do {
+//            // to catch out the old donation position 
+//            CircularLinkedList temp = (CircularLinkedList) current.data;        
+//
+//            if ((Integer) temp.getEntry(1) == id) {
+//                newNode.next = current.next;
+//                current = newNode;
+//                previous.next = current;
+//            }
+//            previous = current;
+//            current = current.next;
+//        } while (current != lastNode.next);
+//    }
     
     // clear all by make the lastNode to null, so then all data will be drop
     @Override
@@ -351,5 +241,25 @@ public class CircularLinkedList<T> implements ListInterface<T> {
     public boolean isEmpty(){
         // if lastNode empty
         return lastNode == null;
+    }
+
+    @Override
+    public boolean add(int newPosition, T newEntry){
+        return false;
+    }
+            
+    @Override
+    public int getNumberOfEntries() {
+        return 0;
+    }
+
+    @Override
+    public boolean isFull() {
+        return false;
+    }
+    
+    @Override
+    public boolean contains(T anEntry){
+        return false;
     }
 }
