@@ -12,7 +12,6 @@ public class DonationDistribution {
     private String doneeid;
     private CustomArrayList<Integer> donationid;
     private String state;
-    int test = 1;
 
     public int getdDistributionid() {
         return dDistributionid;
