@@ -84,11 +84,17 @@ public class Donor{
     
     private String categoryToString(Category category){
         String str = "";
-//        switch(category){
-//            case PRIVATE -> str = "Private";
-//            case PUBLIC -> str = "Public";
-//            case GOVERNMENT -> str = "Government";
-//        }
+        switch(category){
+            case PRIVATE: 
+                str = "private";
+                break;
+            case PUBLIC: 
+                str = "public";
+                break;
+            case GOVERNMENT:
+                str ="government";
+                break;
+        }
         return str;
     }
 
