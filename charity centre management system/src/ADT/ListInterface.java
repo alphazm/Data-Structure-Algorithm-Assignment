@@ -9,16 +9,17 @@ package ADT;
  * @author Heng Wei Long
  */
 public interface ListInterface<T> {
-    public void add(T newEntry);//
-    public void displayAll();//
-    public void display();//
-    public T getFirst();//
-    public CircularLinkedList search(T entryType,T anEntry);//
-    public boolean remove(T anEntry);//
+    public void add(T newEntry);
+    public void displayAll();
+    public void display();
+    public T getFirst();
+    public CircularLinkedList search(T entryType,T anEntry);
+    public CircularLinkedList filter(T anEntry);
+    public boolean remove(T anEntry);
     public void removeLast();
-    public void clear();//
+    public void clear();
     public void replace(T newEntry);
-    public void replace(T oldEntry, T newEntry);//
-    public int getNumElement();//
-    public boolean isEmpty();//
+    public void replace(T oldEntry, T newEntry);
+    public int getNumElement();
+    public boolean isEmpty();
 }

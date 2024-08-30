@@ -24,11 +24,13 @@ public class DonationManagement {
     
     public static void main(String[] args) {
         dataInput();
+        String a = "un";
+        cll.filter(a).displayAll();
         donationMenu();
     }
     
     public static void donationMenu(){
-        clearJavaConsoleScreen();
+        //clearJavaConsoleScreen();
         //from donor
         int donorId = 0;
         int choice;
