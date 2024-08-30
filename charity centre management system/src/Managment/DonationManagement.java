@@ -406,7 +406,23 @@ public class DonationManagement {
     }
     
     public static void generateDonationManagementReport(){
-        cll.generateDonationManagementReport();
+        double totalAmount = 0;
+        int totalItems = 0;
+        int count = 1;
+        int numElement = cll.getNumElement()+1;
+        do {
+            // get one by one donation data from list
+            CircularLinkedList temp = (CircularLinkedList) cll.getEntry(count);
+            // get lastNode in a donation
+            donation = (Donation) temp.getEntry(temp.getNumElement());
+            totalAmount += donation.getAmount();
+            totalItems += donation.getItemQuantity();
+            count += 1;
+        } while (count != numElement);
+
+        System.out.println("Total Donations: " + cll.getNumElement());
+        System.out.println("Total Item Quantity: " + totalItems);
+        System.out.println("Total Amount: $" + totalAmount);
     }
 
     private static void clearJavaConsoleScreen() {
