@@ -2,9 +2,8 @@ package Managment;
 
 /**
  *
- * @author Alden Ling 
+ * @author Alden Ling
  */
-
 import ADT.CustomArrayList;
 import Entity.DonationDistribution;
 import java.time.LocalDate;
@@ -16,7 +15,6 @@ public class DDSubsystem {
     public String[] DoneeID = {"DE001", "DE002", "DE003"};
     private static CustomArrayList<DonationDistribution> donationDistributions = new CustomArrayList<>();// dd array list
     public static int DDcount = 1; // Data counting (dd) 
-
 
     // dd main page 
     public static void DonationDistributionMainPage() {
@@ -34,7 +32,7 @@ public class DDSubsystem {
         int anw = new Scanner(System.in).nextInt();
         switch (anw) {
             case 1:
-                
+
                 addNewDonationDistribution();
                 break;
             case 2:
@@ -313,6 +311,7 @@ public class DDSubsystem {
 
     // 5. report
     public static void getSummaryReport() {
+        System.out.println("Donation Distribution Summary Report");
         listAllDDDatas();
         DonationDistributionMainPage();
     }
@@ -339,7 +338,6 @@ public class DDSubsystem {
     private static void listAllDDDatas() {
         int totalDistributions = donationDistributions.size();
 
-        System.out.println("Donation Distribution Summary Report");
         System.out.println("-----------------------------------");
         System.out.println("Total Distributions: " + totalDistributions);
         System.out.println("-----------------------------------");
@@ -352,5 +350,5 @@ public class DDSubsystem {
         }
         System.out.println("--------------------------------------------------------------------");
     }
-   
+
 }
