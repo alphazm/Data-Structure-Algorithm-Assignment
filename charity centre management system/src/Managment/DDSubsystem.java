@@ -1,5 +1,10 @@
 package Managment;
 
+/**
+ *
+ * @author Alden Ling 
+ */
+
 import ADT.CustomArrayList;
 import Entity.DonationDistribution;
 import java.time.LocalDate;
