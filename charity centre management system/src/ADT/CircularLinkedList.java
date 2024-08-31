@@ -60,7 +60,7 @@ public class CircularLinkedList<T> implements ListInterface<T> {
     public T getEntry(int givenPosition){
         T result = null;
         Node current = lastNode.next;
-        if ((givenPosition >= 1) && (givenPosition <= getNumElement())) {
+        if ((givenPosition >= 1) && (givenPosition <= getNumberOfEntries())) {
                 givenPosition -= 1;
             while (givenPosition != 0) {
                 givenPosition -= 1;
@@ -222,7 +222,7 @@ public class CircularLinkedList<T> implements ListInterface<T> {
     
     // count and get the number of a group of circular linked list
     @Override
-    public int getNumElement(){
+    public int getNumberOfEntries(){
         if (isEmpty()) {
             return 0;
         }
@@ -246,11 +246,6 @@ public class CircularLinkedList<T> implements ListInterface<T> {
     @Override
     public boolean add(int newPosition, T newEntry){
         return false;
-    }
-            
-    @Override
-    public int getNumberOfEntries() {
-        return 0;
     }
 
     @Override

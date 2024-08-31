@@ -162,9 +162,4 @@ public class LinearLinkedList<T> implements ListInterface<T> {
     public boolean isFull() {
         return false;
     }
-    
-    @Override
-    public int getNumElement() {
-        return 0;
-    }
 }
