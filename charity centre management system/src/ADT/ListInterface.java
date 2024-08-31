@@ -11,7 +11,7 @@ public interface ListInterface<T> {
     public T getEntry(int givenPosition);
     public T remove(T anEntry);
     public void clear();
-    public boolean replace(T givenPos, T newEntry);
+    public boolean replace(int givenPosition, T newEntry);
     public int getNumberOfEntries();
     public boolean isEmpty();
 

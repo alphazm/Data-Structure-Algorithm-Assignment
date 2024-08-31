@@ -103,8 +103,7 @@ public class LinearLinkedList<T> implements ListInterface<T> {
     }
 
     @Override
-    public boolean replace(T givenPos, T newEntry) {
-        int givenPosition = (Integer) givenPos;
+    public boolean replace(int givenPosition, T newEntry) {
         boolean isSuccessful = true;
         if((givenPosition >=1)&& (givenPosition <=numberOfEntries)){
             Node currentNode = firstNode;
@@ -163,3 +162,4 @@ public class LinearLinkedList<T> implements ListInterface<T> {
         return false;
     }
 }
+
