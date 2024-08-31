@@ -111,40 +111,40 @@ public class DonationManagement {
     
     public static void dataInput(){
         // Add 50 donations
-        insertDonation(240801, 1001, new Donation("Supplies", "Clothing: Hats", 20, 0.00));
+        insertDonation(240801, 1001, new Donation("Supplies", "Drinks: Water", 20, 0.00));
         insertDonation(240802, 1001, new Donation("Funds", "Online Bank Transfer", 1, 500.00));
-        insertDonation(240803, 1001, new Donation("Supplies", "Books: Notebooks", 20, 0.00));
-        insertDonation(240804, 1002, new Donation("Supplies", "Clothing: Jackets", 5, 0.00));
+        insertDonation(240803, 1001, new Donation("Supplies", "Drinks: Water", 20, 0.00));
+        insertDonation(240804, 1002, new Donation("Supplies", "Food: Bread", 5, 0.00));
         insertDonation(240805, 1002, new Donation("Funds", "Cash", 1, 300.00));
         insertDonation(240806, 1003, new Donation("Funds", "Credit Card", 1, 1000.00));
-        insertDonation(240807, 1003, new Donation("Supplies", "Electronics: Flash Drives", 10, 0.00));
+        insertDonation(240807, 1003, new Donation("Supplies", "Food: Maggie", 10, 0.00));
         insertDonation(240808, 1004, new Donation("Funds", "Check", 1, 200.00));
-        insertDonation(240809, 1004, new Donation("Supplies", "Stationery: Pens", 50, 0.00));
+        insertDonation(240809, 1004, new Donation("Supplies", "Drinks: Water", 50, 0.00));
         insertDonation(240810, 1005, new Donation("Funds", "Cash", 1, 150.00));
         insertDonation(240811, 1005, new Donation("Supplies", "Food: Canned Goods", 30, 0.00));
-        insertDonation(240812, 1006, new Donation("Supplies", "Electronics: Flash Drives", 10, 0.00));
+        insertDonation(240812, 1006, new Donation("Supplies", "Drinks: Juice", 10, 0.00));
         insertDonation(240813, 1006, new Donation("Funds", "Bank Deposit", 1, 250.00));
         insertDonation(240814, 1007, new Donation("Funds", "Online Payment", 1, 400.00));
         insertDonation(240815, 1007, new Donation("Supplies", "Food: Rice", 100, 0.00));
-        insertDonation(240816, 1008, new Donation("Supplies", "Books: Textbooks", 15, 0.00));
+        insertDonation(240816, 1008, new Donation("Supplies", "Drinks: Soda", 15, 0.00));
         insertDonation(240817, 1008, new Donation("Funds", "Cash", 1, 700.00));
         insertDonation(240818, 1009, new Donation("Supplies", "Food: Fruits", 35, 0.00));
         insertDonation(240819, 1009, new Donation("Funds", "Online Bank Transfer", 1, 350.00));
         insertDonation(240820, 1010, new Donation("Funds", "Credit Card", 1, 600.00));
         insertDonation(240821, 1021, new Donation("Funds", "Credit Card", 1, 750.00));
-        insertDonation(240822, 1022, new Donation("Supplies", "Clothing: Scarves", 15, 0.00));
+        insertDonation(240822, 1022, new Donation("Supplies", "Drinks: Juice", 15, 0.00));
         insertDonation(240823, 1023, new Donation("Funds", "Bank Deposit", 1, 650.00));
         insertDonation(240824, 1024, new Donation("Supplies", "Food: Snacks", 40, 0.00));
-        insertDonation(240825, 1025, new Donation("Supplies", "Clothing: Gloves", 30, 0.00));
+        insertDonation(240825, 1025, new Donation("Supplies", "Drinks: Water", 30, 0.00));
         insertDonation(240826, 1004, new Donation("Funds", "Check", 1, 200.00));
         insertDonation(240827, 1009, new Donation("Funds", "Online Bank Transfer", 1, 350.00));
         insertDonation(240828, 1012, new Donation("Supplies", "Food: Cereal", 60, 0.00));
-        insertDonation(240829, 1003, new Donation("Supplies", "Electronics: Flash Drives", 10, 0.00));
-        insertDonation(240830, 1006, new Donation("Supplies", "Electronics: Flash Drives", 10, 0.00));
+        insertDonation(240829, 1003, new Donation("Supplies", "Drinks: Soda", 10, 0.00));
+        insertDonation(240830, 1006, new Donation("Supplies", "Food: Bread", 10, 0.00));
         insertDonation(240831, 1007, new Donation("Funds", "Online Payment", 1, 400.00));
         insertDonation(240832, 1002, new Donation("Funds", "Cash", 1, 300.00));
         insertDonation(240833, 1010, new Donation("Supplies", "Food: Pasta", 40, 0.00));
-        insertDonation(240834, 1008, new Donation("Supplies", "Books: Textbooks", 15, 0.00));
+        insertDonation(240834, 1008, new Donation("Supplies", "Drinks: Water", 15, 0.00));
         insertDonation(240835, 1011, new Donation("Funds", "Check", 1, 800.00));
         insertDonation(240836, 1015, new Donation("Funds", "Credit Card", 1, 300.00));
         insertDonation(240837, 1020, new Donation("Funds", "Online Payment", 1, 900.00));
@@ -152,15 +152,15 @@ public class DonationManagement {
         insertDonation(240839, 1005, new Donation("Supplies", "Food: Canned Goods", 30, 0.00));
         insertDonation(240840, 1024, new Donation("Funds", "Check", 1, 400.00));
         insertDonation(240841, 1019, new Donation("Funds", "Check", 1, 550.00));
-        insertDonation(240842, 1014, new Donation("Supplies", "Clothing: Scarves", 15, 0.00));
+        insertDonation(240842, 1014, new Donation("Supplies", "Drinks: Water", 15, 0.00));
         insertDonation(240843, 1021, new Donation("Supplies", "Food: Beverages", 20, 0.00));
         insertDonation(240844, 1007, new Donation("Supplies", "Food: Rice", 100, 0.00));
         insertDonation(240845, 1013, new Donation("Funds", "Bank Deposit", 1, 450.00));
         insertDonation(240846, 1022, new Donation("Funds", "Cash", 1, 200.00));
-        insertDonation(240847, 1023, new Donation("Supplies", "Stationery: Highlighters", 25, 0.00));
+        insertDonation(240847, 1023, new Donation("Supplies", "Drinks: Juice", 25, 0.00));
         insertDonation(240848, 1008, new Donation("Funds", "Cash", 1, 700.00));
-        insertDonation(240849, 1006, new Donation("Supplies", "Electronics: Flash Drives", 10, 0.00));
-        insertDonation(240850, 1001, new Donation("Supplies", "Clothing: Hats", 20, 0.00));
+        insertDonation(240849, 1006, new Donation("Supplies", "Drinks: Soda", 10, 0.00));
+        insertDonation(240850, 1001, new Donation("Supplies", "Drinks: Juice", 20, 0.00));
     }
     
     public static int getNewestDonationId() {
@@ -274,19 +274,6 @@ public class DonationManagement {
         cll.add(clldata);
     }
     
-    public static void insertDonation1(int donationId, int donorId, String donationCategory, String itemDescription, int itemQuantity, double amount){
-        // int donationID, int donorId, String donationCategory, String itemDescription, int itemQuantity, double amount
-        CircularLinkedList clldata = new CircularLinkedList();
-        clldata.add(donationId); // int donation id: year month id
-        clldata.add(donorId); // int donator id: from donor
-        clldata.add(donationCategory); // string donationCategory: Funds, Supplies
-        clldata.add(itemDescription); // string itemDescription: cash, online bank in, card; food, drinks
-        clldata.add(itemQuantity); // int itemQuantity
-        clldata.add(amount); // double amount
-        
-        cll.add(clldata);
-    }
-    
     public static void removeDonation(){
         System.out.print(" Enter the id: ");
         int inputDonationId = s.nextInt(); // accept input and store to inputDonationId
@@ -306,10 +293,69 @@ public class DonationManagement {
         int inputDonationId = s.nextInt(); // accept input and store to inputDonationId
         s.nextLine(); // clear enter key
         
-        CircularLinkedList searchResult = (CircularLinkedList) cll.search("donationId",inputDonationId);
+        CircularLinkedList searchResult = search("donationId",inputDonationId, cll);
         if (searchResult != null) {
             display(searchResult);
         }
+    }
+    
+    // search by donationId
+    public static CircularLinkedList search(String entryType,int anEntry, CircularLinkedList inList){
+        if (inList.isEmpty()) {
+            System.out.println("The List Is Empty!");
+            return null;
+        }
+        CircularLinkedList result = new CircularLinkedList();
+        int numElementList = inList.getNumberOfEntries() + 1;
+        int countList = 1;
+        do {
+            CircularLinkedList temp = (CircularLinkedList) inList.getEntry(countList);
+            int numElement = temp.getNumberOfEntries() + 1;
+            int count = 1;
+            do {
+                // get donation id of donation
+                int i = (Integer) temp.getEntry(1);
+                if (i == anEntry) {
+                    return temp;
+                }
+                count += 1;
+            } while (count != numElement);
+            countList += 1;
+        } while (countList != numElementList);
+        
+        if (((String) entryType).equals("category")) {
+            return result;
+        }
+        return result;
+    }
+    
+    public static CircularLinkedList search(String entryType,String anEntry, CircularLinkedList inList){
+        if (inList.isEmpty()) {
+            System.out.println("The List Is Empty!");
+            return null;
+        }
+        CircularLinkedList result = new CircularLinkedList();
+        int numElementList = inList.getNumberOfEntries() + 1;
+        int countList = 1;
+        do {
+                CircularLinkedList temp = (CircularLinkedList) inList.getEntry(countList);
+                int numElement = temp.getNumberOfEntries() + 1;
+                int count = 1;
+                do {
+                    // get donation's category from donation, every lastNode is donation, lastNode.next is donationId
+                    donation = (Donation) temp.getEntry(temp.getNumberOfEntries());
+                    if (donation.getDonationCategory().contains(anEntry)) {
+                        result.add(temp);
+                    }
+                    count += 1;
+                } while (count != numElement);
+            countList += 1;
+        } while (countList != numElementList);
+        
+        if (((String) entryType).equals("category")) {
+            return result;
+        }
+        return result;
     }
     
     public static void amendDonation(){
@@ -317,11 +363,12 @@ public class DonationManagement {
         int inputDonationId = s.nextInt(); // accept input and store to inputDonationId
         s.nextLine(); // clear enter key
         
-        CircularLinkedList searchResult = (CircularLinkedList) cll.search("donationId",inputDonationId);
+        CircularLinkedList searchResult = search("donationId",inputDonationId, cll);
         if (!searchResult.isEmpty()) {
             CircularLinkedList newResult = updateDonation(searchResult);
+            int x = 0;
             if (newResult != null) {
-                cll.replace(searchResult, newResult);   
+                cll.replace(x, newResult);   
             }
         }
     }
@@ -331,45 +378,74 @@ public class DonationManagement {
         CircularLinkedList newResult = searchResult;
         donation = new Donation();
         
-        int x = chooseUpdate();
+        int inputInt = chooseUpdate();
         do {
-            switch(x) {
+            switch(inputInt) {
                 case 1:
-                    System.out.println("Enter new Donor Id");
-                    int a = s.nextInt();
-                    s.nextLine();
-                    newResult.replace("donorId", a);
+                    newResult = replaceMenu("donorId", newResult);
                     break;
                 case 2:
-                    System.out.println("Enter new Category");
-                    String b = s.nextLine();
-                    newResult.replace("itemCate", b);
+                    newResult = replaceMenu("itemCate", newResult);
                     break;
                 case 3:
-                    System.out.println("Enter new Item Description");
-                    String c = s.nextLine();
-                    newResult.replace("itemDes", c);
+                    newResult = replaceMenu("itemDes", newResult);
                     break;
                 case 4:
-                    System.out.println("Enter new Item Quantity");
-                    int d = s.nextInt();
-                    s.nextLine();
-                    newResult.replace("itemQty", d);
+                    newResult = replaceMenu("itemQty", newResult);
                     break;
                 case 5:
-                    System.out.println("Enter new Amount");
-                    double e = s.nextInt();
-                    s.nextLine();
-                    newResult.replace("amount", e);
+                    newResult = replaceMenu("amount", newResult);
                     break;
                 default:
                     System.out.println("Amend Donation Fail!");
                     return null;
             }
-            x = chooseUpdate();
-        } while (x != 0);
+            inputInt = chooseUpdate();
+        } while (inputInt != 0);
         return newResult;
     }
+    
+    public static CircularLinkedList replaceMenu(String entryType, CircularLinkedList inList) {
+        if (inList.isEmpty()) {
+            System.out.println("The List Is Empty!");
+        }
+        display(inList);
+        donation = (Donation) inList.getEntry(inList.getNumberOfEntries());
+        String inputStr;
+        switch(entryType){
+            case "donorId":
+                System.out.println(" Enter new donor id: ");
+                int inputId = s.nextInt();
+                s.nextLine();
+                inList.replace(2, inputId);
+                break;
+            case "itemCate":
+                System.out.print(" Enter new category: ");
+                inputStr = s.nextLine();
+                donation.setDonationCategory(inputStr);
+                break;
+            case "itemDes":
+                System.out.print(" Enter new description: ");
+                inputStr = s.nextLine();
+                donation.setItemDescription(inputStr);
+                break;
+            case "itemQty":
+                System.out.print(" Enter new quantity: ");
+                int inputInt = s.nextInt();
+                s.nextLine();
+                donation.setItemQuantity(inputInt);
+                break;
+            case "amount":
+                System.out.print(" Enter new amount: ");
+                double inputDouble = s.nextDouble();
+                s.nextLine();
+                donation.setAmount(inputDouble);
+                break;
+        }
+        display(inList);
+        return inList;
+    }
+    
     
     public static int chooseUpdate(){
         System.out.println(" Amend which data");
@@ -411,11 +487,11 @@ public class DonationManagement {
                 s.nextLine();
                 switch (choice) {
                     case 1:
-                        searchResult = (CircularLinkedList) cll.search("category","Funds");
+                        searchResult = search("category","Funds", cll);
                         displayAll(searchResult);
                         break;
                     case 2:
-                        searchResult = (CircularLinkedList) cll.search("category","Supplies");
+                        searchResult = search("category","Supplies", cll);
                         displayAll(searchResult);
                         break;
             }
