@@ -2,6 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package Entity;
 
 /**
@@ -37,7 +41,7 @@ public class Donee {
         return idCounter++;
     }
 
-    public void setDoneeName(){
+    public void setDoneeName(String doneeName){
         this.doneeName=doneeName;
     }
     public String getName(){
@@ -49,13 +53,13 @@ public class Donee {
     public String getDoneeID(){
         return doneeID;
     }
-    public void setPhoneNo(){
+    public void setPhoneNo(String phoneNo){
     this.phoneNo=phoneNo;
     }
     public String getPhoneNo(){
         return phoneNo;
     }
-    public void setAddress(){
+    public void setAddress(String address){
         this.address = address;
     }
     public String getAddress(){
@@ -65,8 +69,8 @@ public class Donee {
         requirements.add(requirement);
     }
     public LinearLinkedList<Requirement> getRequirements(){
-        return reuirements;
-
+        return requirements;
+    }
     public String toString(){
         return
                 "Donee ID =" + doneeID +
