@@ -4,7 +4,7 @@ import ADT.ArrayList;
 
 /**
  *
- * @author Alden Ling 
+ * @author Alden Ling
  */
 public class DonationDistribution {
 
