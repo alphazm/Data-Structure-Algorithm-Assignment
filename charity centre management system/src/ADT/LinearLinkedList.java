@@ -11,6 +11,7 @@ package ADT;
 public class LinearLinkedList<T> implements ListInterface<T> {
     private Node firstNode;
     private int numberOfEntries;
+
     private class Node {
         private T data;
         private Node next;
@@ -80,7 +81,8 @@ public class LinearLinkedList<T> implements ListInterface<T> {
     }
 
     @Override
-    public T remove(int givenPosition) {
+    public T remove(T anEntry) {
+        int givenPosition = (Integer) anEntry;
         T result = null;
         if((givenPosition >=1)&&(givenPosition<=numberOfEntries)){
             if(givenPosition == 1){
@@ -160,3 +162,4 @@ public class LinearLinkedList<T> implements ListInterface<T> {
         return false;
     }
 }
+
