@@ -16,7 +16,6 @@ public class DoneeManagement {
     }
 
     public void addDonee(String doneeName, String phoneNo, String address) {
-        // "" means the place where doneeID generate
         Donee newDonee = new Donee(doneeName,phoneNo, address); 
         doneeList.add(newDonee);
     }
