@@ -1,6 +1,6 @@
 package Entity;
 
-import ADT.CustomArrayList;
+import ADT.ArrayList;
 
 /**
  *
@@ -10,7 +10,7 @@ public class DonationDistribution {
 
     private int dDistributionid;
     private String doneeid;
-    private CustomArrayList<Integer> donationid;
+    private ArrayList<Integer> donationid;
     private String state;
 
     public int getdDistributionid() {
@@ -29,7 +29,7 @@ public class DonationDistribution {
         this.doneeid = doneeid;
     }
 
-    public CustomArrayList<Integer> getDonationid() {
+    public ArrayList<Integer> getDonationid() {
         return donationid;
     }
 
@@ -44,7 +44,7 @@ public class DonationDistribution {
         return sb.toString();
     }
 
-    public void setDonationid(CustomArrayList<Integer> donationid) {
+    public void setDonationid(ArrayList<Integer> donationid) {
         this.donationid = donationid;
     }
 

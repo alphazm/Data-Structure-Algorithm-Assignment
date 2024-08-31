@@ -16,22 +16,21 @@ public class Donor{
     LocalDate datejoin;
     public LinkedStack<Donation> donations;
 
-    public Donor(String name, Category category, int contactNumber , LinkedStack<Donation> donations) {
+    public Donor(String name, Category category, int contactNumber ) {
         this.name = name;
         this.donorID = generatedId();
         this.category = category;
         this.contactNumber = contactNumber;
         this.datejoin = LocalDate.now();
-        this.donations = donations;
+        
     }
     
-    public Donor(String name, Category category, int contactNumber ,LocalDate date ,LinkedStack<Donation> donations) {
+    public Donor(String name, Category category, int contactNumber ,LocalDate date ) {
         this.name = name;
         this.donorID = generatedId();
         this.category = category;
         this.contactNumber = contactNumber;
         this.datejoin = date;
-        this.donations = donations;
     }
     
     private String generatedId(){
