@@ -28,7 +28,7 @@ public class DonationManagement {
     }
     
     public static void donationMenu(){
-        //clearJavaConsoleScreen();
+        clearJavaConsoleScreen();
         //from donor
         int donorId = 0;
         int choice;
@@ -41,7 +41,7 @@ public class DonationManagement {
             System.out.println(" 3. Search Donation");
             System.out.println(" 4. Amend Donation");
             System.out.println(" 5. Track Donation");
-            System.out.println(" 6. List Donor By Donation");
+            System.out.println(" 6. List Donation By Different Donor");
             System.out.println(" 7. List All Donation");
             System.out.println(" 8. Generate Donation Management Report");
             System.out.println(" 0. Exit");
@@ -52,7 +52,7 @@ public class DonationManagement {
                 switch (choice) {
                     case 1:     // addDonation
                         clearJavaConsoleScreen();
-                        addDonation(donorId);
+                        addDonation(donorId); // pass donor Id here
                         cont = true;
                         break;
                     case 2:     // removeDonation
@@ -77,7 +77,7 @@ public class DonationManagement {
                         break;
                     case 6:     // listDonorByDonationId
                         clearJavaConsoleScreen();
-                        listDonorByDonationId();
+                        listDonationByDifferentDonor();
                         cont = true;
                         break;
                     case 7:     // listAllDonation
@@ -110,32 +110,62 @@ public class DonationManagement {
     }
     
     public static void dataInput(){
-        // Add 20 donations
-        insertDonation(240801, 1001, new Donation("Funds", "Cash", 1, 100.00));
-        insertDonation(240802, 1001, new Donation("Supplies", "Food: Bread", 10, 0.00));
-        insertDonation(240803, 1002, new Donation("Funds", "Online Bank In", 1, 1000.00));
-        insertDonation(240804, 1003, new Donation("Supplies", "Food: Maggie", 50, 0.00));
-        insertDonation(240805, 1004, new Donation("Funds", "Card Payment", 1, 500.00));
-        insertDonation(240806, 1004, new Donation("Supplies", "Drinks: Water", 100, 0.00));
-        insertDonation(240807, 1005, new Donation("Funds", "Cash", 1, 150.00));
-        insertDonation(240808, 1005, new Donation("Supplies", "Food: Rice", 20, 0.00));
-        insertDonation(240809, 1006, new Donation("Funds", "Online Bank In", 1, 2000.00));
-        insertDonation(240810, 1007, new Donation("Supplies", "Food: Beans", 30, 0.00));
-        insertDonation(240811, 1008, new Donation("Funds", "Cash", 1, 50.00));
-        insertDonation(240812, 1008, new Donation("Supplies", "Drinks: Juice", 25, 0.00));
-        insertDonation(240813, 1009, new Donation("Funds", "Card Payment", 1, 250.00));
-        insertDonation(240814, 1009, new Donation("Supplies", "Food: Pasta", 15, 0.00));
-        insertDonation(240815, 1010, new Donation("Funds", "Online Bank In", 1, 1200.00));
-        insertDonation(240816, 1011, new Donation("Supplies", "Food: Flour", 40, 0.00));
-        insertDonation(240817, 1012, new Donation("Funds", "Cash", 1, 300.00));
-        insertDonation(240818, 1012, new Donation("Supplies", "Drinks: Soda", 60, 0.00));
-        insertDonation(240819, 1013, new Donation("Funds", "Card Payment", 1, 700.00));
-        insertDonation(240820, 1014, new Donation("Supplies", "Food: Biscuits", 35, 0.00));
+        // Add 50 donations
+        insertDonation(240801, 1001, new Donation("Supplies", "Clothing: Hats", 20, 0.00));
+        insertDonation(240802, 1001, new Donation("Funds", "Online Bank Transfer", 1, 500.00));
+        insertDonation(240803, 1001, new Donation("Supplies", "Books: Notebooks", 20, 0.00));
+        insertDonation(240804, 1002, new Donation("Supplies", "Clothing: Jackets", 5, 0.00));
+        insertDonation(240805, 1002, new Donation("Funds", "Cash", 1, 300.00));
+        insertDonation(240806, 1003, new Donation("Funds", "Credit Card", 1, 1000.00));
+        insertDonation(240807, 1003, new Donation("Supplies", "Electronics: Flash Drives", 10, 0.00));
+        insertDonation(240808, 1004, new Donation("Funds", "Check", 1, 200.00));
+        insertDonation(240809, 1004, new Donation("Supplies", "Stationery: Pens", 50, 0.00));
+        insertDonation(240810, 1005, new Donation("Funds", "Cash", 1, 150.00));
+        insertDonation(240811, 1005, new Donation("Supplies", "Food: Canned Goods", 30, 0.00));
+        insertDonation(240812, 1006, new Donation("Supplies", "Electronics: Flash Drives", 10, 0.00));
+        insertDonation(240813, 1006, new Donation("Funds", "Bank Deposit", 1, 250.00));
+        insertDonation(240814, 1007, new Donation("Funds", "Online Payment", 1, 400.00));
+        insertDonation(240815, 1007, new Donation("Supplies", "Food: Rice", 100, 0.00));
+        insertDonation(240816, 1008, new Donation("Supplies", "Books: Textbooks", 15, 0.00));
+        insertDonation(240817, 1008, new Donation("Funds", "Cash", 1, 700.00));
+        insertDonation(240818, 1009, new Donation("Supplies", "Food: Fruits", 35, 0.00));
+        insertDonation(240819, 1009, new Donation("Funds", "Online Bank Transfer", 1, 350.00));
+        insertDonation(240820, 1010, new Donation("Funds", "Credit Card", 1, 600.00));
+        insertDonation(240821, 1021, new Donation("Funds", "Credit Card", 1, 750.00));
+        insertDonation(240822, 1022, new Donation("Supplies", "Clothing: Scarves", 15, 0.00));
+        insertDonation(240823, 1023, new Donation("Funds", "Bank Deposit", 1, 650.00));
+        insertDonation(240824, 1024, new Donation("Supplies", "Food: Snacks", 40, 0.00));
+        insertDonation(240825, 1025, new Donation("Supplies", "Clothing: Gloves", 30, 0.00));
+        insertDonation(240826, 1004, new Donation("Funds", "Check", 1, 200.00));
+        insertDonation(240827, 1009, new Donation("Funds", "Online Bank Transfer", 1, 350.00));
+        insertDonation(240828, 1012, new Donation("Supplies", "Food: Cereal", 60, 0.00));
+        insertDonation(240829, 1003, new Donation("Supplies", "Electronics: Flash Drives", 10, 0.00));
+        insertDonation(240830, 1006, new Donation("Supplies", "Electronics: Flash Drives", 10, 0.00));
+        insertDonation(240831, 1007, new Donation("Funds", "Online Payment", 1, 400.00));
+        insertDonation(240832, 1002, new Donation("Funds", "Cash", 1, 300.00));
+        insertDonation(240833, 1010, new Donation("Supplies", "Food: Pasta", 40, 0.00));
+        insertDonation(240834, 1008, new Donation("Supplies", "Books: Textbooks", 15, 0.00));
+        insertDonation(240835, 1011, new Donation("Funds", "Check", 1, 800.00));
+        insertDonation(240836, 1015, new Donation("Funds", "Credit Card", 1, 300.00));
+        insertDonation(240837, 1020, new Donation("Funds", "Online Payment", 1, 900.00));
+        insertDonation(240838, 1018, new Donation("Funds", "Online Bank Transfer", 1, 450.00));
+        insertDonation(240839, 1005, new Donation("Supplies", "Food: Canned Goods", 30, 0.00));
+        insertDonation(240840, 1024, new Donation("Funds", "Check", 1, 400.00));
+        insertDonation(240841, 1019, new Donation("Funds", "Check", 1, 550.00));
+        insertDonation(240842, 1014, new Donation("Supplies", "Clothing: Scarves", 15, 0.00));
+        insertDonation(240843, 1021, new Donation("Supplies", "Food: Beverages", 20, 0.00));
+        insertDonation(240844, 1007, new Donation("Supplies", "Food: Rice", 100, 0.00));
+        insertDonation(240845, 1013, new Donation("Funds", "Bank Deposit", 1, 450.00));
+        insertDonation(240846, 1022, new Donation("Funds", "Cash", 1, 200.00));
+        insertDonation(240847, 1023, new Donation("Supplies", "Stationery: Highlighters", 25, 0.00));
+        insertDonation(240848, 1008, new Donation("Funds", "Cash", 1, 700.00));
+        insertDonation(240849, 1006, new Donation("Supplies", "Electronics: Flash Drives", 10, 0.00));
+        insertDonation(240850, 1001, new Donation("Supplies", "Clothing: Hats", 20, 0.00));
     }
     
     public static int getNewestDonationId() {
         // get last donation
-        CircularLinkedList temp = (CircularLinkedList) cll.getEntry(cll.getNumElement());
+        CircularLinkedList temp = (CircularLinkedList) cll.getEntry(cll.getNumberOfEntries());
         // get donation details
         int x = (Integer) temp.getEntry(1);
         return x+1;
@@ -396,22 +426,22 @@ public class DonationManagement {
         }while(choice != 0);
     }
     
-    public static void listDonorByDonationId(){
-        System.out.println("Donation Id\tDonor Id\tDonation Category\tItem Description\tItem Quantity\t    Amount");
+    public static void listDonationByDifferentDonor(){
+        System.out.println("Donor Id\tDonation Id\tDonation Category\tItem Description\tItem Quantity\t    Amount");
     }
     
     public static void listAllDonation(){
         System.out.println("Donation Id\tDonor Id\tDonation Category\tItem Description\tItem Quantity\t    Amount");
         displayAll(cll);
-        int x;
+        int inputInt;
         do {
-            System.out.println("Filter? (0 = cancel)");
-            x = s.nextInt();
+            System.out.print(" Add Filter? (0 = cancel): ");
+            inputInt = s.nextInt();
             s.nextLine();
-            if (x != 0) {
+            if (inputInt != 0) {
                 filterDonation();
             }
-        } while (x != 0);
+        } while (inputInt != 0);
     }
     
     // display all in circular linked list
@@ -419,12 +449,12 @@ public class DonationManagement {
         if (inList.isEmpty()) {
             System.out.println("Empty!");
         }
-        int numElementList = inList.getNumElement() + 1;
+        int numElementList = inList.getNumberOfEntries() + 1;
         int countList = 1;
         do {
             // get one by one donation data from list
             CircularLinkedList temp = (CircularLinkedList) inList.getEntry(countList);
-            int numElement = temp.getNumElement() + 1;
+            int numElement = temp.getNumberOfEntries() + 1;
             int count = 1;
             do {
                 if (temp.getEntry(count).getClass() == Donation.class) {
@@ -442,7 +472,7 @@ public class DonationManagement {
     }
     
     public static void display(CircularLinkedList inList) {
-        int numElement = inList.getNumElement() + 1;
+        int numElement = inList.getNumberOfEntries() + 1;
         int count = 1;
         do {
             if (inList.getEntry(count).getClass() == Donation.class) {
@@ -457,18 +487,28 @@ public class DonationManagement {
         } while (count != numElement);
     }
     
-    
     public static void filterDonation(){
         System.out.println(" Filter menu");
         System.out.println(" 1. Filter Category");
         System.out.println(" 2. Filter Description");
-        int a = s.nextInt();
+        System.out.println(" 3. Filter Quantity");
+        System.out.println(" 4. Filter Amount");
+        System.out.print(" Enter your choice: ");
+        int inputInt = s.nextInt();
         s.nextLine();
-        if (a == 1) {
-            filterCategory();
-        }
-        else if (a == 2) {
-            filterDescription();
+        switch (inputInt) {
+            case 1:
+                filterCategory();
+                break;
+            case 2:
+                filterDescription();
+                break;
+            case 3:
+                filterQuantity();
+                break;
+            case 4:
+                filterAmount();
+                break;
         }
     }
     
@@ -476,10 +516,10 @@ public class DonationManagement {
         CircularLinkedList result = null;
         System.out.println(" 1. Funds");
         System.out.println(" 2. Supplies");
-        System.out.print("Choose donation category: ");
-        int x = s.nextInt();
+        System.out.print(" Choose donation category: ");
+        int inputInt = s.nextInt();
         s.nextLine();
-        switch(x) {
+        switch(inputInt) {
             case 1:
                 result = filterByString("Fund", cll);
                 break;
@@ -524,17 +564,41 @@ public class DonationManagement {
         displayAll(result);
     }
     
+    public static void filterQuantity() {
+        System.out.print(" Enter min quantity: ");
+        double min = s.nextDouble();
+        s.nextLine();
+        System.out.print(" Enter max quantity: ");
+        double max = s.nextDouble();
+        s.nextLine();
+        
+        CircularLinkedList result = filter("Quantity", min, max, cll);
+        displayAll(result);
+    }
+    
+    public static void filterAmount() {
+        System.out.print(" Enter minimum amount: ");
+        double min = s.nextDouble();
+        s.nextLine();
+        System.out.print(" Enter maximum amount: ");
+        double max = s.nextDouble();
+        s.nextLine();
+        
+        CircularLinkedList result = filter("Amount", min, max, cll);
+        displayAll(result);
+    }
+    
     // filter on string
     public static CircularLinkedList filterByString(String anEntry, CircularLinkedList inList) {
         CircularLinkedList result = new CircularLinkedList();
-        int numElement = inList.getNumElement() + 1;
+        int numElement = inList.getNumberOfEntries() + 1;
         int count = 1;
         
         do {
             // get one by one donation data from list
             CircularLinkedList temp = (CircularLinkedList) inList.getEntry(count);
             // get lastNode in a donation
-            donation = (Donation) temp.getEntry(temp.getNumElement());
+            donation = (Donation) temp.getEntry(temp.getNumberOfEntries());
             
             if (donation.getDonationCategory().contains(anEntry)) {
                 result.add(temp);
@@ -548,31 +612,29 @@ public class DonationManagement {
         return result;
     }
     
-    // filter on number //not done
-    public CircularLinkedList filter(String entryType, double anEntry) {
+    // filter on number
+    public static CircularLinkedList filter(String entryType, double min, double max, CircularLinkedList inList) {
         CircularLinkedList result = new CircularLinkedList();
-//        Node current = lastNode.next;
-//        
-//        do {
-//            CircularLinkedList temp = (CircularLinkedList) current.data;
-//            Node currentData = temp.lastNode.next;
-//            do {
-//                if (currentData.data.getClass() == Donation.class) {
-//                    System.out.println("Is Donation");
-//                    Donation donation = (Donation) currentData.data;
-//                    
-//                    if (donation.getItemQuantity() > (Integer) anEntry) {
-//                        result.add(temp);
-//                    }
-//                    else if (donation.getAmount() > (double) anEntry) {
-//                        result.add(temp);
-//                    }
-//                }
-//                currentData = currentData.next;
-//            } while (currentData != temp.lastNode.next);
-//            
-//            current = current.next;
-//        } while (current != lastNode.next);
+        int numElement = inList.getNumberOfEntries() + 1;
+        int count = 1;
+        do {
+            // get one by one donation data from list
+            CircularLinkedList temp = (CircularLinkedList) inList.getEntry(count);
+            // get lastNode in a donation
+            donation = (Donation) temp.getEntry(temp.getNumberOfEntries());
+            
+            if (entryType.equals("Quantity")) {
+                if (min < donation.getItemQuantity() && donation.getItemQuantity() < max) {
+                    result.add(temp);
+                }
+            }
+            else if (entryType.equals("Amount")) {
+                if (min < donation.getAmount() && donation.getItemQuantity() < max) {
+                    result.add(temp);
+                }
+            }
+            count += 1;
+        } while (count != numElement);
         return result;
     }
     
@@ -580,20 +642,20 @@ public class DonationManagement {
         double totalAmount = 0;
         int totalItems = 0;
         int count = 1;
-        int numElement = cll.getNumElement() + 1;
+        int numElement = cll.getNumberOfEntries() + 1;
         do {
             // get one by one donation data from list
             CircularLinkedList temp = (CircularLinkedList) cll.getEntry(count);
             // get lastNode in a donation
-            donation = (Donation) temp.getEntry(temp.getNumElement());
+            donation = (Donation) temp.getEntry(temp.getNumberOfEntries());
             totalAmount += donation.getAmount();
             totalItems += donation.getItemQuantity();
             count += 1;
         } while (count != numElement);
 
-        System.out.println("Total Donations: " + cll.getNumElement());
-        System.out.println("Total Item Quantity: " + totalItems);
-        System.out.println("Total Amount: $" + totalAmount);
+        System.out.println(" Total Donations: " + cll.getNumberOfEntries());
+        System.out.println(" Total Item Quantity: " + totalItems);
+        System.out.println(" Total Amount: $" + totalAmount);
     }
 
     private static void clearJavaConsoleScreen() {
