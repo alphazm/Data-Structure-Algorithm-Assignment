@@ -20,7 +20,7 @@ public class Donee {
     private LinearLinkedList<Requirement> requirements;
 
 
-    public Donee(String doneeName, String doneeID,String phoneNo,String address){
+    public Donee(String doneeName,String phoneNo,String address){
         this.doneeName = doneeName;
         this.doneeID = generatedId();
         this.phoneNo = phoneNo;
