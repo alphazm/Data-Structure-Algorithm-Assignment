@@ -31,7 +31,7 @@ public class DoneeManagement {
 
     public void removeDonee(String doneeID) {
         if (doneeList.isEmpty()) {
-            System.out.println("No removable action needed");
+            System.out.println("The Donee list is empty");
             return;
         }
         boolean found = false;
