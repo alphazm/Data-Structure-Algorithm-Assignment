@@ -16,9 +16,10 @@ public class DonorManagement {
         donorStack = new LinkedStack<>();
     }
     
-    public void addDonor(String name, Category category, int contactNumber,LinkedStack<Donation> donations){
+    public void addDonor(String name, Category category, int contactNumber,Donation donations){
         
-        Donor newDonor = new Donor(name,category,contactNumber,donations);
+        Donor newDonor = new Donor(name,category,contactNumber);
+        newDonor.donations.push(donations);
         donorStack.push(newDonor);
     }
     
