@@ -89,9 +89,6 @@ public class CircularLinkedList<T> implements ListInterface<T> {
             // turn the data into integer
             int i = (Integer) temp.getEntry(1);
             if ( i == (Integer) anEntry) { //turn the input from T to integer
-                System.out.println(temp.getEntry(1));
-                //System.out.println(); // display remove data
-
                 // if the node is last node
                 if (current == lastNode) {
                     // if the node only node
