@@ -4,13 +4,13 @@ package ADT;
  * @author Alden Ling 
  * @param <T>
  */
-public class CustomArrayList<T> {
+public class ArrayList<T> {
 
     private T[] data;
     private int size;
 
     @SuppressWarnings("unchecked")
-    public CustomArrayList() {
+    public ArrayList() {
         this.data = (T[]) new Object[10]; // Initial capacity of 10
         this.size = 0;
     }

@@ -4,7 +4,7 @@ package Managment;
  *
  * @author Alden Ling
  */
-import ADT.CustomArrayList;
+import ADT.ArrayList;
 import Entity.DonationDistribution;
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -13,7 +13,7 @@ public class DDSubsystem {
 
     public int[] DonationID = {2408001, 2408002, 2408003, 2408004, 2408005, 2408006, 2408007, 2408008};
     public String[] DoneeID = {"DE001", "DE002", "DE003"};
-    private static CustomArrayList<DonationDistribution> donationDistributions = new CustomArrayList<>();// dd array list
+    private static ArrayList<DonationDistribution> donationDistributions = new ArrayList<>();// dd array list
     public static int DDcount = 1; // Data counting (dd) 
 
     // dd main page 
@@ -80,7 +80,7 @@ public class DDSubsystem {
         String[] donationIdsArray = donationIdsInput.split(" ");
 
         // create new donation object 
-        CustomArrayList<Integer> donationIds = new CustomArrayList<>();
+        ArrayList<Integer> donationIds = new ArrayList<>();
         for (String donationId : donationIdsArray) {
             int selectedDonationId = Integer.parseInt(donationId);
             // Validate if the selected Donation ID is in the available array
@@ -199,7 +199,7 @@ public class DDSubsystem {
                 String[] donationIdsArray = newDonationIds.split(" ");
 
                 // new donation id array list
-                CustomArrayList<Integer> newDonationIdsArray = new CustomArrayList<>();
+                ArrayList<Integer> newDonationIdsArray = new ArrayList<>();
                 for (String donationId : donationIdsArray) {
                     int selectedDonationId = Integer.parseInt(donationId);
                     // Validate if the selected Donation ID is in the available array
