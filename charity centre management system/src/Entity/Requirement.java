@@ -6,7 +6,7 @@ package Entity;
 
 /**
  *
- * @author winyi
+ * @author ChanWinYit
  */
 import ADT.LinearLinkedList; 
 public class Requirement {
