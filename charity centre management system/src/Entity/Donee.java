@@ -17,6 +17,7 @@ public class Donee {
     String doneeID;
     String phoneNo;
     String address;
+    private LinearLinkedList<Requirement> requirements;
 
 
     public Donee(String doneeName, String doneeID,String phoneNo,String address){
@@ -24,6 +25,7 @@ public class Donee {
         this.doneeID = generatedId();
         this.phoneNo = phoneNo;
         this.address = address;
+        this.requirements = new LinearLinkedList<>();
     }
 
     private String generatedId(){
@@ -59,12 +61,18 @@ public class Donee {
     public String getAddress(){
         return address;
     }
-    
+    public void addRequirement(Requirement requirement){
+        requirements.add(requirement);
+    }
+    public LinearLinkedList<Requirement> getRequirements(){
+        return reuirements;
+
     public String toString(){
         return
                 "Donee ID =" + doneeID +
                 "Donee Name =" + doneeName +
                 "Donee Contact Number =" + phoneNo +
-                "Donee Address =" + address;
+                "Donee Address =" + address +
+                "Donee requirements =" + requirements.toString();
     }
 }
