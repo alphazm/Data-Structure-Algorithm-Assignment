@@ -1,10 +1,10 @@
 package CharityCentreManagementSystem;
 
-import ADT.LinkedStack;
+
 import Entity.Category;
-import Entity.Donation;
-import static Managment.DDSubsystem.DonationDistributionMainPage;
+import Entity.Donor;
 import static Managment.DonationManagement.DonationManagement;
+import static Managment.DonationManagement.addDonation;
 import Managment.DonorManagement;
 import java.awt.AWTException;
 import java.awt.Robot;
@@ -13,8 +13,11 @@ import java.util.Scanner;
 
 public class mainfile {
     static Scanner scanner = new Scanner(System.in);
+    static DonorManagement donorCtrl = new DonorManagement();
+    
     public static void main(String[] args)
     {
+        DonationManagement(false);
         boolean repeat = true;
         while(repeat){
             System.out.println();
@@ -23,10 +26,11 @@ public class mainfile {
             System.out.println("3.  report");
             System.out.print("Enter selection: ");
             int selection = scanner.nextInt();
+            scanner.nextLine(); 
             switch(selection){
                 case 1:
                     clearJavaConsoleScreen();
-                    addDonation();
+                    newDonation();
                     break;
                 case 2:
                     clearJavaConsoleScreen();
@@ -43,20 +47,21 @@ public class mainfile {
         }
     }
     
-    public static void addDonation(){
-        DonorManagement ctrl = new DonorManagement();
+    public static void newDonation(){
+        
         boolean repeat = true;
         while(repeat){
             System.out.println("1. new donor");
             System.out.println("2. old donor");
             System.out.print("Enter selection: ");
             int selection = scanner.nextInt();
+            scanner.nextLine(); 
             switch(selection){
                     case 1:
-                        newDonor(ctrl);
+                        newDonor();
                         break;
                     case 2:
-
+                        oldDonor();
                         break;
                     default:
                         clearJavaConsoleScreen();
@@ -64,15 +69,19 @@ public class mainfile {
             }
         }
     }
-    public static void newDonor(DonorManagement ctrl){
-        System.out.println("Enter Name: ");
+    public static void newDonor(){
+        System.out.println();
+        System.out.print("Enter Name: ");
         String name = scanner.next();
-        System.out.println("Enter contact number (example: 123456789): ");
+        scanner.nextLine(); 
+        System.out.print("Enter contact number (example: 123456789): ");
         int contactNumber = scanner.nextInt();
+        scanner.nextLine(); 
         boolean repeat = true;
         while (repeat){
-            System.out.println("Enter category (private, public or goverment): ");
+            System.out.print("Enter category (private, public or goverment): ");
             String str = scanner.next().toLowerCase();
+            scanner.nextLine(); 
             Category category;
             switch(str){
                 case "private":
@@ -91,24 +100,22 @@ public class mainfile {
                      System.out.println("invaldie vategorise");
             }
         }
-        System.out.println("Enter donationCategory (Supplies or funds): ");
-        String donationCategory = scanner.next();
-        Donation donation = null;
-        if(donationCategory.equalsIgnoreCase("supplies")){
-            System.out.println("Enter item description: ");
-            String item = scanner.next();
-            System.out.println("Enter item quantity: ");
-            int qty = scanner.nextInt();
-            donation = new Donation(donationCategory, item, qty, 0.00);
-        }else if(donationCategory.equalsIgnoreCase("funds")){
-            System.out.println("Enter amount: ");
-            float amount = scanner.nextInt();
-            donation = new Donation(donationCategory, "Clothing: Hats", 0, amount);
+        donorCtrl.addDonor(name, Category.PRIVATE, contactNumber); 
+        Donor temp = donorCtrl.viewMostRecentDonor();
+        addDonation(temp.getDonorId());
+    }
+    
+    public static void oldDonor(){
+        boolean flag = false;
+        Donor[] temp = null;
+        while(!flag){
+            System.out.println();
+            System.out.println("Enter donor ID: ");
+            int id = scanner.nextInt();
+            scanner.nextLine(); 
+            flag = donorCtrl.searchDonor(id,temp);
         }
-       ctrl.addDonor(name, Category.PRIVATE, contactNumber,donation); 
-     
-        
-        
+        addDonation(temp[0].getDonorId());
     }
     
     public static void requsetDonation(){
