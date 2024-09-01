@@ -6,7 +6,7 @@ package ADT;
 
 /**
  *
- * @author winyit
+ * @author ChanWinYit
  */
 public class LinearLinkedList<T> implements ListInterface<T> {
 
