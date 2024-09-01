@@ -61,6 +61,10 @@ public class ArrayList<T> implements ListInterface<T> {
         data[index] = newItem;
     }
 
+    public void clearOut() {
+        size = 0; // Reset the size to 0
+    }
+
     @Override
     public boolean add(T newEntry) {
         return false;
