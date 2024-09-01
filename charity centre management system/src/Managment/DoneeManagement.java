@@ -39,7 +39,7 @@ public class DoneeManagement {
         for (int i = 1; i <= doneeList.getNumberOfEntries(); i++) {
             Donee donee = doneeList.getEntry(i);
             if (donee.getDoneeID().equalsIgnoreCase(doneeID)) {
-                doneeList.remove(i);
+                doneeList.remove(donee);
                 System.out.println(donee + "has been removed");
                 found = true;
                 break;
