@@ -5,16 +5,39 @@ package Managment;
  * @author Alden Ling
  */
 import ADT.ArrayList;
+import ADT.CircularLinkedList;
 import Entity.DonationDistribution;
 import java.time.LocalDate;
 import java.util.Scanner;
 
 public class DDSubsystem {
 
-    public int[] DonationID = {2408001, 2408002, 2408003, 2408004, 2408005, 2408006, 2408007, 2408008};
-    public String[] DoneeID = {"DE001", "DE002", "DE003"};
+//    public int[] DonationID = {2408001, 2408002, 2408003, 2408004, 2408005, 2408006, 2408007, 2408008};
+    private static CircularLinkedList donations = new CircularLinkedList();
+    public static String[] DoneeID = {"DE001", "DE002", "DE003"};
+    private static ArrayList<Integer> DonationIDs = new ArrayList<>();
     private static ArrayList<DonationDistribution> donationDistributions = new ArrayList<>();// dd array list
     public static int DDcount = 1; // Data counting (dd) 
+
+    public void gettingDonations(CircularLinkedList donationsData) {
+        donations = donationsData;
+        DonationIDs.clearOut(); // Clear existing IDs if necessary
+        int numElementList = donations.getNumberOfEntries() + 1;
+        int countList = 1;
+        do {
+            CircularLinkedList temp = (CircularLinkedList) donations.getEntry(countList);
+            int numElement = temp.getNumberOfEntries() + 1;
+            int count = 1;
+            do {
+                // get donation id of donation
+                int i = (Integer) temp.getEntry(1);
+                DonationIDs.addinArray(i);
+                // here u store the i to your list
+                count += 1;
+            } while (count != numElement);
+            countList += 1;
+        } while (countList != numElementList);
+    }
 
     // dd main page 
     public static void DonationDistributionMainPage() {
@@ -32,7 +55,6 @@ public class DDSubsystem {
         int anw = new Scanner(System.in).nextInt();
         switch (anw) {
             case 1:
-
                 addNewDonationDistribution();
                 break;
             case 2:
@@ -70,8 +92,8 @@ public class DDSubsystem {
 
         // display the available Donation IDs
         System.out.println("Available Donation IDs:");
-        for (int donationId : ddSubsystem.DonationID) {
-            System.out.println(donationId);
+        for (int j = 0; j < DonationIDs.size(); j++) {
+            System.out.println(DonationIDs.get(j));
         }
 
         // enter Donation IDs
@@ -84,7 +106,7 @@ public class DDSubsystem {
         for (String donationId : donationIdsArray) {
             int selectedDonationId = Integer.parseInt(donationId);
             // Validate if the selected Donation ID is in the available array
-            if (contains(ddSubsystem.DonationID, selectedDonationId)) {
+            if (contains(DonationIDs, selectedDonationId)) {
                 donationIds.addinArray(selectedDonationId);
             } else {
                 System.out.println("Invalid Donation ID: " + selectedDonationId);
@@ -190,8 +212,8 @@ public class DDSubsystem {
         switch (choice) {
             case 1: // change donation id
                 System.out.println("Available Donation IDs:");
-                for (int donationId : ddSubsystem.DonationID) {
-                    System.out.println(donationId);
+                for (int j = 0; j < DonationIDs.size(); j++) {
+                    System.out.println(DonationIDs.get(j));
                 }
                 System.out.println("");
                 System.out.print("Enter the new Donation IDs (space-separated): ");
@@ -203,7 +225,7 @@ public class DDSubsystem {
                 for (String donationId : donationIdsArray) {
                     int selectedDonationId = Integer.parseInt(donationId);
                     // Validate if the selected Donation ID is in the available array
-                    if (contains(ddSubsystem.DonationID, selectedDonationId)) {
+                    if (contains(DonationIDs, selectedDonationId)) {
                         newDonationIdsArray.addinArray(selectedDonationId);
                     } else {
                         System.out.println("Invalid Donation ID: " + selectedDonationId);
@@ -317,9 +339,9 @@ public class DDSubsystem {
     }
 
     // check the donation ids
-    private static boolean contains(int[] array, int value) {
-        for (int i : array) {
-            if (i == value) {
+    private static <T> boolean contains(ArrayList<T> arrayList, T value) {
+        for (int i = 0; i < arrayList.size(); i++) {
+            if (arrayList.get(i).equals(value)) {
                 return true;
             }
         }
