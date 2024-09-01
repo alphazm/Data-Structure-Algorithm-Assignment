@@ -85,7 +85,7 @@ public class DDSubsystem {
             int selectedDonationId = Integer.parseInt(donationId);
             // Validate if the selected Donation ID is in the available array
             if (contains(ddSubsystem.DonationID, selectedDonationId)) {
-                donationIds.add(selectedDonationId);
+                donationIds.addinArray(selectedDonationId);
             } else {
                 System.out.println("Invalid Donation ID: " + selectedDonationId);
             }
@@ -102,7 +102,7 @@ public class DDSubsystem {
         newDistribution.setState("Ready to Serve");
 
         // store in array list 
-        donationDistributions.add(newDistribution);
+        donationDistributions.addinArray(newDistribution);
         DDcount++; //data counting 
 
         System.out.println("New Donation Distribution added successfully!");
@@ -141,7 +141,7 @@ public class DDSubsystem {
 
             // comfrim remove 
             if ("Y".equals(sureYa) || "y".equals(sureYa)) {
-                donationDistributions.remove(index);
+                donationDistributions.removeOut(index);
                 System.out.println("Donation Distribution removed successfully!");
             } else {
                 System.out.println("Removal cancelled.");
@@ -204,7 +204,7 @@ public class DDSubsystem {
                     int selectedDonationId = Integer.parseInt(donationId);
                     // Validate if the selected Donation ID is in the available array
                     if (contains(ddSubsystem.DonationID, selectedDonationId)) {
-                        newDonationIdsArray.add(selectedDonationId);
+                        newDonationIdsArray.addinArray(selectedDonationId);
                     } else {
                         System.out.println("Invalid Donation ID: " + selectedDonationId);
                     }
