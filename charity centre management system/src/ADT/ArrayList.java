@@ -1,10 +1,11 @@
 package ADT;
+
 /**
  *
- * @author Alden Ling 
+ * @author Alden Ling
  * @param <T>
  */
-public class ArrayList<T> {
+public class ArrayList<T> implements ListInterface<T> {
 
     private T[] data;
     private int size;
@@ -15,7 +16,7 @@ public class ArrayList<T> {
         this.size = 0;
     }
 
-    public void add(T item) {
+    public void addinArray(T item) {
         if (size == data.length) {
             // Resize the array when it's full
             expandArray();
@@ -30,7 +31,7 @@ public class ArrayList<T> {
         return data[index];
     }
 
-    public void remove(int index) {
+    public void removeOut(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
         }
@@ -44,7 +45,7 @@ public class ArrayList<T> {
         return size;
     }
 
-    private void expandArray() {
+    public void expandArray() {
         @SuppressWarnings("unchecked")
         T[] newData = (T[]) new Object[data.length * 2];
         for (int i = 0; i < data.length; i++) {
@@ -58,5 +59,58 @@ public class ArrayList<T> {
             throw new IndexOutOfBoundsException();
         }
         data[index] = newItem;
+    }
+
+    public void clearOut() {
+        size = 0; // Reset the size to 0
+    }
+
+    @Override
+    public boolean add(T newEntry) {
+        return false;
+    }
+
+    @Override
+    public T getEntry(int givenPosition) {
+        return null;
+    }
+
+    @Override
+    public T remove(T anEntry) {
+        return null;
+    }
+
+    @Override
+    public void clear() {
+    }
+
+    @Override
+    public boolean replace(int givenPosition, T newEntry) {
+        return false;
+    }
+
+    @Override
+    public int getNumberOfEntries() {
+        return 0;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return false;
+    }
+
+    @Override
+    public boolean add(int newPosition, T newEntry) {
+        return false;
+    }
+
+    @Override
+    public boolean isFull() {
+        return false;
+    }
+
+    @Override
+    public boolean contains(T anEntry) {
+        return false;
     }
 }

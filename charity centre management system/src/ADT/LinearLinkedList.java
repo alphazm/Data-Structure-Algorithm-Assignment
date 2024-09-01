@@ -9,72 +9,72 @@ package ADT;
  * @author ChanWinYit
  */
 public class LinearLinkedList<T> implements ListInterface<T> {
+
     private Node firstNode;
     private int numberOfEntries;
 
     private class Node {
+
         private T data;
         private Node next;
-        
-        private Node(T data){
-            this.data=data;
-            this.next= null;
+
+        private Node(T data) {
+            this.data = data;
+            this.next = null;
         }
-        private Node(T data, Node next){
-            this.data=data;
-            this.next=next;
+
+        private Node(T data, Node next) {
+            this.data = data;
+            this.next = next;
         }
     }
-    public LinearLinkedList(){
+
+    public LinearLinkedList() {
         clear();
     }
-    
+
     @Override
-    public final void clear(){
+    public final void clear() {
         firstNode = null;
         numberOfEntries = 0;
     }
 
     @Override
     public boolean add(T newEntry) {
-         Node newNode = new Node(newEntry);
-         
-         if(isEmpty()){
-             firstNode=newNode;
-         }
-         else
-         {
-             Node currentNode = firstNode;
-             while(currentNode.next != null){
-                 currentNode = currentNode.next;
-             }
-             currentNode.next = newNode;
-         }
-         numberOfEntries++;
-         return true;
+        Node newNode = new Node(newEntry);
+
+        if (isEmpty()) {
+            firstNode = newNode;
+        } else {
+            Node currentNode = firstNode;
+            while (currentNode.next != null) {
+                currentNode = currentNode.next;
+            }
+            currentNode.next = newNode;
+        }
+        numberOfEntries++;
+        return true;
     }
 
     @Override
     public boolean add(int newPosition, T newEntry) {
         boolean isSuccessful = true;
-        
-        if((newPosition >=1)&&(newPosition<= numberOfEntries +1)){
+
+        if ((newPosition >= 1) && (newPosition <= numberOfEntries + 1)) {
             Node newNode = new Node(newEntry);
-            
-            if(isEmpty()|| (newPosition == 1)){
+
+            if (isEmpty() || (newPosition == 1)) {
                 newNode.next = firstNode;
-            }
-            else{
+            } else {
                 Node nodeBefore = firstNode;
-                for( int i=1;i< newPosition-1; ++i){
+                for (int i = 1; i < newPosition - 1; ++i) {
                     nodeBefore = nodeBefore.next;
                 }
                 newNode.next = nodeBefore.next;
                 nodeBefore.next = newNode;
             }
             numberOfEntries++;
-        }
-        else{
+        } else {
             isSuccessful = false;
         }
         return isSuccessful;
@@ -84,14 +84,13 @@ public class LinearLinkedList<T> implements ListInterface<T> {
     public T remove(T anEntry) {
         int givenPosition = (Integer) anEntry;
         T result = null;
-        if((givenPosition >=1)&&(givenPosition<=numberOfEntries)){
-            if(givenPosition == 1){
+        if ((givenPosition >= 1) && (givenPosition <= numberOfEntries)) {
+            if (givenPosition == 1) {
                 result = firstNode.data;
                 firstNode = firstNode.next;
-            }
-            else{
+            } else {
                 Node nodeBefore = firstNode;
-                for(int i = 1; i< givenPosition -1; ++i){
+                for (int i = 1; i < givenPosition - 1; ++i) {
                     nodeBefore = nodeBefore.next;
                 }
                 result = nodeBefore.next.data;
@@ -105,15 +104,14 @@ public class LinearLinkedList<T> implements ListInterface<T> {
     @Override
     public boolean replace(int givenPosition, T newEntry) {
         boolean isSuccessful = true;
-        if((givenPosition >=1)&& (givenPosition <=numberOfEntries)){
+        if ((givenPosition >= 1) && (givenPosition <= numberOfEntries)) {
             Node currentNode = firstNode;
-            for (int i=0; i< givenPosition -1; ++i){
+            for (int i = 0; i < givenPosition - 1; ++i) {
                 currentNode = currentNode.next;
             }
             currentNode.data = newEntry;
-        }
-        else{
-            isSuccessful =false;
+        } else {
+            isSuccessful = false;
         }
         return isSuccessful;
     }
@@ -121,9 +119,9 @@ public class LinearLinkedList<T> implements ListInterface<T> {
     @Override
     public T getEntry(int givenPosition) {
         T result = null;
-        if((givenPosition >=1)&&(givenPosition <= numberOfEntries)){
+        if ((givenPosition >= 1) && (givenPosition <= numberOfEntries)) {
             Node currentNode = firstNode;
-            for(int i= 0;i<givenPosition -1;++i){
+            for (int i = 0; i < givenPosition - 1; ++i) {
                 currentNode = currentNode.next;
             }
             result = currentNode.data;
@@ -135,13 +133,12 @@ public class LinearLinkedList<T> implements ListInterface<T> {
     public boolean contains(T anEntry) {
         boolean found = false;
         Node currentNode = firstNode;
-        
-        while(!found && (currentNode !=null)){
-            if(anEntry.equals(currentNode.data)){
+
+        while (!found && (currentNode != null)) {
+            if (anEntry.equals(currentNode.data)) {
                 found = true;
-            }
-            else{
-                currentNode =currentNode.next;
+            } else {
+                currentNode = currentNode.next;
             }
         }
         return found;
@@ -161,5 +158,30 @@ public class LinearLinkedList<T> implements ListInterface<T> {
     public boolean isFull() {
         return false;
     }
-}
 
+    @Override
+    public void addinArray(T item) {
+    }
+
+    @Override
+    public T get(int index) {
+        return null;
+    }
+
+    @Override
+    public void removeOut(int index) {
+    }
+
+    @Override
+    public int size() {
+        return 0;
+    }
+
+    @Override
+    public void expandArray() {
+    }
+
+    @Override
+    public void update(int index, T newItem) {
+    }
+}
