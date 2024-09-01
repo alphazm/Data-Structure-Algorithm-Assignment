@@ -286,14 +286,14 @@ public class DonationManagement {
         int inputDonationId = s.nextInt(); // accept input and store to inputDonationId
         s.nextLine(); // clear enter key
         
-        CircularLinkedList searchResult = searchById("donationId",inputDonationId, cll);
+        CircularLinkedList searchResult = searchById(inputDonationId, cll);
         if (searchResult != null) {
             display(searchResult);
         }
     }
     
     // search by donationId
-    public static CircularLinkedList searchById(String entryType,int anEntry, CircularLinkedList inList){
+    public static CircularLinkedList searchById(int anEntry, CircularLinkedList inList){
         if (inList.isEmpty()) {
             System.out.println("The List Is Empty!");
             return null;
@@ -316,14 +316,12 @@ public class DonationManagement {
             countList += 1;
         } while (countList != numElementList);
         
-        if (((String) entryType).equals("category")) {
-            return result;
-        }
+        
         return result;
     }
     
     // search by category
-    public static CircularLinkedList searchByCate(String entryType,String anEntry, CircularLinkedList inList){
+    public static CircularLinkedList searchByCate(String anEntry, CircularLinkedList inList){
         if (inList.isEmpty()) {
             System.out.println("The List Is Empty!");
             return null;
@@ -341,9 +339,6 @@ public class DonationManagement {
             countList += 1;
         } while (countList != numElementList);
         
-        if (((String) entryType).equals("category")) {
-            return result;
-        }
         return result;
     }
     
@@ -352,7 +347,7 @@ public class DonationManagement {
         int inputDonationId = s.nextInt(); // accept input and store to inputDonationId
         s.nextLine(); // clear enter key
         
-        CircularLinkedList searchResult = searchById("donationId",inputDonationId, cll);
+        CircularLinkedList searchResult = searchById(inputDonationId, cll);
         if (!searchResult.isEmpty()) {
             updateDonation(searchResult);
         }
@@ -470,11 +465,11 @@ public class DonationManagement {
                 s.nextLine();
                 switch (inputInt) {
                     case 1:
-                        searchResult = searchByCate("category","Funds", cll);
+                        searchResult = searchByCate("Funds", cll);
                         displayAll(searchResult);
                         break;
                     case 2:
-                        searchResult = searchByCate("category","Supplies", cll);
+                        searchResult = searchByCate("Supplies", cll);
                         displayAll(searchResult);
                         break;
             }
