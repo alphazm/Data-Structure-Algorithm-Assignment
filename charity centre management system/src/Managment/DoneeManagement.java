@@ -36,7 +36,7 @@ public class DoneeManagement {
         }
         boolean found = false;
 
-        for (int i = 1; i <= doneeList.getNumberOfEntries(); i++) {
+        for (int i = 1; i <= doneeList.getNumberOfEntries(); ++i) {
             Donee donee = doneeList.getEntry(i);
             if (donee.getDoneeID().equalsIgnoreCase(doneeID)) {
                 doneeList.remove(i);
