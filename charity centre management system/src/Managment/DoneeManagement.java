@@ -1,9 +1,3 @@
-package Managment;
-
-/**
- *
- * @author ChanWinYit
- */
 import Entity.Donee;
 import Entity.Requirement;
 import ADT.LinearLinkedList;
@@ -14,8 +8,11 @@ import java.util.Scanner;
 
 public class DoneeManagement {
     private LinearLinkedList<Donee> doneeList;
-    
-    public static void DoneeMenu() {
+    public DoneeManagement() {
+        doneeList = new LinearLinkedList<>();
+    }
+       
+    public static void main(String[]args) {
         DoneeManagement doneeManagement = new DoneeManagement();
         Scanner scanner = new Scanner(System.in);
         int choice;
@@ -85,6 +82,7 @@ public class DoneeManagement {
                     break;
 
                 case 0:
+                    clearJavaConsoleScreen();
                     System.out.println("Exiting the system...");
                     break;
 
@@ -92,10 +90,6 @@ public class DoneeManagement {
                     System.out.println("Invalid choice! Please enter a valid option.");
             }
         } while (choice != 0);
-    }
-
-    public DoneeManagement() {
-        doneeList = new LinearLinkedList<>();
     }
 
     public void addDonee(String doneeName, String phoneNo, String address) {
