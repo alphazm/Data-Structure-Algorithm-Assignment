@@ -62,7 +62,7 @@ public class ArrayList<T> implements ListInterface<T> {
     }
 
     public void clearOut() {
-        size = 0; // Reset the size to 0
+        size = 0; 
     }
 
     @Override
