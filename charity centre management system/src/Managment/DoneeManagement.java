@@ -1,5 +1,9 @@
 package Managment;
 
+/**
+ *
+ * @author ChanWinYit
+ */
 import Entity.Donee;
 import Entity.Requirement;
 import ADT.LinearLinkedList;
@@ -8,22 +12,28 @@ import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.util.Scanner;
 
-interface IDoneeMangement {
+interface IDoneeManagement {
     void addDonee(String doneeName, String phoneNo, String address);
+
     void addRequirementToDonee(String doneeID, Requirement requirement);
+
     void removeDonee(String doneeID);
+
     void updateDonee(String doneeID, String doneeName, String phoneNo, String address);
+
     Donee searchDonee(String doneeID);
+
     void listAllDonees();
 }
 
-public class DoneeManagement implements IDoneeMangement{
+public class DoneeManagement implements IDoneeManagement {
     private LinearLinkedList<Donee> doneeList;
+
     public DoneeManagement() {
         doneeList = new LinearLinkedList<>();
     }
-       
-    public static void DoneeMain() {
+
+    public static void main(String[] args) {
         DoneeManagement doneeManagement = new DoneeManagement();
         Scanner scanner = new Scanner(System.in);
         int choice;
@@ -52,7 +62,7 @@ public class DoneeManagement implements IDoneeMangement{
                     String address = scanner.nextLine();
                     doneeManagement.addDonee(doneeName, phoneNo, address);
                     break;
-                    
+
                 case 2:
                     clearJavaConsoleScreen();
                     System.out.println("\nUpdating a Donee:");
@@ -105,9 +115,10 @@ public class DoneeManagement implements IDoneeMangement{
 
     public void addDonee(String doneeName, String phoneNo, String address) {
         // "" means the place where doneeID generate
-        Donee newDonee = new Donee(doneeName,phoneNo, address); 
+        Donee newDonee = new Donee(doneeName, phoneNo, address);
         doneeList.add(newDonee);
     }
+
     public void addRequirementToDonee(String doneeID, Requirement requirement) {
         Donee donee = searchDonee(doneeID);
         if (donee != null) {
@@ -190,21 +201,26 @@ public class DoneeManagement implements IDoneeMangement{
         }
 
         System.out.println("Listing all donees:");
-        for (int i = 1; i <= doneeList.getNumberOfEntries(); ++i) {
+        for (int i = 1; i <= doneeList.getNumberOfEntries(); i++) {
             Donee donee = doneeList.getEntry(i);
             System.out.println(donee);
         }
     }
+
     private static void clearJavaConsoleScreen() {
-        try{
+        try {
             Robot rob = new Robot();
             try {
-            rob.keyPress(KeyEvent.VK_CONTROL); // press "CTRL"
-            rob.keyPress(KeyEvent.VK_L); // press "L"
-            rob.keyRelease(KeyEvent.VK_L); // unpress "L"
-            rob.keyRelease(KeyEvent.VK_CONTROL); // unpress "CTRL"
-            Thread.sleep(1000); // add delay in milisecond, if not there will automatically stop after clear
-            } catch (InterruptedException e) { e.printStackTrace(); }
-        } catch(AWTException e) { e.printStackTrace(); }
+                rob.keyPress(KeyEvent.VK_CONTROL); // press "CTRL"
+                rob.keyPress(KeyEvent.VK_L); // press "L"
+                rob.keyRelease(KeyEvent.VK_L); // unpress "L"
+                rob.keyRelease(KeyEvent.VK_CONTROL); // unpress "CTRL"
+                Thread.sleep(1000); // add delay in milisecond, if not there will automatically stop after clear
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
     }
 }
