@@ -6,6 +6,15 @@ import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.util.Scanner;
 
+interface DoneeMangement {
+    void addDonee(String doneeName, String phoneNo, String address);
+    void addRequirementToDonee(String doneeID, Requirement requirement);
+    void removeDonee(String doneeID);
+    void updateDonee(String doneeID, String doneeName, String phoneNo, String address);
+    Donee searchDonee(String doneeID);
+    void listAllDonees();
+}
+
 public class DoneeManagement {
     private LinearLinkedList<Donee> doneeList;
     public DoneeManagement() {
