@@ -10,7 +10,6 @@ public interface ListInterface<T> {
     public boolean add(T newEntry);
     public T getEntry(int givenPosition);
     public T remove(T anEntry);
-    public T remove(int anEntry);
     public void clear();
     public boolean replace(int givenPosition, T newEntry);
     public int getNumberOfEntries();
