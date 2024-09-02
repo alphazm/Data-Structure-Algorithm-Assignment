@@ -15,7 +15,7 @@ package Entity;
 import ADT.LinearLinkedList;
 
 public class Donee {
-    private static int idCounter = 1000;
+    private static int idCounter = 0000;
     String doneeName;
     //doneeID: DE0001, DE0002
     String doneeID;
