@@ -98,7 +98,7 @@ public class Donor{
 
     @Override
     public String toString() {
-        return "Donor's name=" + name + ", donorID=" + donorID + ", category=" + categoryToString(category) + ", contactNumber=60" + contactNumber + ", datejoin=" + datejoin ;
+        return "Donor's name= " + name + ", donorID= " + donorID + ", category= " + categoryToString(category) + ", contactNumber= 60" + contactNumber + ", datejoin= " + datejoin ;
     }
     
     

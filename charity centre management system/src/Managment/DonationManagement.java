@@ -341,25 +341,17 @@ public class DonationManagement {
         CircularLinkedList temp = new CircularLinkedList();
         CircularLinkedList copy = new CircularLinkedList();
         copyList(copy, inList);
-        // loop one by one, until the size of temp same with inList
+
+        int numElementList = copy.getNumberOfEntries() + 1; //50
+        int countList = 1;
+        // catch the data from List to donation
         do {
-            int numElementList = copy.getNumberOfEntries() + 1; //50
-            int countList = 1;
-            // catch the data from List to donation
-            do {
-                CircularLinkedList aDonation = (CircularLinkedList) copy.getEntry(countList);
-                if (donorId == (Integer) aDonation.getEntry(2)) {
-                    temp.add(aDonation);
-                    copy.remove(aDonation.getEntry(1));
-                    // the data is been remove, so need to - 1
-                    countList -= 1;
-                    numElementList -= 1;
-                }
-                countList += 1;
-            } while (countList != numElementList);
-            // set back to 0, to loop next round
-            countList = 0;
-        } while (temp.getNumberOfEntries() != inList.getNumberOfEntries());
+            CircularLinkedList aDonation = (CircularLinkedList) copy.getEntry(countList);
+            if (donorId == (Integer) aDonation.getEntry(2)) {
+                temp.add(aDonation);
+            }
+            countList += 1;
+        } while (countList != numElementList);
         displayAll(temp);
          
     }
@@ -837,6 +829,10 @@ public class DonationManagement {
 
     public static void exit() {
         System.exit(0);
+    }
+    
+    public static CircularLinkedList getList(){
+        return cll;
     }
 
 }

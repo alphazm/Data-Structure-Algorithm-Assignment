@@ -3,11 +3,14 @@ package Managment;
  *
  * @author Chong Zhi Ming
  */
+import ADT.CircularLinkedList;
 import Entity.Donor;
 import Entity.Category;
 import ADT.LinkedStack;
-import static Managment.DonationManagement.cll;
+import static Managment.DonationManagement.DonationManagement;
+
 import static Managment.DonationManagement.searchByDonorId;
+import java.util.Scanner;
 
 
 public class DonorManagement {
@@ -15,7 +18,21 @@ public class DonorManagement {
 
     public DonorManagement() {
         donorStack = new LinkedStack<>();
+        dummyData();
     }
+    
+    public void dummyData() {
+    donorStack.push(new Donor("John Doe", Category.PRIVATE, 123456789));
+    donorStack.push(new Donor("Jane Smith", Category.PUBLIC, 987654321));
+    donorStack.push(new Donor("Alice Johnson", Category.GOVERNMENT, 555123456));
+    donorStack.push(new Donor("Bob Williams", Category.PRIVATE, 555987654));
+    donorStack.push(new Donor("Charlie Brown", Category.PUBLIC, 555678901));
+    donorStack.push(new Donor("Diana Prince", Category.GOVERNMENT, 555234678));
+    donorStack.push(new Donor("Eve Davis", Category.PRIVATE, 555345678));
+    donorStack.push(new Donor("Frank Miller", Category.PUBLIC, 555456890));
+    donorStack.push(new Donor("Grace Lee", Category.GOVERNMENT, 555578901));
+    donorStack.push(new Donor("Hank Pym", Category.PRIVATE, 555678912));
+}
     
     public void addDonor(String name, Category category, int contactNumber){
         
@@ -72,13 +89,11 @@ public class DonorManagement {
         while (!donorStack.isEmpty()) {
             donor = donorStack.pop();
             if (donor.getDonorId()==(donorId)) {
-                Donor newDonor = null;
-                newDonor.setDonorID(donorId);
-                newDonor.setName(name);
-                newDonor.setCategory(category);
-                newDonor.setContactNumber(ContactNumber);
-                newDonor.setDatejoin(donor.getDatejoin());
-                tempStack.push(newDonor);
+                donor.setName(name);
+                donor.setCategory(category);
+                donor.setContactNumber(ContactNumber);
+                donor.setDatejoin(donor.getDatejoin());
+                tempStack.push(donor);
                 found = true;
                 break;
             } else {
@@ -94,20 +109,20 @@ public class DonorManagement {
         }
     }
     
-    public boolean searchDonor(int donorId,Donor[] tempDonor){
+    public Donor searchDonor(int donorId,boolean[] found){
         if (donorStack.isEmpty()) {
             System.out.println("No donors yet.");
         }
         LinkedStack<Donor> tempStack = new LinkedStack<>();
-        boolean found = false;
-        
+        found[0] = false;
+        Donor tempDonor = null;
         while (!donorStack.isEmpty()) {
             Donor donor = donorStack.pop();
             if (donor.getDonorId()==(donorId)) {
-                tempDonor[0] = donor;
+                tempDonor = donor;
                 System.out.println(donor.toString());
                 tempStack.push(donor);
-                found = true;
+                found[0] = true;
                 break;
             } else {
                 tempStack.push(donor);
@@ -117,17 +132,17 @@ public class DonorManagement {
             donorStack.push(tempStack.pop());
         }
 
-        if (!found) {
+        if (!found[0]) {
             System.out.println("Donor with ID " + donorId + " not found.");
         }
-        return found;
+        return tempDonor;
     }
     
-    public void listAllDonationByDonor(int donorId){
-        Donor[] donor = null;
-        searchDonor(donorId,donor);
-        System.out.println("Donatio make by "+donor[0].getName());
-        searchByDonorId(cll,donorId);
+    public void listAllDonationByDonor(int donorId, CircularLinkedList list){
+        boolean[] found = {false};
+        Donor temp = searchDonor(donorId,found);
+        System.out.println("Donatio make by "+temp.getName());
+        searchByDonorId(list,donorId);
     }
     
     public void listAllDonors() {
@@ -215,5 +230,15 @@ public class DonorManagement {
                 + governmentCount + " donors");
     }
  
-    
+    public static void main(String[] args)
+    {
+        Scanner scanner = new Scanner(System.in);
+        DonorManagement ctrl =new DonorManagement();
+        DonationManagement(false);
+        boolean[] found = {false};
+        Category category = null;
+        
+        
+        
+    }
 }
