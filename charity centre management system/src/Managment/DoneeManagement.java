@@ -1,3 +1,5 @@
+package Managment;
+
 import Entity.Donee;
 import Entity.Requirement;
 import ADT.LinearLinkedList;
@@ -15,7 +17,7 @@ interface IDoneeMangement {
     void listAllDonees();
 }
 
-public class DoneeManagement implements IDoneeManagement{
+public class DoneeManagement implements IDoneeMangement{
     private LinearLinkedList<Donee> doneeList;
     public DoneeManagement() {
         doneeList = new LinearLinkedList<>();
