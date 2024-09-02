@@ -1,3 +1,9 @@
+package Management;
+
+/**
+ *
+ * @author ChanWinYit
+ */
 import Entity.Donee;
 import Entity.Requirement;
 import ADT.LinearLinkedList;
@@ -6,7 +12,7 @@ import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.util.Scanner;
 
-interface IDoneeMangement {
+interface IDoneeManagement {
     void addDonee(String doneeName, String phoneNo, String address);
     void addRequirementToDonee(String doneeID, Requirement requirement);
     void removeDonee(String doneeID);
@@ -14,14 +20,13 @@ interface IDoneeMangement {
     Donee searchDonee(String doneeID);
     void listAllDonees();
 }
-
 public class DoneeManagement implements IDoneeManagement{
     private LinearLinkedList<Donee> doneeList;
     public DoneeManagement() {
         doneeList = new LinearLinkedList<>();
     }
        
-    public static void DoneeMain() {
+    public static void main(String[]args) {
         DoneeManagement doneeManagement = new DoneeManagement();
         Scanner scanner = new Scanner(System.in);
         int choice;
