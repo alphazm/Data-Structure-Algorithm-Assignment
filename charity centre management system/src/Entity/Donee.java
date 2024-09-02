@@ -44,7 +44,7 @@ public class Donee {
     public void setDoneeName(String doneeName){
         this.doneeName=doneeName;
     }
-    public String getName(){
+    public String getDoneeName(){
         return doneeName;
     }
     public void setDoneeID(){
