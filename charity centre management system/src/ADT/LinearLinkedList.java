@@ -151,7 +151,7 @@ public class LinearLinkedList<T> implements ListInterface<T> {
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return firstNode == null;
     }
 
     @Override
