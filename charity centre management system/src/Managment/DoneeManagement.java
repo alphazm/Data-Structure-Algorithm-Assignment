@@ -6,7 +6,7 @@ import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.util.Scanner;
 
-interface DoneeMangement {
+interface IDoneeMangement {
     void addDonee(String doneeName, String phoneNo, String address);
     void addRequirementToDonee(String doneeID, Requirement requirement);
     void removeDonee(String doneeID);
@@ -15,7 +15,7 @@ interface DoneeMangement {
     void listAllDonees();
 }
 
-public class DoneeManagement {
+public class DoneeManagement implements IDoneeManagement{
     private LinearLinkedList<Donee> doneeList;
     public DoneeManagement() {
         doneeList = new LinearLinkedList<>();
