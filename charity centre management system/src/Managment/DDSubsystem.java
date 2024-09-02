@@ -6,7 +6,9 @@ package Managment;
  */
 import ADT.ArrayList;
 import ADT.CircularLinkedList;
+import ADT.LinearLinkedList;
 import Entity.DonationDistribution;
+import Entity.Donee;
 import java.time.LocalDate;
 import java.util.Scanner;
 import java.awt.AWTException;
@@ -17,7 +19,9 @@ public class DDSubsystem {
 
 //    public int[] DonationID = {2408001, 2408002, 2408003, 2408004, 2408005, 2408006, 2408007, 2408008};
     private static CircularLinkedList donations = new CircularLinkedList();
-    public static String[] DoneeID = {"DE001", "DE002", "DE003"};
+    private LinearLinkedList<Donee> doneeList;
+    // public static String[] DoneeID = {"DE001", "DE002", "DE003"};
+    private static ArrayList<String> DoneeIDs = new ArrayList<>();
     private static ArrayList<Integer> DonationIDs = new ArrayList<>();
     private static ArrayList<DonationDistribution> donationDistributions = new ArrayList<>();// dd array list
     public static int DDcount = 1; // Data counting (dd) 
@@ -40,6 +44,17 @@ public class DDSubsystem {
             } while (count != numElement);
             countList += 1;
         } while (countList != numElementList);
+    }
+
+    public void gettingDonee(LinearLinkedList<Donee> DoneeList) {
+        doneeList = DoneeList;
+        DoneeIDs.clearOut();
+
+        for (int i = 1; i <= doneeList.getNumberOfEntries(); i++) {
+            Donee donee = doneeList.getEntry(i);
+            String doneeID = donee.getDoneeID();
+            DoneeIDs.addinArray(doneeID);
+        }
     }
 
     // dd main page 
@@ -90,8 +105,8 @@ public class DDSubsystem {
 
         // display the available Donee IDs
         System.out.println("Available Donee IDs:");
-        for (String doneeId : ddSubsystem.DoneeID) {
-            System.out.println(doneeId);
+        for (int j = 0; j < DoneeIDs.size(); j++) {
+            System.out.println(DoneeIDs.get(j));
         }
 
         // enter Donee ID
@@ -256,8 +271,8 @@ public class DDSubsystem {
 
             case 2: // change donee id
                 System.out.println("Available Donee IDs:");
-                for (String doneeId : ddSubsystem.DoneeID) {
-                    System.out.println(doneeId);
+                for (int j = 0; j < DoneeIDs.size(); j++) {
+                    System.out.println(DoneeIDs.get(j));
                 }
                 System.out.println("");
                 System.out.print("Enter the new Donee ID: ");

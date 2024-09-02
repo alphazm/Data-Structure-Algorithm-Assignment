@@ -1,4 +1,4 @@
-package Management;
+package Managment;
 
 /**
  *
@@ -193,7 +193,7 @@ public class DoneeManagement implements IDoneeManagement{
         }
 
         System.out.println("Listing all donees:");
-        for (int i = 1; i <= doneeList.getNumberOfEntries(); ++i) {
+        for (int i = 1; i <= doneeList.getNumberOfEntries(); i++) {
             Donee donee = doneeList.getEntry(i);
             System.out.println(donee);
         }
