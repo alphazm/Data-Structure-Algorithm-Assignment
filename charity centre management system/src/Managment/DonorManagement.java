@@ -6,7 +6,8 @@ package Managment;
 import Entity.Donor;
 import Entity.Category;
 import ADT.LinkedStack;
-import Entity.Donation;
+import static Managment.DonationManagement.cll;
+import static Managment.DonationManagement.searchByDonorId;
 
 
 public class DonorManagement {
@@ -16,14 +17,13 @@ public class DonorManagement {
         donorStack = new LinkedStack<>();
     }
     
-    public void addDonor(String name, Category category, int contactNumber,Donation donations){
+    public void addDonor(String name, Category category, int contactNumber){
         
         Donor newDonor = new Donor(name,category,contactNumber);
-        newDonor.donations.push(donations);
         donorStack.push(newDonor);
     }
     
-    public void removeDonor(String donorId){
+    public void removeDonor(int donorId){
         if (donorStack.isEmpty()) {
             System.out.println("No donors available to remove.");
         }
@@ -32,7 +32,7 @@ public class DonorManagement {
         
         while (!donorStack.isEmpty()) {
             Donor donor = donorStack.pop();
-            if (donor.getDonorId().equalsIgnoreCase(donorId)) {
+            if (donor.getDonorId() == donorId ) {
                 System.out.println("Removed donor: " + donor);
                 found = true;
                 break;
@@ -49,7 +49,19 @@ public class DonorManagement {
         }
     }
     
-    public void updateDonor(String donorId,String name,Category category,int ContactNumber){
+        public Donor viewMostRecentDonor() {
+        if (donorStack.isEmpty()) {
+            System.out.println("No donors available.");
+        } else {
+            Donor recentDonor = donorStack.peek();
+            System.out.println("Most recent donor: " + recentDonor);
+            return recentDonor;
+        }
+        return null;
+    }
+    
+    public void updateDonor(int donorId,String name,
+            Category category,int ContactNumber){
         Donor donor = null;
         if (donorStack.isEmpty()) {
             System.out.println("No donors available to remove.");
@@ -59,7 +71,7 @@ public class DonorManagement {
         
         while (!donorStack.isEmpty()) {
             donor = donorStack.pop();
-            if (donor.getDonorId().equalsIgnoreCase(donorId)) {
+            if (donor.getDonorId()==(donorId)) {
                 Donor newDonor = null;
                 newDonor.setDonorID(donorId);
                 newDonor.setName(name);
@@ -82,18 +94,17 @@ public class DonorManagement {
         }
     }
     
-    public Donor searchDonor(String donorId){
+    public boolean searchDonor(int donorId,Donor[] tempDonor){
         if (donorStack.isEmpty()) {
             System.out.println("No donors yet.");
         }
         LinkedStack<Donor> tempStack = new LinkedStack<>();
-        Donor tempDonor = null;
         boolean found = false;
         
         while (!donorStack.isEmpty()) {
             Donor donor = donorStack.pop();
-            if (donor.getDonorId().equalsIgnoreCase(donorId)) {
-                tempDonor = donor;
+            if (donor.getDonorId()==(donorId)) {
+                tempDonor[0] = donor;
                 System.out.println(donor.toString());
                 tempStack.push(donor);
                 found = true;
@@ -109,15 +120,14 @@ public class DonorManagement {
         if (!found) {
             System.out.println("Donor with ID " + donorId + " not found.");
         }
-        return tempDonor;
+        return found;
     }
-    public void listAllDonationByDonor(String donorId){
-        Donor donor = searchDonor(donorId);
-        System.out.println("Donatio make by "+donor.getName());
-        while(!donor.donations.isEmpty()){
-            Donation donation = donor.donations.pop();
-            System.out.println(donation.toString());
-        }
+    
+    public void listAllDonationByDonor(int donorId){
+        Donor[] donor = null;
+        searchDonor(donorId,donor);
+        System.out.println("Donatio make by "+donor[0].getName());
+        searchByDonorId(cll,donorId);
     }
     
     public void listAllDonors() {
@@ -201,7 +211,8 @@ public class DonorManagement {
         System.out.println("Total Donors: " + totalDonors);
         System.out.println("Category: PRIVATE - " + privateCount + " donors");
         System.out.println("Category: PUBLIC - " + publicCount + " donors");
-        System.out.println("Category: GOVERNMENT - " + governmentCount + " donors");
+        System.out.println("Category: GOVERNMENT - " 
+                + governmentCount + " donors");
     }
  
     

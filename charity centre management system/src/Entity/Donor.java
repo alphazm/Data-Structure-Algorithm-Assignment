@@ -10,11 +10,10 @@ public class Donor{
     
     private static int idCounter = 1000;
     String name;
-    String donorID;
+    int donorID;
     Category category;
     int contactNumber;
     LocalDate datejoin;
-    public LinkedStack<Donation> donations;
 
     public Donor(String name, Category category, int contactNumber ) {
         this.name = name;
@@ -33,9 +32,9 @@ public class Donor{
         this.datejoin = date;
     }
     
-    private String generatedId(){
+    private int generatedId(){
         CountId();
-        return "DR"+idCounter;
+        return idCounter;
     }
             
     private static int CountId(){
@@ -49,11 +48,11 @@ public class Donor{
     public void setName(String name) {
         this.name = name;
     }
-    public String getDonorId(){
+    public int getDonorId(){
         return donorID;
     }
 
-    public void setDonorID(String donorID) {
+    public void setDonorID(int donorID) {
         this.donorID = donorID;
     }
     

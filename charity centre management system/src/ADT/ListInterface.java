@@ -18,4 +18,11 @@ public interface ListInterface<T> {
     public boolean add(int newPosition, T newEntry);
     public boolean isFull();
     public boolean contains(T anEntry);
+    
+    public void addinArray(T item);
+    public T get(int index);
+    public void removeOut (int index);
+    public int size();
+    public void expandArray();
+    public void update(int index,T newItem);
 }

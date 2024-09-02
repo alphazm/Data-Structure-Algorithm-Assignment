@@ -10,39 +10,39 @@ package ADT;
  * @param <T>
  */
 public class CircularLinkedList<T> implements ListInterface<T> {
-    
+
     // external pointer
     private Node lastNode;
-    
-    public CircularLinkedList(){
+
+    public CircularLinkedList() {
         lastNode = null;
     }
-    
-    public class Node{
+
+    public class Node {
+
         private final T data;
         private Node next;// pointer (connect)
-        
+
         // constructor
-        public Node(T data){
+        public Node(T data) {
             this.data = data;
             this.next = null;
         }
     }
-    
+
     // add newNode at the end of list
     @Override
-    public boolean add(T newEntry){
+    public boolean add(T newEntry) {
         // create newNode
         Node newNode = new Node(newEntry);
-        
+
         // when empty, inserting the first node to the list
-        if (isEmpty()) { 
+        if (isEmpty()) {
             // point first and last to newNode  1(1)
             lastNode = newNode;
             lastNode.next = lastNode;
-        }
-        // inseting to the list with existing items
-        else { 
+        } // inseting to the list with existing items
+        else {
             // point lastNode.next = firstNode to newNode.next  // 4() -> 4(1)
             newNode.next = lastNode.next;
             // lastNode point to newNode    // 1(2), 2(3), 3(1) + 4(1): 3(4) + 4(1)
@@ -54,11 +54,11 @@ public class CircularLinkedList<T> implements ListInterface<T> {
     }
 
     @Override
-    public T getEntry(int givenPosition){
+    public T getEntry(int givenPosition) {
         T result = null;
         Node current = lastNode.next;
         if ((givenPosition >= 1) && (givenPosition <= getNumberOfEntries())) {
-                givenPosition -= 1;
+            givenPosition -= 1;
             while (givenPosition != 0) {
                 givenPosition -= 1;
                 current = current.next;
@@ -67,38 +67,36 @@ public class CircularLinkedList<T> implements ListInterface<T> {
         }
         return result;
     }
-    
+
     // remove the group by the donationId
     @Override
-    public T remove(T anEntry){
+    public T remove(T anEntry) {
         T result = null;
-        if(isEmpty()) {
+        if (isEmpty()) {
             return result;
         }
         // Start with the first node
         Node current = lastNode.next;
         // The previous node start from last
         Node previous = lastNode;
-        
+
         do {
             CircularLinkedList temp = (CircularLinkedList) current.data;
 
             // turn the data into integer
             int i = (Integer) temp.getEntry(1);
-            if ( i == (Integer) anEntry) { //turn the input from T to integer
+            if (i == (Integer) anEntry) { //turn the input from T to integer
                 // if the node is last node
                 if (current == lastNode) {
                     // if the node only node
                     if (lastNode == lastNode.next) {
                         lastNode = null;
-                    } 
-                    // if not the only
+                    } // if not the only
                     else {
                         previous.next = current.next;
                         lastNode = previous;
                     }
-                }
-                else {
+                } else {
                     previous.next = current.next;
                 }
                 result = (T) temp.getEntry(1);
@@ -108,18 +106,18 @@ public class CircularLinkedList<T> implements ListInterface<T> {
             previous = current;
             current = current.next;
         } while (current != lastNode.next);
-        
+
         return result;
     }
-    
+
     // update the element input by replace the data
     @Override
-    public boolean replace(int givenPosition, T newEntry){
+    public boolean replace(int givenPosition, T newEntry) {
         Node current = lastNode.next;
         Node previous = lastNode;
         Node newNode = new Node(newEntry);
         if ((givenPosition >= 1) && (givenPosition <= getNumberOfEntries())) {
-                givenPosition -= 1;
+            givenPosition -= 1;
             while (givenPosition != 0) {
                 givenPosition -= 1;
                 previous = current;
@@ -132,38 +130,38 @@ public class CircularLinkedList<T> implements ListInterface<T> {
         }
         return false;
     }
-    
+
     // clear all by make the lastNode to null, so then all data will be drop
     @Override
-    public void clear(){
+    public void clear() {
         lastNode = null;
     }
-    
+
     // count and get the number of a group of circular linked list
     @Override
-    public int getNumberOfEntries(){
+    public int getNumberOfEntries() {
         if (isEmpty()) {
             return 0;
         }
         int num = 0;
         Node current = lastNode.next;
         do {
-            num ++;
+            num++;
             current = current.next;
         } while (current != lastNode.next);
-        
+
         return num;
     }
-    
+
     // check the circular linked list is empty or not
     @Override
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         // if lastNode empty
         return lastNode == null;
     }
 
     @Override
-    public boolean add(int newPosition, T newEntry){
+    public boolean add(int newPosition, T newEntry) {
         return false;
     }
 
@@ -171,9 +169,35 @@ public class CircularLinkedList<T> implements ListInterface<T> {
     public boolean isFull() {
         return false;
     }
-    
+
     @Override
-    public boolean contains(T anEntry){
+    public boolean contains(T anEntry) {
         return false;
+    }
+
+    @Override
+    public void addinArray(T item) {
+    }
+
+    @Override
+    public T get(int index) {
+        return null;
+    }
+
+    @Override
+    public void removeOut(int index) {
+    }
+
+    @Override
+    public int size() {
+        return 0;
+    }
+
+    @Override
+    public void expandArray() {
+    }
+
+    @Override
+    public void update(int index, T newItem) {
     }
 }
