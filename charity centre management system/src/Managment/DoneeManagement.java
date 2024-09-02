@@ -21,7 +21,7 @@ public class DoneeManagement {
         doneeList = new LinearLinkedList<>();
     }
        
-    public static void main(String[]args) {
+    public static void DoneeMain() {
         DoneeManagement doneeManagement = new DoneeManagement();
         Scanner scanner = new Scanner(System.in);
         int choice;
