@@ -685,7 +685,7 @@ public class DonationManagement {
         double max = s.nextDouble();
         s.nextLine();
 
-        inList = filterNumber("Quantity", min, max, inList);
+        inList = searchByNumber("Quantity", min, max, inList);
         return inList;
     }
 
@@ -697,7 +697,7 @@ public class DonationManagement {
         double max = s.nextDouble();
         s.nextLine();
 
-        inList = filterNumber("Amount", min, max, inList);
+        inList = searchByNumber("Amount", min, max, inList);
         return inList;
     }
 
@@ -725,7 +725,7 @@ public class DonationManagement {
     }
 
     // filter on number
-    public static CircularLinkedList filterNumber(String entryType, double min, double max, CircularLinkedList inList) {
+    public static CircularLinkedList searchByNumber(String entryType, double min, double max, CircularLinkedList inList) {
         CircularLinkedList result = new CircularLinkedList();
         int numElement = inList.getNumberOfEntries() + 1;
         int count = 1;
