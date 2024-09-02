@@ -304,60 +304,23 @@ public class DonationManagement {
             removeDonation(inputDonationId);
         }
     }
-
-    // search by donationId
-    public static CircularLinkedList searchById(int anEntry, CircularLinkedList inList){
-
-        if (inList.isEmpty()) {
-            System.out.println("The List Is Empty!");
-            return null;
-        }
-        CircularLinkedList result = new CircularLinkedList();
-        int numElementList = inList.getNumberOfEntries() + 1;
-        int countList = 1;
-        do {
-            CircularLinkedList temp = (CircularLinkedList) inList.getEntry(countList);
-            int numElement = temp.getNumberOfEntries() + 1;
-            int count = 1;
-            do {
-                // get donation id of donation
-                int i = (Integer) temp.getEntry(1);
-                if (i == anEntry) {
-                    return temp;
-                }
-                count += 1;
-            } while (count != numElement);
-            countList += 1;
-
-        } while (countList != numElementList); 
-
-        return result;
-    }
-    
+  
     // search by donor id
     public static void searchByDonorId(CircularLinkedList inList,int donorId){
         CircularLinkedList temp = new CircularLinkedList();
         CircularLinkedList copy = new CircularLinkedList();
         copyList(copy, inList);
-        // loop one by one, until the size of temp same with inList
+
+        int numElementList = copy.getNumberOfEntries() + 1; //50
+        int countList = 1;
+        // catch the data from List to donation
         do {
-            int numElementList = copy.getNumberOfEntries() + 1; //50
-            int countList = 1;
-            // catch the data from List to donation
-            do {
-                CircularLinkedList aDonation = (CircularLinkedList) copy.getEntry(countList);
-                if (donorId == (Integer) aDonation.getEntry(2)) {
-                    temp.add(aDonation);
-                    copy.remove(aDonation.getEntry(1));
-                    // the data is been remove, so need to - 1
-                    countList -= 1;
-                    numElementList -= 1;
-                }
-                countList += 1;
-            } while (countList != numElementList);
-            // set back to 0, to loop next round
-            countList = 0;
-        } while (temp.getNumberOfEntries() != inList.getNumberOfEntries());
+            CircularLinkedList aDonation = (CircularLinkedList) copy.getEntry(countList);
+            if (donorId == (Integer) aDonation.getEntry(2)) {
+                temp.add(aDonation);
+            }
+            countList += 1;
+        } while (countList != numElementList);
         displayAll(temp);
          
     }
@@ -791,3 +754,4 @@ public class DonationManagement {
     }
 
 }
+

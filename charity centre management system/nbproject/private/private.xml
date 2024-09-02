@@ -1,12 +1,18 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/User/Dropbox/PC/Documents/GitHub/Data-Structure-Algorithm-Assignment/charity%20centre%20management%20system/src/Managment/DonationManagement.java</file>
-            <file>file:/C:/Users/User/Dropbox/PC/Documents/GitHub/Data-Structure-Algorithm-Assignment/charity%20centre%20management%20system/src/CharityCentreManagementSystem/mainfile.java</file>
-            <file>file:/C:/Users/User/Dropbox/PC/Documents/GitHub/Data-Structure-Algorithm-Assignment/charity%20centre%20management%20system/src/ADT/CircularLinkedList.java</file>
-            <file>file:/C:/Users/User/Dropbox/PC/Documents/GitHub/Data-Structure-Algorithm-Assignment/charity%20centre%20management%20system/src/ADT/ListInterface.java</file>
+            <file>file:/C:/Users/Lenovo/source/repos/alphazm/Data-Structure-Algorithm-Assignment/charity%20centre%20management%20system/src/Entity/Donor.java</file>
+            <file>file:/C:/Users/Lenovo/source/repos/alphazm/Data-Structure-Algorithm-Assignment/charity%20centre%20management%20system/src/Managment/EventManagementSystem.java</file>
+            <file>file:/C:/Users/Lenovo/source/repos/alphazm/Data-Structure-Algorithm-Assignment/charity%20centre%20management%20system/src/Managment/DoneeManagement.java</file>
+            <file>file:/C:/Users/Lenovo/source/repos/alphazm/Data-Structure-Algorithm-Assignment/charity%20centre%20management%20system/src/CharityCentreManagementSystem/mainfile.java</file>
+            <file>file:/C:/Users/Lenovo/source/repos/alphazm/Data-Structure-Algorithm-Assignment/charity%20centre%20management%20system/src/Entity/Requirement.java</file>
+            <file>file:/C:/Users/Lenovo/source/repos/alphazm/Data-Structure-Algorithm-Assignment/charity%20centre%20management%20system/src/ADT/CircularLinkedList.java</file>
+            <file>file:/C:/Users/Lenovo/source/repos/alphazm/Data-Structure-Algorithm-Assignment/charity%20centre%20management%20system/src/Managment/DonorManagement.java</file>
+            <file>file:/C:/Users/Lenovo/source/repos/alphazm/Data-Structure-Algorithm-Assignment/charity%20centre%20management%20system/src/Managment/DonationManagement.java</file>
         </group>
     </open-files>
 </project-private>
+
