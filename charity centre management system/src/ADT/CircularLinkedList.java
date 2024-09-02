@@ -4,8 +4,6 @@
  */
 package ADT;
 
-import Entity.Donation;
-
 /**
  *
  * @author Heng Wei Long
@@ -55,7 +53,6 @@ public class CircularLinkedList<T> implements ListInterface<T> {
         return true;
     }
 
-    // get the first node data --> donation id/ first donation
     @Override
     public T getEntry(int givenPosition){
         T result = null;
