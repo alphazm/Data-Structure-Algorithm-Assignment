@@ -9,6 +9,9 @@ import ADT.CircularLinkedList;
 import Entity.DonationDistribution;
 import java.time.LocalDate;
 import java.util.Scanner;
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 
 public class DDSubsystem {
 
@@ -55,18 +58,23 @@ public class DDSubsystem {
         int anw = new Scanner(System.in).nextInt();
         switch (anw) {
             case 1:
+                clearJavaConsoleScreen();
                 addNewDonationDistribution();
                 break;
             case 2:
+                clearJavaConsoleScreen();
                 removeDonationDistribution();
                 break;
             case 3:
+                clearJavaConsoleScreen();
                 updateDonationDistribution();
                 break;
             case 4:
+                clearJavaConsoleScreen();
                 monitorDonationDistributions();
                 break;
             case 5:
+                clearJavaConsoleScreen();
                 getSummaryReport();
                 break;
             default:
@@ -126,7 +134,7 @@ public class DDSubsystem {
         // store in array list 
         donationDistributions.addinArray(newDistribution);
         DDcount++; //data counting 
-
+        clearJavaConsoleScreen();
         System.out.println("New Donation Distribution added successfully!");
         DonationDistributionMainPage();
     }
@@ -163,12 +171,15 @@ public class DDSubsystem {
 
             // comfrim remove 
             if ("Y".equals(sureYa) || "y".equals(sureYa)) {
+                clearJavaConsoleScreen();
                 donationDistributions.removeOut(index);
                 System.out.println("Donation Distribution removed successfully!");
             } else {
+                clearJavaConsoleScreen();
                 System.out.println("Removal cancelled.");
             }
         } else {
+            clearJavaConsoleScreen();
             System.out.println("Donation Distribution with ID " + ddidRemove + " not found.");
         }
 
@@ -239,7 +250,7 @@ public class DDSubsystem {
                 newDistributionWithDonationIds.setState(oldDistribution.getState());
 
                 donationDistributions.update(index, newDistributionWithDonationIds);
-
+                clearJavaConsoleScreen();
                 System.out.println("Donation Distribution updated successfully!");
                 break;
 
@@ -260,11 +271,12 @@ public class DDSubsystem {
                 newDistributionWithDoneeId.setState(oldDistribution.getState());
 
                 donationDistributions.update(index, newDistributionWithDoneeId);
-
+                clearJavaConsoleScreen();
                 System.out.println("Donation Distribution updated successfully!");
                 break;
 
             default:
+                clearJavaConsoleScreen();
                 System.out.println("Invalid choice. Please try again.");
                 break;
         }
@@ -326,16 +338,29 @@ public class DDSubsystem {
         newDistributionWithState.setDoneeid(oldDistribution.getDoneeid());
         newDistributionWithState.setDonationid(oldDistribution.getDonationid());
         newDistributionWithState.setState(newState);
-
+        clearJavaConsoleScreen();
+        System.out.println("Donation Distribution State have been updated");
         donationDistributions.update(index, newDistributionWithState);
         DonationDistributionMainPage();
     }
 
     // 5. report
     public static void getSummaryReport() {
+        boolean sureExit = false;
         System.out.println("Donation Distribution Summary Report");
         listAllDDDatas();
-        DonationDistributionMainPage();
+        do {
+            System.out.println("Enter any key to exit:");
+            String exitYa = new Scanner(System.in).nextLine();
+            if ("Y".equals(exitYa) || "y".equals(exitYa)) {
+                sureExit = true;
+                clearJavaConsoleScreen();
+                DonationDistributionMainPage();
+            } else {
+                System.out.print("Invalid data ");
+            }
+        } while (sureExit == false);
+
     }
 
     // check the donation ids
@@ -373,4 +398,20 @@ public class DDSubsystem {
         System.out.println("--------------------------------------------------------------------");
     }
 
+    private static void clearJavaConsoleScreen() {
+        try {
+            Robot rob = new Robot();
+            try {
+                rob.keyPress(KeyEvent.VK_CONTROL); // press "CTRL"
+                rob.keyPress(KeyEvent.VK_L); // press "L"
+                rob.keyRelease(KeyEvent.VK_L); // unpress "L"
+                rob.keyRelease(KeyEvent.VK_CONTROL); // unpress "CTRL"
+                Thread.sleep(1000); // add delay in milisecond, if not there will automatically stop after clear
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
+    }
 }
