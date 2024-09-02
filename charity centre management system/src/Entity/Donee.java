@@ -74,9 +74,9 @@ public class Donee {
     public String toString(){
         return
                 "Donee ID =" + doneeID +
-                "Donee Name =" + doneeName +
-                "Donee Contact Number =" + phoneNo +
-                "Donee Address =" + address +
-                "Donee requirements =" + requirements.toString();
+                "\nDonee Name =" + doneeName +
+                "\nDonee Contact Number =" + phoneNo +
+                "\nDonee Address =" + address +
+                "\nDonee requirements =" + requirements.toString();
     }
 }
