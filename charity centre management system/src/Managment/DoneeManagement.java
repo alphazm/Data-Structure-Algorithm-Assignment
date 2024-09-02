@@ -7,12 +7,15 @@ package Managment;
 import Entity.Donee;
 import Entity.Requirement;
 import ADT.LinearLinkedList;
+import static Managment.DDSubsystem.gettingDonee;
+import static Managment.DDSubsystem.DonationDistributionMainPage;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.util.Scanner;
 
 interface IDoneeManagement {
+
     void addDonee(String doneeName, String phoneNo, String address);
 
     void addRequirementToDonee(String doneeID, Requirement requirement);
@@ -27,7 +30,8 @@ interface IDoneeManagement {
 }
 
 public class DoneeManagement implements IDoneeManagement {
-    private LinearLinkedList<Donee> doneeList;
+
+    private static LinearLinkedList<Donee> doneeList;
 
     public DoneeManagement() {
         doneeList = new LinearLinkedList<>();

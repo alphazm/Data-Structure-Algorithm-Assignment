@@ -19,7 +19,7 @@ public class DDSubsystem {
 
 //    public int[] DonationID = {2408001, 2408002, 2408003, 2408004, 2408005, 2408006, 2408007, 2408008};
     private static CircularLinkedList donations = new CircularLinkedList();
-    private LinearLinkedList<Donee> doneeList;
+    private static LinearLinkedList<Donee> doneeList = new LinearLinkedList<>();
     // public static String[] DoneeID = {"DE001", "DE002", "DE003"};
     private static ArrayList<String> DoneeIDs = new ArrayList<>();
     private static ArrayList<Integer> DonationIDs = new ArrayList<>();
@@ -46,7 +46,7 @@ public class DDSubsystem {
         } while (countList != numElementList);
     }
 
-    public void gettingDonee(LinearLinkedList<Donee> DoneeList) {
+    public static void gettingDonee(LinearLinkedList<Donee> DoneeList) {
         doneeList = DoneeList;
         DoneeIDs.clearOut();
 
