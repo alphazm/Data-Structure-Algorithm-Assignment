@@ -4,10 +4,13 @@ package CharityCentreManagementSystem;
 import ADT.CircularLinkedList;
 import Entity.Category;
 import Entity.Donor;
+import static Managment.DDSubsystem.DonationDistributionMainPage;
 import static Managment.DonationManagement.DonationManagement;
 import static Managment.DonationManagement.addDonation;
-import static Managment.DonationManagement.getList;
+import static Managment.DonationManagement.donationMenu;
+import static Managment.DoneeManagement.DoneeMenu;
 import Managment.DonorManagement;
+import Managment.EventManagementSystem;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
@@ -16,16 +19,17 @@ import java.util.Scanner;
 public class mainfile {
     static Scanner scanner = new Scanner(System.in);
     static DonorManagement donorCtrl = new DonorManagement();
-    
+    static EventManagementSystem eventCtrl = new EventManagementSystem();
     public static void main(String[] args)
     {
         DonationManagement(false);
+        
         boolean repeat = true;
         while(repeat){
             System.out.println();
             System.out.println("1.  add donate");
-            System.out.println("2.  request donate");
-            System.out.println("3.  report");
+            System.out.println("2.  donate distribute");
+            System.out.println("3.  management");
             System.out.print("Enter selection: ");
             int selection = scanner.nextInt();
             scanner.nextLine(); 
@@ -40,7 +44,7 @@ public class mainfile {
                     break;
                 case 3:
                     clearJavaConsoleScreen();
-                    report();
+                    management();
                     break;
                 default:
                     clearJavaConsoleScreen();
@@ -100,7 +104,7 @@ public class mainfile {
                     repeat = false;
                     break;
                 default:
-                     System.out.println("invaldie vategorise");
+                     System.out.println("invalide vategorise");
             }
         }
         donorCtrl.addDonor(name, category, contactNumber); 
@@ -125,12 +129,44 @@ public class mainfile {
         
     }
     
-    public static void report(){
-        CircularLinkedList list = getList();
-        System.out.println("Enter donor ID: ");
-        int id = scanner.nextInt();
-        scanner.nextLine(); 
-        donorCtrl.listAllDonationByDonor(id,list);
+    public static void management(){
+        boolean repeat = true;
+        while(repeat){
+            System.out.println();
+            System.out.println("1.  donation management");
+            System.out.println("2.  dd");
+            System.out.println("3.  donee");
+            System.out.println("4.  event");
+            System.out.println("5.  donor");
+            System.out.print("Enter selection: ");
+            int selection = scanner.nextInt();
+            scanner.nextLine(); 
+            switch(selection){
+                case 1:
+                    clearJavaConsoleScreen();
+                    donationMenu();
+                    break;
+                case 2:
+                    clearJavaConsoleScreen();
+                    DonationDistributionMainPage();
+                    break;
+                case 3:
+                    clearJavaConsoleScreen();
+                    DoneeMenu();
+                    break;
+                case 4:
+                    clearJavaConsoleScreen();
+                    eventCtrl.displayMenu();
+                    break;
+                case 5:
+                    clearJavaConsoleScreen();
+                    donorCtrl.menu();
+                    break;
+                default:
+                    clearJavaConsoleScreen();
+                    System.out.println("Invalid option\n");
+            }
+        }
     }
     
     private static void clearJavaConsoleScreen() {

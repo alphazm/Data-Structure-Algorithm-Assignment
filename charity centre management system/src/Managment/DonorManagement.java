@@ -3,13 +3,15 @@ package Managment;
  *
  * @author Chong Zhi Ming
  */
-import ADT.CircularLinkedList;
 import Entity.Donor;
 import Entity.Category;
 import ADT.LinkedStack;
-import static Managment.DonationManagement.DonationManagement;
+import static Managment.DonationManagement.cll;
 
 import static Managment.DonationManagement.searchByDonorId;
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.util.Scanner;
 
 
@@ -32,7 +34,157 @@ public class DonorManagement {
     donorStack.push(new Donor("Frank Miller", Category.PUBLIC, 555456890));
     donorStack.push(new Donor("Grace Lee", Category.GOVERNMENT, 555578901));
     donorStack.push(new Donor("Hank Pym", Category.PRIVATE, 555678912));
-}
+    }
+    
+    public void menu(){
+        Scanner scanner = new Scanner(System.in);
+        int choice =0;
+        int id=0;
+        int contactNumber =0;
+        String name = "";
+        boolean repeat =false;
+        Category category = null;
+        boolean[] found = {false};
+        boolean loop =true;
+        while (loop){
+            System.out.println("Donation Management Main Menu");
+            System.out.println(" 1. Add donor");
+            System.out.println(" 2. Search donor");
+            System.out.println(" 3. filter by category");
+            System.out.println(" 4. update donor");
+            System.out.println(" 5. remove donor");
+            System.out.println(" 6. List Donation Donor with id");
+            System.out.println(" 7. List All donor");
+            System.out.println(" 8. Generate Report");
+            System.out.print(" Enter Your Choice: ");
+            choice = scanner.nextInt();
+            scanner.nextLine();
+            clearJavaConsoleScreen();
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter Name: ");
+                    name = "";
+                    name += scanner.nextLine();
+                    System.out.print("Enter contact number (example: 123456789): ");
+                    contactNumber = scanner.nextInt();
+                    scanner.nextLine(); 
+                    repeat = true;
+                    while (repeat){
+                        System.out.print("Enter category (private, public or goverment): ");
+                        String str = scanner.next().toLowerCase();
+                        scanner.nextLine(); 
+                        switch(str){
+                            case "private":
+                                category = Category.PRIVATE;
+                                repeat = false;
+                                break;
+                            case "public":
+                                category = Category.PUBLIC;
+                                repeat = false;
+                                break;
+                            case "goverment":
+                                category = Category.GOVERNMENT;
+                                repeat = false;
+                                break;
+                            default:
+                                 System.out.println("invalide vategorise");
+                        }
+                    }
+                    addDonor(name, category, contactNumber); 
+                    break;
+                case 2: 
+                    System.out.println("Enter donor ID: ");
+                    id = scanner.nextInt(); 
+                    scanner.nextLine();
+                    searchDonor(id,found);
+                    break;
+                case 3:
+                    repeat = true;
+                    while(repeat){
+                        System.out.print("Enter category (private, public or goverment): ");
+                        String str = scanner.next().toLowerCase();
+                        scanner.nextLine(); 
+                        switch(str){
+                            case "private":
+                                category = Category.PRIVATE;
+                                repeat = false;
+                                break;
+                            case "public":
+                                category = Category.PUBLIC;
+                                repeat = false;
+                                break;
+                            case "goverment":
+                                category = Category.GOVERNMENT;
+                                repeat = false;
+                                break;
+                            default:
+                                 System.out.println("invaldie vategorise");
+                        }
+                    }
+                    filterOnCriteria(category);
+                    break;
+                case 4:
+                    System.out.println("Enter donor ID: ");
+                    id = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Enter Name: ");
+                    name = "";
+                    name += scanner.nextLine();
+
+                    System.out.print("Enter contact number (example: 123456789): ");
+                    contactNumber = scanner.nextInt();
+                    scanner.nextLine(); 
+                    repeat = true;
+                    while (repeat){
+                        System.out.print("Enter category (private, public or goverment): ");
+                        String str = scanner.next().toLowerCase();
+                        scanner.nextLine(); 
+                        switch(str){
+                            case "private":
+                                category = Category.PRIVATE;
+                                repeat = false;
+                                break;
+                            case "public":
+                                category = Category.PUBLIC;
+                                repeat = false;
+                                break;
+                            case "goverment":
+                                category = Category.GOVERNMENT;
+                                repeat = false;
+                                break;
+                            default:
+                                 System.out.println("invaldie vategorise");
+                        }
+                    }
+                    updateDonor(id,name,category,contactNumber);
+                    break;
+                case 5:
+                    System.out.println("Enter donor ID: ");
+                    id = scanner.nextInt();
+                    scanner.nextLine();
+                    removeDonor(id);
+                    break;
+                case 6:
+                    System.out.println("Enter donor ID: ");
+                    id = scanner.nextInt();
+                    scanner.nextLine();
+                    listAllDonationByDonor(id);
+                    break;
+                case 7:
+                    listAllDonors();
+                    break;
+                case 8:
+                    generateDonorSummaryReport();
+                    break;
+                case 0:
+                    loop = false;
+                    break;
+                default:
+                    System.out.print("Invalide option");
+                    
+            }
+        }
+    }
     
     public void addDonor(String name, Category category, int contactNumber){
         
@@ -50,7 +202,8 @@ public class DonorManagement {
         while (!donorStack.isEmpty()) {
             Donor donor = donorStack.pop();
             if (donor.getDonorId() == donorId ) {
-                System.out.println("Removed donor: " + donor);
+                System.out.println("Removed donor: " );
+                System.out.println("Id: "+donor.getDonorId()+" Name: "+donor.getName());
                 found = true;
                 break;
             } else {
@@ -138,11 +291,11 @@ public class DonorManagement {
         return tempDonor;
     }
     
-    public void listAllDonationByDonor(int donorId, CircularLinkedList list){
+    public void listAllDonationByDonor(int donorId){
         boolean[] found = {false};
         Donor temp = searchDonor(donorId,found);
         System.out.println("Donatio make by "+temp.getName());
-        searchByDonorId(list,donorId);
+        searchByDonorId(cll,donorId);
     }
     
     public void listAllDonors() {
@@ -230,15 +383,16 @@ public class DonorManagement {
                 + governmentCount + " donors");
     }
  
-    public static void main(String[] args)
-    {
-        Scanner scanner = new Scanner(System.in);
-        DonorManagement ctrl =new DonorManagement();
-        DonationManagement(false);
-        boolean[] found = {false};
-        Category category = null;
-        
-        
-        
+  private static void clearJavaConsoleScreen() {
+        try{
+            Robot rob = new Robot();
+            try {
+            rob.keyPress(KeyEvent.VK_CONTROL); // press "CTRL"
+            rob.keyPress(KeyEvent.VK_L); // press "L"
+            rob.keyRelease(KeyEvent.VK_L); // unpress "L"
+            rob.keyRelease(KeyEvent.VK_CONTROL); // unpress "CTRL"
+            Thread.sleep(1000); // add delay in milisecond, if not there will automatically stop after clear
+            } catch (InterruptedException e) { e.printStackTrace(); }
+        } catch(AWTException e) { e.printStackTrace(); }
     }
 }
