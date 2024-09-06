@@ -39,7 +39,7 @@ public class DonorManagement {
     public void menu(){
         Scanner scanner = new Scanner(System.in);
         int choice =0;
-        int id=0;
+        String id="";
         int contactNumber =0;
         String name = "";
         boolean repeat =false;
@@ -94,7 +94,7 @@ public class DonorManagement {
                     break;
                 case 2: 
                     System.out.println("Enter donor ID: ");
-                    id = scanner.nextInt(); 
+                    id = scanner.next(); 
                     scanner.nextLine();
                     searchDonor(id,found);
                     break;
@@ -125,7 +125,7 @@ public class DonorManagement {
                     break;
                 case 4:
                     System.out.println("Enter donor ID: ");
-                    id = scanner.nextInt();
+                    id = scanner.next();
                     scanner.nextLine();
                     System.out.print("Enter Name: ");
                     name = "";
@@ -160,13 +160,13 @@ public class DonorManagement {
                     break;
                 case 5:
                     System.out.println("Enter donor ID: ");
-                    id = scanner.nextInt();
+                    id = scanner.next();
                     scanner.nextLine();
                     removeDonor(id);
                     break;
                 case 6:
                     System.out.println("Enter donor ID: ");
-                    id = scanner.nextInt();
+                    id = scanner.next();
                     scanner.nextLine();
                     listAllDonationByDonor(id);
                     break;
@@ -192,7 +192,7 @@ public class DonorManagement {
         donorStack.push(newDonor);
     }
     
-    public void removeDonor(int donorId){
+    public void removeDonor(String donorId){
         if (donorStack.isEmpty()) {
             System.out.println("No donors available to remove.");
         }
@@ -201,7 +201,7 @@ public class DonorManagement {
         
         while (!donorStack.isEmpty()) {
             Donor donor = donorStack.pop();
-            if (donor.getDonorId() == donorId ) {
+            if (donor.getDonorId().equalsIgnoreCase(donorId)) {
                 System.out.println("Removed donor: " );
                 System.out.println("Id: "+donor.getDonorId()+" Name: "+donor.getName());
                 found = true;
@@ -230,7 +230,7 @@ public class DonorManagement {
         return null;
     }
     
-    public void updateDonor(int donorId,String name,
+    public void updateDonor(String donorId,String name,
             Category category,int ContactNumber){
         Donor donor = null;
         if (donorStack.isEmpty()) {
@@ -241,7 +241,7 @@ public class DonorManagement {
         
         while (!donorStack.isEmpty()) {
             donor = donorStack.pop();
-            if (donor.getDonorId()==(donorId)) {
+            if (donor.getDonorId().equalsIgnoreCase(donorId)) {
                 donor.setName(name);
                 donor.setCategory(category);
                 donor.setContactNumber(ContactNumber);
@@ -262,7 +262,7 @@ public class DonorManagement {
         }
     }
     
-    public Donor searchDonor(int donorId,boolean[] found){
+    public Donor searchDonor(String donorId,boolean[] found){
         if (donorStack.isEmpty()) {
             System.out.println("No donors yet.");
         }
@@ -271,7 +271,7 @@ public class DonorManagement {
         Donor tempDonor = null;
         while (!donorStack.isEmpty()) {
             Donor donor = donorStack.pop();
-            if (donor.getDonorId()==(donorId)) {
+            if (donor.getDonorId().equalsIgnoreCase(donorId)) {
                 tempDonor = donor;
                 System.out.println(donor.toString());
                 tempStack.push(donor);
@@ -291,7 +291,7 @@ public class DonorManagement {
         return tempDonor;
     }
     
-    public void listAllDonationByDonor(int donorId){
+    public void listAllDonationByDonor(String donorId){
         boolean[] found = {false};
         Donor temp = searchDonor(donorId,found);
         System.out.println("Donatio make by "+temp.getName());

@@ -118,7 +118,7 @@ public class mainfile {
         while(!flag[0]){
             System.out.println();
             System.out.println("Enter donor ID: ");
-            int id = scanner.nextInt();
+            String id = scanner.next();
             scanner.nextLine(); 
             temp = donorCtrl.searchDonor(id,flag);
         }
