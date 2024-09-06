@@ -142,7 +142,7 @@ public class DonorManagement {
         boolean[] found = {false};
         Donor temp = searchDonor(donorId,found);
         System.out.println("Donatio make by "+temp.getName());
-        searchByDonorId(list,donorId);
+        searchByDonorId(list, donorId);
     }
     
     public void listAllDonors() {
