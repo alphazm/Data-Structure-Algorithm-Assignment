@@ -47,6 +47,7 @@ public class DonorManagement {
         boolean[] found = {false};
         boolean loop =true;
         while (loop){
+            clearJavaConsoleScreen();
             System.out.println("Donation Management Main Menu");
             System.out.println(" 1. Add donor");
             System.out.println(" 2. Search donor");
@@ -56,6 +57,7 @@ public class DonorManagement {
             System.out.println(" 6. List Donation Donor with id");
             System.out.println(" 7. List All donor");
             System.out.println(" 8. Generate Report");
+            System.out.println(" 0. go back");
             System.out.print(" Enter Your Choice: ");
             choice = scanner.nextInt();
             scanner.nextLine();
@@ -91,12 +93,14 @@ public class DonorManagement {
                         }
                     }
                     addDonor(name, category, contactNumber); 
+                    scanner.nextLine();
                     break;
                 case 2: 
-                    System.out.println("Enter donor ID: ");
+                    System.out.print("Enter donor ID: ");
                     id = scanner.next(); 
                     scanner.nextLine();
                     searchDonor(id,found);
+                    scanner.nextLine();
                     break;
                 case 3:
                     repeat = true;
@@ -122,9 +126,10 @@ public class DonorManagement {
                         }
                     }
                     filterOnCriteria(category);
+                    scanner.nextLine();
                     break;
                 case 4:
-                    System.out.println("Enter donor ID: ");
+                    System.out.print("Enter donor ID: ");
                     id = scanner.next();
                     scanner.nextLine();
                     System.out.print("Enter Name: ");
@@ -157,30 +162,36 @@ public class DonorManagement {
                         }
                     }
                     updateDonor(id,name,category,contactNumber);
+                    scanner.nextLine();
                     break;
                 case 5:
-                    System.out.println("Enter donor ID: ");
+                    System.out.print("Enter donor ID: ");
                     id = scanner.next();
                     scanner.nextLine();
                     removeDonor(id);
+                    scanner.nextLine();
                     break;
                 case 6:
-                    System.out.println("Enter donor ID: ");
+                    System.out.print("Enter donor ID: ");
                     id = scanner.next();
                     scanner.nextLine();
                     listAllDonationByDonor(id);
+                    scanner.nextLine();
                     break;
                 case 7:
                     listAllDonors();
+                    scanner.nextLine();
                     break;
                 case 8:
                     generateDonorSummaryReport();
+                    scanner.nextLine();
                     break;
                 case 0:
                     loop = false;
                     break;
                 default:
                     System.out.print("Invalide option");
+                    scanner.nextLine();
                     
             }
         }
@@ -352,7 +363,6 @@ public class DonorManagement {
         // Traverse the stack to count donors and categorize them
         while (!donorStack.isEmpty()) {
             Donor donor = donorStack.pop();
-            totalDonors++;
 
             // Increment the corresponding category counter
             switch (donor.getCategory()) {
