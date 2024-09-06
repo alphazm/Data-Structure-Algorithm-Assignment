@@ -3,7 +3,10 @@
  */
 package Managment;
 
+import ADT.ArrayList;
 import ADT.CircularLinkedList;
+import ADT.LinkedQueue;
+import ADT.LinkedStack;
 import Entity.Donation;
 import java.awt.AWTException;
 import java.awt.Robot;
@@ -23,8 +26,10 @@ public class DonationManagement{
     // trying make circular linked list storing circular linked list
     static CircularLinkedList cll = new CircularLinkedList();
     static Donation donation = new Donation();
+    static LinkedStack ls = new LinkedStack();
     
     public static void main(String[] args) {
+        DonationManagement(false);
         DonationManagement(true);
     }
     public static CircularLinkedList getList() {
@@ -45,7 +50,7 @@ public class DonationManagement{
     public static void donationMenu() {
         clearJavaConsoleScreen();
         //from donor
-        String donorId = "1000";
+        String donorId = "0";
         String choice;
         boolean cont = true;
         do{
@@ -133,12 +138,12 @@ public class DonationManagement{
         insertDonation(10018, "1009", "2024-08-13 16:30", "", new Donation("Supplies", "Food: Fruits", 35, 0.00));
         insertDonation(10019, "1009", "2024-08-14 13:35", "", new Donation("Funds", "Online Bank Transfer", 1, 350.00));
         insertDonation(10020, "1010", "2024-08-14 14:40", "", new Donation("Funds", "Credit Card", 1, 600.00));
-        insertDonation(10021, "", "2024-08-15 12:45", "E001", new Donation("Funds", "Credit Card", 1, 1000.00));
-        insertDonation(10022, "", "2024-08-16 10:50", "E002", new Donation("Supplies", "Drinks: Juice", 30, 0.00));
-        insertDonation(10023, "", "2024-08-16 14:55", "E002", new Donation("Funds", "Bank Deposit", 1, 6000.00));
-        insertDonation(10024, "", "2024-08-17 12:00", "E003", new Donation("Supplies", "Food: Bread", 40, 0.00));
-        insertDonation(10025, "", "2024-08-18 12:05", "E004", new Donation("Supplies", "Drinks: Water", 30, 0.00));
-        insertDonation(10026, "", "2024-08-19 12:10", "E005", new Donation("Funds", "Check", 1, 2000.00));
+        insertDonation(10021, "0", "2024-08-15 12:45", "E001", new Donation("Funds", "Credit Card", 1, 1000.00));
+        insertDonation(10022, "0", "2024-08-16 10:50", "E002", new Donation("Supplies", "Drinks: Juice", 30, 0.00));
+        insertDonation(10023, "0", "2024-08-16 14:55", "E002", new Donation("Funds", "Bank Deposit", 1, 6000.00));
+        insertDonation(10024, "0", "2024-08-17 12:00", "E003", new Donation("Supplies", "Food: Bread", 40, 0.00));
+        insertDonation(10025, "0", "2024-08-18 12:05", "E004", new Donation("Supplies", "Drinks: Water", 30, 0.00));
+        insertDonation(10026, "0", "2024-08-19 12:10", "E005", new Donation("Funds", "Check", 1, 2000.00));
         insertDonation(10027, "1009", "2024-08-20 12:15", "", new Donation("Funds", "Online Bank Transfer", 1, 350.00));
         insertDonation(10028, "1012", "2024-08-20 15:20", "", new Donation("Supplies", "Food: Cereal", 60, 0.00));
         insertDonation(10029, "1003", "2024-08-21 12:25", "", new Donation("Supplies", "Drinks: Soda", 10, 0.00));
@@ -280,7 +285,7 @@ public class DonationManagement{
         s.nextLine();
         
         if (inputInt == 1) {
-            if (cll.remove(inputDonationId) != null) {
+            if (cll.remove(getPositionInList(inputDonationId, cll)) != null) {
                 System.out.println("Successful Remove!");
             }
             else {
@@ -293,6 +298,20 @@ public class DonationManagement{
         }
     }
 
+    public static int getPositionInList(int donationId, CircularLinkedList inList) {
+        int numElementList = inList.getNumberOfEntries() + 1;
+        int countList = 1;
+        do {
+            // get one by one donation data from list
+            CircularLinkedList temp = (CircularLinkedList) inList.getEntry(countList);
+            if ((Integer) temp.getEntry(1) == donationId) {
+                return countList;
+            }
+            countList += 1;
+        } while (countList != numElementList);
+        return 0;
+    }
+    
     public static void searchDonation() {
         System.out.print(" Enter the id: ");
         int inputDonationId = s.nextInt(); // accept input and store to inputDonationId
@@ -463,21 +482,26 @@ public class DonationManagement{
         CircularLinkedList first = (CircularLinkedList) result.getEntry(1);
         String previousId = (String) first.getEntry(2);
         // print first time
-        System.out.println(previousId);
+        if (previousId.equals("0")) {
+            System.out.println("From Event");
+        }
+        else {
+            System.out.println("From Donor Id: " + previousId);
+        }
         System.out.println("\tDonation Id\tDonation Date Time\t\tEvent\t\tDonation Category\tItem Description\tItem Quantity\t    Amount");
         do {
             // get one by one donation data from list
             CircularLinkedList temp = (CircularLinkedList) result.getEntry(countList);
             if (!previousId.equals((String) temp.getEntry(2))) {
-                System.out.println("\n" + (String) temp.getEntry(2));
+                System.out.println("\nFrom Donor Id: " + (String) temp.getEntry(2));
                 System.out.println("\tDonation Id\tDonation Date Time\t\tEvent\t\tDonation Category\tItem Description\tItem Quantity\t    Amount");
                 previousId = (String) temp.getEntry(2);
             }
             int donationId = (Integer) temp.getEntry(1);
             System.out.print("\t" + donationId + "\t\t");
-
             System.out.print(temp.getEntry(3) + "\t\t");
-
+            System.out.print(temp.getEntry(4) + "\t\t");
+            
             donation = (Donation) temp.getEntry(temp.getNumberOfEntries());
             System.out.println(donation.toString());
 
@@ -491,6 +515,7 @@ public class DonationManagement{
         CircularLinkedList temp = new CircularLinkedList();
         CircularLinkedList copy = new CircularLinkedList();
         copyList(copy, inList);
+        copy = sortedListByDonorId(copy);
         // loop one by one, until the size of temp same with inList
         do {
             int numElementList = copy.getNumberOfEntries() + 1; //50
@@ -503,19 +528,69 @@ public class DonationManagement{
                 CircularLinkedList aDonation = (CircularLinkedList) copy.getEntry(countList);
                 if (getDonorId.equals((String) aDonation.getEntry(2))) {
                     temp.add(aDonation);
-                    copy.remove(aDonation.getEntry(1));
-                    // the data is been remove, so need to - 1
+                    copy.remove(countList);//aDonation.getEntry(1));
                     countList -= 1;
                     numElementList -= 1;
                 }
                 countList += 1;
             } while (countList != numElementList);
-//            // set back to 0, to loop next round
-//            countList = 0;
         } while (temp.getNumberOfEntries() != inList.getNumberOfEntries());
         return temp;
     }
-
+    
+    // sorted the list by donor id
+    public static CircularLinkedList sortedListByDonorId(CircularLinkedList inList) {
+        CircularLinkedList temp = new CircularLinkedList();
+        int numElementList = inList.getNumberOfEntries() + 1;
+        int countList = 1;
+        
+        // copy the id to a list
+        do {
+            CircularLinkedList temp2 = (CircularLinkedList) inList.getEntry(countList);
+            int getDonorId = Integer.parseInt((String) temp2.getEntry(2));
+            temp.add(getDonorId);
+            countList += 1;
+        } while (countList != numElementList);
+        
+        // sort into a new list according id
+        CircularLinkedList sortedList = new CircularLinkedList();
+        // Loop through the original list and pick the minimum donor ID
+        do {
+            int i = 1; // assume the first element is the smallest
+            int minDonorId = (int) temp.getEntry(i);
+            // Find the minimum donorId in the current list
+            for (int j = 2; j <= temp.getNumberOfEntries(); j++) {
+                int currentDonorId = (int) temp.getEntry(j);
+                if (currentDonorId < minDonorId) {
+                    minDonorId = currentDonorId;
+                    i = j;
+                }
+            }
+            // Add the minimum donor ID to the sorted list
+            sortedList.add(minDonorId);
+            // Remove the minimum donor ID from the original list
+            temp.remove(i);
+        }while (!temp.isEmpty());
+        do {
+            int firstDonorId = (int) sortedList.getEntry(1);
+            numElementList = inList.getNumberOfEntries() + 1;
+            countList = 1;
+            do {
+                CircularLinkedList temp2 = (CircularLinkedList) inList.getEntry(countList);
+                int getDonorId = Integer.parseInt((String) temp2.getEntry(2));
+                if (firstDonorId == getDonorId) {
+                    temp.add(temp2);
+                    sortedList.remove(1);
+                    inList.remove(countList);
+                    numElementList -= 1;
+                    countList -= 1;
+                }
+                countList += 1;
+            } while (countList != numElementList);
+        }while(!sortedList.isEmpty());
+        return temp;
+    }
+    
     public static void copyList(CircularLinkedList copy, CircularLinkedList inList) {
         int numElementList = inList.getNumberOfEntries() + 1; //51
         int countList = 1;
@@ -527,21 +602,41 @@ public class DonationManagement{
     }
 
     public static void listAllDonation(){
-        System.out.println("Donation Id\tDonor Id\tDonation Date Time\t\tEvent\t\tDonation Category\tItem Description\tItem Quantity\t    Amount");
+        //System.out.println("Donation Id\tDonor Id\tDonation Date Time\t\tEvent\t\tDonation Category\tItem Description\tItem Quantity\t    Amount");
 
         displayAll(cll);
         CircularLinkedList copy = new CircularLinkedList();
         copyList(copy, cll);
         int inputInt;
         do {
-            System.out.print(" Add Filter? (0 = cancel): ");
-            inputInt = s.nextInt();
-            s.nextLine();
-            if (inputInt != 0) {
-                copy = filterMenu(copy);
-                displayAll(copy);
+            if (ls.isEmpty()) {
+                System.out.print(" Add Filter? (0 = cancel, 1 = add): ");
+                inputInt = s.nextInt();
+                s.nextLine();
+                if (inputInt == 1) {
+                    ls.push(copy);
+                    copy = filterMenu(copy);
+                    displayAll(copy);
+                } 
+            }
+            else {
+                System.out.print(" Add Filter? (0 = cancel, 1 = add, 2 = undo): ");
+                inputInt = s.nextInt();
+                s.nextLine();
+                if (inputInt == 1) {
+                    ls.push(copy);
+                    copy = filterMenu(copy);
+                    displayAll(copy);
+                } 
+                else if (inputInt == 2) {
+                    copy = (CircularLinkedList) ls.pop();
+                    displayAll(copy);
+                }
             }
         } while (inputInt != 0);
+        while (!ls.isEmpty()) {
+            ls.pop();
+        }
     }
 
     // display all in circular linked list
@@ -549,6 +644,7 @@ public class DonationManagement{
         if (inList.isEmpty()) {
             System.out.println("Empty!");
         }
+        System.out.println("Donation Id\tDonor Id\tDonation Date Time\t\tEvent\t\tDonation Category\tItem Description\tItem Quantity\t    Amount");
         int numElementList = inList.getNumberOfEntries() + 1;
         int countList = 1;
         do {
@@ -573,6 +669,7 @@ public class DonationManagement{
     }
 
     public static void display(CircularLinkedList inList) {
+        System.out.println("Donation Id\tDonor Id\tDonation Date Time\t\tEvent\t\tDonation Category\tItem Description\tItem Quantity\t    Amount");
         int numElement = inList.getNumberOfEntries() + 1;
         int count = 1;
         do {
