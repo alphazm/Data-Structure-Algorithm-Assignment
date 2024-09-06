@@ -5,7 +5,6 @@ package Managment;
 
 import ADT.CircularLinkedList;
 import Entity.Donation;
-import Entity.DonationManage;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
@@ -23,9 +22,7 @@ public class DonationManagement{
 
     // trying make circular linked list storing circular linked list
     static CircularLinkedList cll = new CircularLinkedList();
-    static CircularLinkedList cll2 = new CircularLinkedList();
     static Donation donation = new Donation();
-    static DonationManage donationManage = new DonationManage();
     
     public static void main(String[] args) {
         DonationManagement(true);
@@ -274,8 +271,6 @@ public class DonationManagement{
         clldata.add(dateTime);
         clldata.add(fromEvent);
         clldata.add(donation);
-        donationManage = new DonationManage(donationId, donorId, dateTime, fromEvent, donation);
-        cll2.add(donationManage);
         cll.add(clldata);
     }
 
