@@ -24,7 +24,7 @@ public class DDSubsystem {
     private static ArrayList<String> DoneeIDs = new ArrayList<>();
     private static ArrayList<Integer> DonationIDs = new ArrayList<>();
     private static ArrayList<DonationDistribution> donationDistributions = new ArrayList<>();// dd array list
-    public static int DDcount = 1; // Data counting (dd) 
+    public static int DDcount = 1 + donationDistributions.size(); // Data counting (dd) 
 
     public void gettingDonations(CircularLinkedList donationsData) {
         donations = donationsData;
