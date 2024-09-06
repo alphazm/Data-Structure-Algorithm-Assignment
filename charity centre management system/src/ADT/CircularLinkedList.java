@@ -68,25 +68,73 @@ public class CircularLinkedList<T> implements ListInterface<T> {
         return result;
     }
     
+    @Override
+    public T remove(T anEntry) {
+        int givenPosition = (int) anEntry;
+        T result = null;
+        // Check if the list is empty or the position is invalid
+        if (isEmpty() || givenPosition < 1 || givenPosition > getNumberOfEntries()) {
+            return result;
+        }
+
+        // Start with the first node (which is lastNode.next in a circular list)
+        Node current = lastNode.next;
+        // The previous node starts from lastNode
+        Node previous = lastNode;
+
+        // Case 1: If the node to remove is the first node (position 1)
+        if (givenPosition == 1) {
+            result = (T) current.data;
+
+            // If there is only one node in the list
+            if (lastNode == lastNode.next) {
+                lastNode = null;
+            } else {
+                // Remove the first node
+                previous.next = current.next; // Update the last node to point to the second node
+                lastNode.next = current.next; // Move the head to the next node
+            }
+        } else {
+            // Case 2: Traverse the list to find the node at the given position
+            for (int i = 1; i < givenPosition; i++) {
+                previous = current;
+                current = current.next;
+            }
+
+            // Now current is at the position to be removed
+            result = (T) current.data;
+
+            // Remove the current node by adjusting the previous node's next pointer
+            previous.next = current.next;
+
+            // If the removed node was the lastNode, update the lastNode reference
+            if (current == lastNode) {
+                lastNode = previous;
+            }
+        }
+    return result;
+}
+
+//    // remove the group by the donationId
 //    @Override
 //    public T remove(T anEntry) {
 //        T result = null;
 //        if (isEmpty()) {
 //            return result;
 //        }
-//        Node entry = new Node(anEntry);
 //        // Start with the first node
 //        Node current = lastNode.next;
 //        // The previous node start from last
 //        Node previous = lastNode;
 //
-//            System.out.println(entry);
-//            System.out.println(lastNode);
 //        do {
-//            System.out.println(current);
-//            if (current == anEntry) {
+//            CircularLinkedList temp = (CircularLinkedList) current.data;
+//
+//            // turn the data into integer
+//            int i = (Integer) temp.getEntry(1);
+//            if (i == (Integer) anEntry) { //turn the input from T to integer
+//                // if the node is last node
 //                if (current == lastNode) {
-//                    result = (T) current;
 //                    // if the node only node
 //                    if (lastNode == lastNode.next) {
 //                        lastNode = null;
@@ -95,60 +143,19 @@ public class CircularLinkedList<T> implements ListInterface<T> {
 //                        previous.next = current.next;
 //                        lastNode = previous;
 //                    }
-//                }
-//                else {
-//                    result = (T) current;
+//                } else {
 //                    previous.next = current.next;
 //                }
+//                result = (T) temp.getEntry(1);
+//                return result;
 //            }
 //            // Update previous only after checking, to correctly track the previous node
 //            previous = current;
 //            current = current.next;
 //        } while (current != lastNode.next);
+//
 //        return result;
 //    }
-
-    // remove the group by the donationId
-    @Override
-    public T remove(T anEntry) {
-        T result = null;
-        if (isEmpty()) {
-            return result;
-        }
-        // Start with the first node
-        Node current = lastNode.next;
-        // The previous node start from last
-        Node previous = lastNode;
-
-        do {
-            CircularLinkedList temp = (CircularLinkedList) current.data;
-
-            // turn the data into integer
-            int i = (Integer) temp.getEntry(1);
-            if (i == (Integer) anEntry) { //turn the input from T to integer
-                // if the node is last node
-                if (current == lastNode) {
-                    // if the node only node
-                    if (lastNode == lastNode.next) {
-                        lastNode = null;
-                    } // if not the only
-                    else {
-                        previous.next = current.next;
-                        lastNode = previous;
-                    }
-                } else {
-                    previous.next = current.next;
-                }
-                result = (T) temp.getEntry(1);
-                return result;
-            }
-            // Update previous only after checking, to correctly track the previous node
-            previous = current;
-            current = current.next;
-        } while (current != lastNode.next);
-
-        return result;
-    }
 
     // update the element input by replace the data
     @Override

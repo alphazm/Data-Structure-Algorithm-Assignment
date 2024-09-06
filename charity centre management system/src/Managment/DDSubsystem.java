@@ -53,7 +53,7 @@ public class DDSubsystem {
         }
     }
 
-//    public static void main(String[] args) {
+//    public static void main(String[] args) {//////////////////////////////////add by wl to test purpose
 //        DonationManagement(false);
 //        DonationDistributionMainPage();
 //        DonationManagement(true);
