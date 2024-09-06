@@ -1,2 +1,0 @@
-Managment.IDoneeManagement
-Managment.DoneeManagement

@@ -47,16 +47,16 @@ public class EventManagementSystem {
             volunteerList.add(volunteer4);
             volunteerList.add(volunteer5);
             //Create some event
-            Event event1 = new Event("E001"," Community service", "service nursing house", LocalDateTime.of(2024, 9, 15, 8, 0),
-                    LocalDateTime.of(2024, 9, 15, 18, 0), "Setapak nursing house", volunteerList, false);
-            Event event2 = new Event("E002"," Car wash Event", "Wash the car", LocalDateTime.of(2024, 9, 16, 8, 0),
-                    LocalDateTime.of(2024, 9, 16, 18, 0), "Setapak Car wash centre", volunteerList, false);
-            Event event3 = new Event("E003"," Fun Run", "Run 5 km and all the fee will Donate to charity", LocalDateTime.of(2024, 9, 17, 8, 0),
-                    LocalDateTime.of(2024, 9, 17, 18, 0), "Setapak centre", volunteerList, false);
-            Event event4 = new Event("E004"," Community Orphanage service", "Orphanage service", LocalDateTime.of(2024, 9, 18, 8, 0),
-                    LocalDateTime.of(2024, 9, 18, 18, 0), "Setapak Orphanage", volunteerList, false);
-            Event event5 = new Event("E005"," Community clean service", "cleaning service", LocalDateTime.of(2024, 9, 19, 8, 0),
-                    LocalDateTime.of(2024, 9, 19, 18, 0), "Setapak Garden", volunteerList, false);
+            Event event1 = new Event("E001"," Community service", "service nursing house", LocalDateTime.of(2024, 8, 15, 8, 0),
+                    LocalDateTime.of(2024, 8, 15, 18, 0), "Setapak nursing house", volunteerList, false);
+            Event event2 = new Event("E002"," Car wash Event", "Wash the car", LocalDateTime.of(2024, 8, 16, 8, 0),
+                    LocalDateTime.of(2024, 8, 16, 18, 0), "Setapak Car wash centre", volunteerList, false);
+            Event event3 = new Event("E003"," Fun Run", "Run 5 km and all the fee will Donate to charity", LocalDateTime.of(2024, 8, 17, 8, 0),
+                    LocalDateTime.of(2024, 8, 17, 18, 0), "Setapak centre", volunteerList, false);
+            Event event4 = new Event("E004"," Community Orphanage service", "Orphanage service", LocalDateTime.of(2024, 8, 18, 8, 0),
+                    LocalDateTime.of(2024, 8, 18, 18, 0), "Setapak Orphanage", volunteerList, false);
+            Event event5 = new Event("E005"," Community clean service", "cleaning service", LocalDateTime.of(2024, 8, 19, 8, 0),
+                    LocalDateTime.of(2024, 8, 19, 18, 0), "Setapak Garden", volunteerList, false);
             
             eventQueue.enqueue(event1);
             eventQueue.enqueue(event2);
