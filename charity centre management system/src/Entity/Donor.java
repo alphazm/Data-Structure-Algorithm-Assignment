@@ -10,7 +10,7 @@ public class Donor{
     
     private static int idCounter = 1000;
     String name;
-    int donorID;
+    String donorID;
     Category category;
     int contactNumber;
     LocalDate datejoin;
@@ -32,9 +32,9 @@ public class Donor{
         this.datejoin = date;
     }
     
-    private int generatedId(){
+    private String generatedId(){
         CountId();
-        return idCounter;
+        return "DN"+idCounter;
     }
             
     private static int CountId(){
@@ -48,12 +48,12 @@ public class Donor{
     public void setName(String name) {
         this.name = name;
     }
-    public int getDonorId(){
+    public String getDonorId(){
         return donorID;
     }
 
     public void setDonorID(int donorID) {
-        this.donorID = donorID;
+        this.donorID = "DN"+donorID;
     }
     
     public Category getCategory() {
