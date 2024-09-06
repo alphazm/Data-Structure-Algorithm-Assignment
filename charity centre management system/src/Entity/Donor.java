@@ -34,7 +34,7 @@ public class Donor{
     
     private String generatedId(){
         CountId();
-        return "DN"+idCounter;
+        return String.valueOf(idCounter);
     }
             
     private static int CountId(){
@@ -52,8 +52,8 @@ public class Donor{
         return donorID;
     }
 
-    public void setDonorID(int donorID) {
-        this.donorID = "DN"+donorID;
+    public void setDonorID(String donorID) {
+        this.donorID = donorID;
     }
     
     public Category getCategory() {
