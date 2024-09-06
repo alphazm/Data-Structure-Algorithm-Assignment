@@ -37,7 +37,7 @@ public class DDSubsystem {
             // get donation id of donation
             int i = (Integer) temp.getEntry(1);
             DonationIDs.addinArray(i);
-            
+
             countList += 1;
         } while (countList != numElementList);
     }
@@ -58,9 +58,27 @@ public class DDSubsystem {
 //        DonationDistributionMainPage();
 //        DonationManagement(true);
 //    }
-    
     // dd main page 
     public static void DonationDistributionMainPage() {
+        //raw data
+        if (DDcount == 1) {
+            DonationDistribution fisrtDD = new DonationDistribution();
+            int firstId = generateDDistributionId();
+
+            ArrayList<Integer> donationIds = new ArrayList<>();
+            donationIds.addinArray(240801);
+            donationIds.addinArray(240802);
+            donationIds.addinArray(240803);
+
+            DonationDistribution firstData = new DonationDistribution();
+            firstData.setdDistributionid(firstId);
+            firstData.setDoneeid("DE1");
+            firstData.setDonationid(donationIds);
+            firstData.setState("Ready to Serve");
+            
+            donationDistributions.addinArray(firstData);
+            DDcount++;
+        }
         System.out.println("WELCOME TO DONATION DISTRIBUTION SYSTEM");
         System.out.println("-----------------------------------------");
         System.out.println("Select your option :");
@@ -432,4 +450,3 @@ public class DDSubsystem {
         }
     }
 }
-
