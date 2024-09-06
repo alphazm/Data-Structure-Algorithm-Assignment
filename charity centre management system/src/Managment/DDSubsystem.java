@@ -53,11 +53,11 @@ public class DDSubsystem {
         }
     }
 
-    public static void main(String[] args) {
-        DonationManagement(false);
-        gettingDonations(DonationManagement.cll);
-        DonationDistributionMainPage();
-    }
+//    public static void main(String[] args) {
+//        DonationManagement(false);
+//        DonationDistributionMainPage();
+//        DonationManagement(true);
+//    }
     
     // dd main page 
     public static void DonationDistributionMainPage() {
