@@ -9,6 +9,7 @@ import ADT.CircularLinkedList;
 import ADT.LinearLinkedList;
 import Entity.DonationDistribution;
 import Entity.Donee;
+import static Managment.DonationManagement.DonationManagement;
 import java.time.LocalDate;
 import java.util.Scanner;
 import java.awt.AWTException;
@@ -26,22 +27,17 @@ public class DDSubsystem {
     private static ArrayList<DonationDistribution> donationDistributions = new ArrayList<>();// dd array list
     public static int DDcount = 1; // Data counting (dd) 
 
-    public void gettingDonations(CircularLinkedList donationsData) {
+    public static void gettingDonations(CircularLinkedList donationsData) {
         donations = donationsData;
         DonationIDs.clearOut(); // Clear existing IDs if necessary
         int numElementList = donations.getNumberOfEntries() + 1;
         int countList = 1;
         do {
             CircularLinkedList temp = (CircularLinkedList) donations.getEntry(countList);
-            int numElement = temp.getNumberOfEntries() + 1;
-            int count = 1;
-            do {
-                // get donation id of donation
-                int i = (Integer) temp.getEntry(1);
-                DonationIDs.addinArray(i);
-                // here u store the i to your list
-                count += 1;
-            } while (count != numElement);
+            // get donation id of donation
+            int i = (Integer) temp.getEntry(1);
+            DonationIDs.addinArray(i);
+            
             countList += 1;
         } while (countList != numElementList);
     }
@@ -57,6 +53,12 @@ public class DDSubsystem {
         }
     }
 
+    public static void main(String[] args) {
+        DonationManagement(false);
+        gettingDonations(DonationManagement.cll);
+        DonationDistributionMainPage();
+    }
+    
     // dd main page 
     public static void DonationDistributionMainPage() {
         System.out.println("WELCOME TO DONATION DISTRIBUTION SYSTEM");

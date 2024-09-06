@@ -5,7 +5,7 @@ package Managment;
 
 import ADT.CircularLinkedList;
 import Entity.Donation;
-import static Managment.DDSubsystem.DonationDistributionMainPage;
+import Entity.DonationManage;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
@@ -17,13 +17,15 @@ import java.util.Scanner;
  *
  * @author Heng Wei Long
  */
-public class DonationManagement {
+public class DonationManagement{
 
     static Scanner s = new Scanner(System.in);
 
     // trying make circular linked list storing circular linked list
     static CircularLinkedList cll = new CircularLinkedList();
+    static CircularLinkedList cll2 = new CircularLinkedList();
     static Donation donation = new Donation();
+    static DonationManage donationManage = new DonationManage();
     
     public static void main(String[] args) {
         DonationManagement(true);
@@ -113,56 +115,56 @@ public class DonationManagement {
 
     public static void dataInput() {
         // Add 50 donations
-        insertDonation(10001, "1001", "2024-08-01 10:05:19", false, new Donation("Supplies", "Drinks: Water", 20, 0.00));
-        insertDonation(10002, "1001", "2024-08-01 14:10:19", false, new Donation("Funds", "Online Bank Transfer", 1, 500.00));
-        insertDonation(10003, "1001", "2024-08-02 12:15:19", false, new Donation("Supplies", "Drinks: Water", 20, 0.00));
-        insertDonation(10004, "1002", "2024-08-02 15:20:19", false, new Donation("Supplies", "Food: Bread", 5, 0.00));
-        insertDonation(10005, "1002", "2024-08-03 10:25:19", false, new Donation("Funds", "Cash", 1, 300.00));
-        insertDonation(10006, "1003", "2024-08-04 12:30:19", false, new Donation("Funds", "Credit Card", 1, 1000.00));
-        insertDonation(10007, "1003", "2024-08-04 15:35:19", false, new Donation("Supplies", "Food: Maggie", 10, 0.00));
-        insertDonation(10008, "1004", "2024-08-04 19:40:19", false, new Donation("Funds", "Check", 1, 200.00));
-        insertDonation(10009, "1004", "2024-08-05 11:45:19", false, new Donation("Supplies", "Drinks: Water", 50, 0.00));
-        insertDonation(10010, "1005", "2024-08-06 14:50:19", false, new Donation("Funds", "Cash", 1, 150.00));
-        insertDonation(10011, "1005", "2024-08-07 16:55:19", false, new Donation("Supplies", "Food: Canned Goods", 30, 0.00));
-        insertDonation(10012, "1006", "2024-08-07 11:00:19", false, new Donation("Supplies", "Drinks: Juice", 10, 0.00));
-        insertDonation(10013, "1006", "2024-08-08 14:05:19", false, new Donation("Funds", "Bank Deposit", 1, 250.00));
-        insertDonation(10014, "1007", "2024-08-09 13:10:19", false, new Donation("Funds", "Online Payment", 1, 400.00));
-        insertDonation(10015, "1007", "2024-08-10 11:15:19", false, new Donation("Supplies", "Food: Rice", 100, 0.00));
-        insertDonation(10016, "1008", "2024-08-11 17:20:19", false, new Donation("Supplies", "Drinks: Soda", 15, 0.00));
-        insertDonation(10017, "1008", "2024-08-12 15:25:19", false, new Donation("Funds", "Cash", 1, 700.00));
-        insertDonation(10018, "1009", "2024-08-13 16:30:19", false, new Donation("Supplies", "Food: Fruits", 35, 0.00));
-        insertDonation(10019, "1009", "2024-08-14 13:35:19", false, new Donation("Funds", "Online Bank Transfer", 1, 350.00));
-        insertDonation(10020, "1010", "2024-08-14 14:40:19", false, new Donation("Funds", "Credit Card", 1, 600.00));
-        insertDonation(10021, "1021", "2024-08-15 12:45:19", false, new Donation("Funds", "Credit Card", 1, 750.00));
-        insertDonation(10022, "1022", "2024-08-16 10:50:19", false, new Donation("Supplies", "Drinks: Juice", 15, 0.00));
-        insertDonation(10023, "1023", "2024-08-16 14:55:19", false, new Donation("Funds", "Bank Deposit", 1, 650.00));
-        insertDonation(10024, "1024", "2024-08-17 12:00:19", false, new Donation("Supplies", "Food: Snacks", 40, 0.00));
-        insertDonation(10025, "1025", "2024-08-18 12:05:19", false, new Donation("Supplies", "Drinks: Water", 30, 0.00));
-        insertDonation(10026, "1004", "2024-08-19 12:10:19", false, new Donation("Funds", "Check", 1, 200.00));
-        insertDonation(10027, "1009", "2024-08-20 12:15:19", false, new Donation("Funds", "Online Bank Transfer", 1, 350.00));
-        insertDonation(10028, "1012", "2024-08-20 15:20:19", false, new Donation("Supplies", "Food: Cereal", 60, 0.00));
-        insertDonation(10029, "1003", "2024-08-21 12:25:19", false, new Donation("Supplies", "Drinks: Soda", 10, 0.00));
-        insertDonation(10030, "1006", "2024-08-22 12:30:19", false, new Donation("Supplies", "Food: Bread", 10, 0.00));
-        insertDonation(10031, "1007", "2024-08-23 12:35:19", false, new Donation("Funds", "Online Payment", 1, 400.00));
-        insertDonation(10032, "1002", "2024-08-23 15:40:19", false, new Donation("Funds", "Cash", 1, 300.00));
-        insertDonation(10033, "1010", "2024-08-24 12:45:19", false, new Donation("Supplies", "Food: Pasta", 40, 0.00));
-        insertDonation(10034, "1008", "2024-08-24 16:50:19", false, new Donation("Supplies", "Drinks: Water", 15, 0.00));
-        insertDonation(10035, "1011", "2024-08-25 12:55:19", false, new Donation("Funds", "Check", 1, 800.00));
-        insertDonation(10036, "1015", "2024-08-25 17:00:19", false, new Donation("Funds", "Credit Card", 1, 300.00));
-        insertDonation(10037, "1020", "2024-08-25 13:05:19", false, new Donation("Funds", "Online Payment", 1, 900.00));
-        insertDonation(10038, "1018", "2024-08-25 18:10:19", false, new Donation("Funds", "Online Bank Transfer", 1, 450.00));
-        insertDonation(10039, "1005", "2024-08-26 10:15:19", false, new Donation("Supplies", "Food: Canned Goods", 30, 0.00));
-        insertDonation(10040, "1024", "2024-08-26 13:20:19", false, new Donation("Funds", "Check", 1, 400.00));
-        insertDonation(10041, "1019", "2024-08-27 10:25:19", false, new Donation("Funds", "Check", 1, 550.00));
-        insertDonation(10042, "1014", "2024-08-27 13:30:19", false, new Donation("Supplies", "Drinks: Water", 15, 0.00));
-        insertDonation(10043, "1021", "2024-08-28 16:35:19", false, new Donation("Supplies", "Food: Beverages", 20, 0.00));
-        insertDonation(10044, "1007", "2024-08-28 17:40:19", false, new Donation("Supplies", "Food: Rice", 100, 0.00));
-        insertDonation(10045, "1013", "2024-08-29 10:45:19", false, new Donation("Funds", "Bank Deposit", 1, 450.00));
-        insertDonation(10046, "1022", "2024-08-30 13:50:19", false, new Donation("Funds", "Cash", 1, 200.00));
-        insertDonation(10047, "1023", "2024-08-30 17:55:19", false, new Donation("Supplies", "Drinks: Juice", 25, 0.00));
-        insertDonation(10048, "1008", "2024-08-31 14:00:19", false, new Donation("Funds", "Cash", 1, 700.00));
-        insertDonation(10049, "1006", "2024-09-01 10:05:19", false, new Donation("Supplies", "Drinks: Soda", 10, 0.00));
-        insertDonation(10050, "1001", "2024-09-01 14:10:19", false, new Donation("Supplies", "Drinks: Juice", 20, 0.00));
+        insertDonation(10001, "1001", "2024-08-01 10:05", false, new Donation("Supplies", "Drinks: Water", 20, 0.00));
+        insertDonation(10002, "1001", "2024-08-01 14:10", false, new Donation("Funds", "Online Bank Transfer", 1, 500.00));
+        insertDonation(10003, "1001", "2024-08-02 12:15", false, new Donation("Supplies", "Drinks: Water", 20, 0.00));
+        insertDonation(10004, "1002", "2024-08-02 15:20", false, new Donation("Supplies", "Food: Bread", 5, 0.00));
+        insertDonation(10005, "1002", "2024-08-03 10:25", false, new Donation("Funds", "Cash", 1, 300.00));
+        insertDonation(10006, "1003", "2024-08-04 12:30", false, new Donation("Funds", "Credit Card", 1, 1000.00));
+        insertDonation(10007, "1003", "2024-08-04 15:35", false, new Donation("Supplies", "Food: Maggie", 10, 0.00));
+        insertDonation(10008, "1004", "2024-08-04 19:40", false, new Donation("Funds", "Check", 1, 200.00));
+        insertDonation(10009, "1004", "2024-08-05 11:45", false, new Donation("Supplies", "Drinks: Water", 50, 0.00));
+        insertDonation(10010, "1005", "2024-08-06 14:50", false, new Donation("Funds", "Cash", 1, 150.00));
+        insertDonation(10011, "1005", "2024-08-07 16:55", false, new Donation("Supplies", "Food: Canned Goods", 30, 0.00));
+        insertDonation(10012, "1006", "2024-08-07 11:00", false, new Donation("Supplies", "Drinks: Juice", 10, 0.00));
+        insertDonation(10013, "1006", "2024-08-08 14:05", false, new Donation("Funds", "Bank Deposit", 1, 250.00));
+        insertDonation(10014, "1007", "2024-08-09 13:10", false, new Donation("Funds", "Online Payment", 1, 400.00));
+        insertDonation(10015, "1007", "2024-08-10 11:15", false, new Donation("Supplies", "Food: Rice", 100, 0.00));
+        insertDonation(10016, "1008", "2024-08-11 17:20", false, new Donation("Supplies", "Drinks: Soda", 15, 0.00));
+        insertDonation(10017, "1008", "2024-08-12 15:25", false, new Donation("Funds", "Cash", 1, 700.00));
+        insertDonation(10018, "1009", "2024-08-13 16:30", false, new Donation("Supplies", "Food: Fruits", 35, 0.00));
+        insertDonation(10019, "1009", "2024-08-14 13:35", false, new Donation("Funds", "Online Bank Transfer", 1, 350.00));
+        insertDonation(10020, "1010", "2024-08-14 14:40", false, new Donation("Funds", "Credit Card", 1, 600.00));
+        insertDonation(10021, "1021", "2024-08-15 12:45", false, new Donation("Funds", "Credit Card", 1, 750.00));
+        insertDonation(10022, "1022", "2024-08-16 10:50", false, new Donation("Supplies", "Drinks: Juice", 15, 0.00));
+        insertDonation(10023, "1023", "2024-08-16 14:55", false, new Donation("Funds", "Bank Deposit", 1, 650.00));
+        insertDonation(10024, "1024", "2024-08-17 12:00", false, new Donation("Supplies", "Food: Snacks", 40, 0.00));
+        insertDonation(10025, "1025", "2024-08-18 12:05", false, new Donation("Supplies", "Drinks: Water", 30, 0.00));
+        insertDonation(10026, "1004", "2024-08-19 12:10", false, new Donation("Funds", "Check", 1, 200.00));
+        insertDonation(10027, "1009", "2024-08-20 12:15", false, new Donation("Funds", "Online Bank Transfer", 1, 350.00));
+        insertDonation(10028, "1012", "2024-08-20 15:20", false, new Donation("Supplies", "Food: Cereal", 60, 0.00));
+        insertDonation(10029, "1003", "2024-08-21 12:25", false, new Donation("Supplies", "Drinks: Soda", 10, 0.00));
+        insertDonation(10030, "1006", "2024-08-22 12:30", false, new Donation("Supplies", "Food: Bread", 10, 0.00));
+        insertDonation(10031, "1007", "2024-08-23 12:35", false, new Donation("Funds", "Online Payment", 1, 400.00));
+        insertDonation(10032, "1002", "2024-08-23 15:40", false, new Donation("Funds", "Cash", 1, 300.00));
+        insertDonation(10033, "1010", "2024-08-24 12:45", false, new Donation("Supplies", "Food: Pasta", 40, 0.00));
+        insertDonation(10034, "1008", "2024-08-24 16:50", false, new Donation("Supplies", "Drinks: Water", 15, 0.00));
+        insertDonation(10035, "1011", "2024-08-25 12:55", false, new Donation("Funds", "Check", 1, 800.00));
+        insertDonation(10036, "1015", "2024-08-25 17:00", false, new Donation("Funds", "Credit Card", 1, 300.00));
+        insertDonation(10037, "1020", "2024-08-25 13:05", false, new Donation("Funds", "Online Payment", 1, 900.00));
+        insertDonation(10038, "1018", "2024-08-25 18:10", false, new Donation("Funds", "Online Bank Transfer", 1, 450.00));
+        insertDonation(10039, "1005", "2024-08-26 10:15", false, new Donation("Supplies", "Food: Canned Goods", 30, 0.00));
+        insertDonation(10040, "1024", "2024-08-26 13:20", false, new Donation("Funds", "Check", 1, 400.00));
+        insertDonation(10041, "1019", "2024-08-27 10:25", false, new Donation("Funds", "Check", 1, 550.00));
+        insertDonation(10042, "1014", "2024-08-27 13:30", false, new Donation("Supplies", "Drinks: Water", 15, 0.00));
+        insertDonation(10043, "1021", "2024-08-28 16:35", false, new Donation("Supplies", "Food: Beverages", 20, 0.00));
+        insertDonation(10044, "1007", "2024-08-28 17:40", false, new Donation("Supplies", "Food: Rice", 100, 0.00));
+        insertDonation(10045, "1013", "2024-08-29 10:45", false, new Donation("Funds", "Bank Deposit", 1, 450.00));
+        insertDonation(10046, "1022", "2024-08-30 13:50", false, new Donation("Funds", "Cash", 1, 200.00));
+        insertDonation(10047, "1023", "2024-08-30 17:55", false, new Donation("Supplies", "Drinks: Juice", 25, 0.00));
+        insertDonation(10048, "1008", "2024-08-31 14:00", false, new Donation("Funds", "Cash", 1, 700.00));
+        insertDonation(10049, "1006", "2024-09-01 10:05", false, new Donation("Supplies", "Drinks: Soda", 10, 0.00));
+        insertDonation(10050, "1001", "2024-09-01 14:10", false, new Donation("Supplies", "Drinks: Juice", 20, 0.00));
     }
 
     public static int getNewestDonationId() {
@@ -176,7 +178,7 @@ public class DonationManagement {
     public static void addDonation(String donorId) {
         int donationId = getNewestDonationId();
         LocalDateTime currentDateTime = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         String formattedDateTime = currentDateTime.format(formatter);
         donation = new Donation();
         int inputInt = chooseCategory();
@@ -272,7 +274,8 @@ public class DonationManagement {
         clldata.add(dateTime);
         clldata.add(fromEvent);
         clldata.add(donation);
-
+        donationManage = new DonationManage(donationId, donorId, dateTime, fromEvent, donation);
+        cll2.add(donationManage);
         cll.add(clldata);
     }
 

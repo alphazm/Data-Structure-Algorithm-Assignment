@@ -67,6 +67,46 @@ public class CircularLinkedList<T> implements ListInterface<T> {
         }
         return result;
     }
+    
+//    @Override
+//    public T remove(T anEntry) {
+//        T result = null;
+//        if (isEmpty()) {
+//            return result;
+//        }
+//        Node entry = new Node(anEntry);
+//        // Start with the first node
+//        Node current = lastNode.next;
+//        // The previous node start from last
+//        Node previous = lastNode;
+//
+//            System.out.println(entry);
+//            System.out.println(lastNode);
+//        do {
+//            System.out.println(current);
+//            if (current == anEntry) {
+//                if (current == lastNode) {
+//                    result = (T) current;
+//                    // if the node only node
+//                    if (lastNode == lastNode.next) {
+//                        lastNode = null;
+//                    } // if not the only
+//                    else {
+//                        previous.next = current.next;
+//                        lastNode = previous;
+//                    }
+//                }
+//                else {
+//                    result = (T) current;
+//                    previous.next = current.next;
+//                }
+//            }
+//            // Update previous only after checking, to correctly track the previous node
+//            previous = current;
+//            current = current.next;
+//        } while (current != lastNode.next);
+//        return result;
+//    }
 
     // remove the group by the donationId
     @Override
