@@ -134,7 +134,7 @@ public class mainfile {
         while(repeat){
             System.out.println();
             System.out.println("1.  donation management");
-            System.out.println("2.  dd");
+            System.out.println("2.  donation distribution");
             System.out.println("3.  donee");
             System.out.println("4.  event");
             System.out.println("5.  donor");

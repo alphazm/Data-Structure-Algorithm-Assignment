@@ -192,10 +192,20 @@ public class DonationManagement{
             case 1:
                 donation.setDonationCategory("Funds");
                 donation.setItemDescription(enterFundsType());
+                donation.setItemQuantity(1);
+                System.out.print("Enter Amount: ");
+                double amt = s.nextDouble();
+                s.nextLine();
+                donation.setAmount(amt);
                 break;
             case 2:
                 donation.setDonationCategory("Supplies");
                 donation.setItemDescription(chooseSupplies());
+                System.out.print("Enter Item Quantity: ");
+                int qty = s.nextInt();
+                s.nextLine();
+                donation.setItemQuantity(qty);
+                donation.setAmount(0);
                 break;
             default:
                 System.out.println("Add Donation Fail!");
@@ -214,16 +224,6 @@ public class DonationManagement{
                 System.out.print("Enter Event Id: ");
                 fromEvent = s.nextLine();
             }
-            
-            System.out.print("Enter Item Quantity: ");
-            int qty = s.nextInt();
-            s.nextLine();
-            donation.setItemQuantity(qty);
-
-            System.out.print("Enter Amount: ");
-            double amt = s.nextDouble();
-            s.nextLine();
-            donation.setAmount(amt);
             
             System.out.println("Donation Id\tDonor Id\tEvent\tDonation Category\tItem Description\tItem Quantity\t    Amount");
             System.out.format("%d\t\t%s\t\t%s\t", donationId, donorId, fromEvent);
