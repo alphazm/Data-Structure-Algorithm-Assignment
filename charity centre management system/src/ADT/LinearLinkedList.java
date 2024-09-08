@@ -13,6 +13,11 @@ public class LinearLinkedList<T> implements ListInterface<T> {
     private Node firstNode;
     private int numberOfEntries;
 
+    @Override
+    public T remove(T anEntry) {
+        return null;
+    }
+
     private class Node {
 
         private T data;
@@ -81,7 +86,7 @@ public class LinearLinkedList<T> implements ListInterface<T> {
     }
 
     @Override
-    public T remove(T anEntry) {
+    public T remove(int anEntry) {
         int givenPosition = (Integer) anEntry;
         T result = null;
         if ((givenPosition >= 1) && (givenPosition <= numberOfEntries)) {

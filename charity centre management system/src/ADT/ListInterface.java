@@ -25,4 +25,5 @@ public interface ListInterface<T> {
     public int size();
     public void expandArray();
     public void update(int index,T newItem);
+    public T remove(int anEntry);
 }

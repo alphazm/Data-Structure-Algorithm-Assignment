@@ -113,4 +113,9 @@ public class ArrayList<T> implements ListInterface<T> {
     public boolean contains(T anEntry) {
         return false;
     }
+
+    @Override
+    public T remove(int anEntry) {
+        return null;
+    }
 }

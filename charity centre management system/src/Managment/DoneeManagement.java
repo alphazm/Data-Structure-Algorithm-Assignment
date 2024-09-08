@@ -1,4 +1,4 @@
-package Management;
+package Managment;
 
 /**
  *
@@ -6,7 +6,7 @@ package Management;
  */
 import Entity.Donee;
 import Entity.DonationDistribution;
-import Management.DDSubsystem;
+import Managment.DDSubsystem;
 import ADT.ArrayList;
 import ADT.LinearLinkedList;
 import java.awt.AWTException;
@@ -17,7 +17,8 @@ import java.util.Scanner;
 interface IDoneeManagement {
     void addDonee(String doneeName, String phoneNo, String address);
     void removeDonee(String doneeID);
-    void updateDonee(String doneeID, String doneeName, String phoneNo, String address);
+    void updateDonee(String doneeID, String doneeName, 
+            String phoneNo, String address);
     Donee searchDonee(String doneeID);
     void listAllDonees();
     void doneeReport();
@@ -28,7 +29,7 @@ public class DoneeManagement implements IDoneeManagement{
         doneeList = new LinearLinkedList<>();
     }
        
-    public static void main(String[]args) {
+    public static void DoneeMenu() {
         DoneeManagement doneeManagement = new DoneeManagement();
         Scanner scanner = new Scanner(System.in);
         int choice;
@@ -70,7 +71,8 @@ public class DoneeManagement implements IDoneeManagement{
                     String newPhoneNo = scanner.nextLine();
                     System.out.print("Enter new Address: ");
                     String newAddress = scanner.nextLine();
-                    doneeManagement.updateDonee(updateDoneeID, newDoneeName, newPhoneNo, newAddress);
+                    doneeManagement.updateDonee(updateDoneeID, 
+                            newDoneeName, newPhoneNo, newAddress);
                     break;
 
                 case 3:
@@ -110,7 +112,8 @@ public class DoneeManagement implements IDoneeManagement{
                     break;
 
                 default:
-                    System.out.println("Invalid choice! Please enter a valid option.");
+                    System.out.println("Invalid choice! "
+                            + "Please enter a valid option.");
             }
         } while (choice != 0);
     }
@@ -120,8 +123,11 @@ public class DoneeManagement implements IDoneeManagement{
 
     for (int i = 0; i < doneeList.size(); i++) {
         Donee donee = doneeList.get(i);
-        if (donee.getDoneeName().equals(doneeName) && donee.getPhoneNo().equals(phoneNo) && donee.getAddress().equals(address)) {
-            System.out.println("The donee " + doneeName + " with the donee ID: " + donee.getDoneeID() + " is in the list already.");
+        if (donee.getDoneeName().equals(doneeName) && 
+                donee.getPhoneNo().equals(phoneNo) && 
+                donee.getAddress().equals(address)) {
+            System.out.println("The donee " + doneeName + " with the donee ID: "
+                    + donee.getDoneeID() + " is in the list already.");
             return; // Exit the method without adding the donee
         }
     }
@@ -157,7 +163,8 @@ public class DoneeManagement implements IDoneeManagement{
 
 
 
-    public void updateDonee(String doneeID, String doneeName, String phoneNo, String address) {
+    public void updateDonee(String doneeID, String doneeName, 
+            String phoneNo, String address) {
         if (doneeList.isEmpty()) {
             System.out.println("The Donee list is empty");
             return;
@@ -229,7 +236,8 @@ public class DoneeManagement implements IDoneeManagement{
             rob.keyPress(KeyEvent.VK_L); // press "L"
             rob.keyRelease(KeyEvent.VK_L); // unpress "L"
             rob.keyRelease(KeyEvent.VK_CONTROL); // unpress "CTRL"
-            Thread.sleep(1000); // add delay in milisecond, if not there will automatically stop after clear
+            Thread.sleep(1000); // add delay in milisecond, 
+            //if not there will automatically stop after clear
             } catch (InterruptedException e) { e.printStackTrace(); }
         } catch(AWTException e) { e.printStackTrace(); }
     }

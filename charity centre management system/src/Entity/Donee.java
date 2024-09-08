@@ -1,11 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Entity;
 
 /**
@@ -75,14 +67,14 @@ public class Donee {
         if (receivedItems.size() == 0) {
             return "None";
         }
-        String string = new String();
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < receivedItems.size(); i++) {
             if (i > 0) {
-                string.append(", ");
+                sb.append(", ");
             }
-            string.append(receivedItems.get(i));
+            sb.append(receivedItems.get(i));
         }
-        return string.toString();
+        return sb.toString();
     }
     
     

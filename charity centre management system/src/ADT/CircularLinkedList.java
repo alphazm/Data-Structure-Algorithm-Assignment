@@ -14,6 +14,11 @@ public class CircularLinkedList<T> implements ListInterface<T> {
         lastNode = null;
     }
 
+    @Override
+    public T remove(int anEntry) {
+       return null;
+    }
+
     public class Node {
 
         private final T data;
