@@ -33,21 +33,14 @@ public class CircularLinkedList<T> implements ListInterface<T> {
     // add newNode at the end of list
     @Override
     public boolean add(T newEntry) {
-        // create newNode
         Node newNode = new Node(newEntry);
-
-        // when empty, inserting the first node to the list
         if (isEmpty()) {
-            // point first and last to newNode  1(1)
             lastNode = newNode;
             lastNode.next = lastNode;
-        } // inseting to the list with existing items
+        }
         else {
-            // point lastNode.next = firstNode to newNode.next  // 4() -> 4(1)
             newNode.next = lastNode.next;
-            // lastNode point to newNode    // 1(2), 2(3), 3(1) + 4(1): 3(4) + 4(1)
             lastNode.next = newNode;
-            // newNode become last      // 1(2), 2(3), 3(4), 4(1)
             lastNode = newNode;
         }
         return true;
@@ -76,38 +69,23 @@ public class CircularLinkedList<T> implements ListInterface<T> {
         if (isEmpty() || givenPosition < 1 || givenPosition > getNumberOfEntries()) {
             return result;
         }
-
-        // Start with the first node (which is lastNode.next in a circular list)
         Node current = lastNode.next;
-        // The previous node starts from lastNode
         Node previous = lastNode;
-
-        // Case 1: If the node to remove is the first node (position 1)
         if (givenPosition == 1) {
             result = (T) current.data;
-
-            // If there is only one node in the list
             if (lastNode == lastNode.next) {
                 lastNode = null;
             } else {
-                // Remove the first node
-                previous.next = current.next; // Update the last node to point to the second node
-                lastNode.next = current.next; // Move the head to the next node
+                previous.next = current.next;
+                lastNode.next = current.next;
             }
         } else {
-            // Case 2: Traverse the list to find the node at the given position
             for (int i = 1; i < givenPosition; i++) {
                 previous = current;
                 current = current.next;
             }
-
-            // Now current is at the position to be removed
             result = (T) current.data;
-
-            // Remove the current node by adjusting the previous node's next pointer
             previous.next = current.next;
-
-            // If the removed node was the lastNode, update the lastNode reference
             if (current == lastNode) {
                 lastNode = previous;
             }

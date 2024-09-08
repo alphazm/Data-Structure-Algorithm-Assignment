@@ -17,7 +17,7 @@ import java.util.Scanner;
 public class EventManagementSystem {
     
     
-        LinkedQueueInterface<Event> eventQueue = new LinkedQueue<>();
+        static LinkedQueueInterface<Event> eventQueue = new LinkedQueue<>();
         
         private Scanner scanner; 
         
@@ -26,6 +26,9 @@ public class EventManagementSystem {
         this.scanner = new Scanner(System.in);
         }
         
+        public static LinkedQueueInterface<Event> getEvent() {
+            return eventQueue;
+        }
         
         // Create some volunteers
         volunteer volunteer1 = new volunteer("V001", "John", "Doe", "john@example.com", 

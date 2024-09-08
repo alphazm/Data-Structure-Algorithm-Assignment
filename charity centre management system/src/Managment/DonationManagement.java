@@ -5,15 +5,18 @@ package Managment;
 
 import ADT.ArrayList;
 import ADT.CircularLinkedList;
+import ADT.LinkedQueueInterface;
 import ADT.LinkedStack;
 import Entity.Donation;
 import Entity.DonationDistribution;
 import Entity.DonationManage;
+import Entity.Event;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Iterator;
 import java.util.Scanner;
 
 /**
@@ -28,6 +31,7 @@ public class DonationManagement{
     static DonationManage dm = new DonationManage();
     static LinkedStack ls = new LinkedStack();
     private static final ArrayList<DonationDistribution> donationDistributions = DDSubsystem.getDDList();// dd array list
+    static LinkedQueueInterface<Event> eventQueue = EventManagementSystem.getEvent();
     
     public static CircularLinkedList getList() {
         return cll;
@@ -200,6 +204,16 @@ public class DonationManagement{
         if (inputInt != 0) {
             System.out.print("Is the donation come from Event?(if no click enter): ");
             String fromEvent = s.nextLine();
+            if (!fromEvent.isEmpty()) {
+                System.out.println("Event ID");
+                Iterator<Event> iterator = eventQueue.getIterator();
+                while (iterator.hasNext()) {
+                    Event event = iterator.next();
+                    System.out.println(event.getEventId());
+                }
+                System.out.print("Enter Event Id: ");
+                fromEvent = s.nextLine();
+            }
             
             System.out.print("Enter Item Quantity: ");
             int qty = s.nextInt();
@@ -821,6 +835,14 @@ public class DonationManagement{
         } catch (AWTException e) {
             e.printStackTrace();
         }
+    }
+
+    private static void EventsLists() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private static void EventList() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
 
