@@ -214,16 +214,14 @@ public class DonationManagement{
         }
         if (inputInt != 0) {
             if (donorId.equals("0")) {
-                if (!fromEvent.isEmpty()) {
-                    System.out.println("Event ID");
-                    Iterator<Event> iterator = eventQueue.getIterator();
-                    while (iterator.hasNext()) {
-                        Event event = iterator.next();
-                        System.out.println(event.getEventId());
-                    }
-                    System.out.print("Enter Event Id: ");
-                    fromEvent = s.nextLine();
+                System.out.println("Event ID");
+                Iterator<Event> iterator = eventQueue.getIterator();
+                while (iterator.hasNext()) {
+                    Event event = iterator.next();
+                    System.out.println(event.getEventId());
                 }
+                System.out.print("Enter Event Id: ");
+                fromEvent = s.nextLine();
             }
             
             System.out.println("Donation Id\tDonor Id\tEvent\tDonation Category\tItem Description\tItem Quantity\t    Amount");
