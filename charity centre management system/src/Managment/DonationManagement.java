@@ -8,6 +8,7 @@ import ADT.CircularLinkedList;
 import ADT.LinkedQueue;
 import ADT.LinkedStack;
 import Entity.Donation;
+import Entity.DonationDistribution;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
@@ -27,6 +28,7 @@ public class DonationManagement{
     static CircularLinkedList cll = new CircularLinkedList();
     static Donation donation = new Donation();
     static LinkedStack ls = new LinkedStack();
+    private static ArrayList<DonationDistribution> donationDistributions = new ArrayList<>();// dd array list
     
     public static void main(String[] args) {
         DonationManagement(false);

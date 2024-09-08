@@ -115,48 +115,6 @@ public class CircularLinkedList<T> implements ListInterface<T> {
     return result;
 }
 
-//    // remove the group by the donationId
-//    @Override
-//    public T remove(T anEntry) {
-//        T result = null;
-//        if (isEmpty()) {
-//            return result;
-//        }
-//        // Start with the first node
-//        Node current = lastNode.next;
-//        // The previous node start from last
-//        Node previous = lastNode;
-//
-//        do {
-//            CircularLinkedList temp = (CircularLinkedList) current.data;
-//
-//            // turn the data into integer
-//            int i = (Integer) temp.getEntry(1);
-//            if (i == (Integer) anEntry) { //turn the input from T to integer
-//                // if the node is last node
-//                if (current == lastNode) {
-//                    // if the node only node
-//                    if (lastNode == lastNode.next) {
-//                        lastNode = null;
-//                    } // if not the only
-//                    else {
-//                        previous.next = current.next;
-//                        lastNode = previous;
-//                    }
-//                } else {
-//                    previous.next = current.next;
-//                }
-//                result = (T) temp.getEntry(1);
-//                return result;
-//            }
-//            // Update previous only after checking, to correctly track the previous node
-//            previous = current;
-//            current = current.next;
-//        } while (current != lastNode.next);
-//
-//        return result;
-//    }
-
     // update the element input by replace the data
     @Override
     public boolean replace(int givenPosition, T newEntry) {
