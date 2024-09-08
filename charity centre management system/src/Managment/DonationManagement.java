@@ -508,8 +508,8 @@ public class DonationManagement{
                 previousId = temp.getDonorId();
             }
             System.out.print("\t" + temp.getDonationId() + "\t\t");
-            System.out.println(temp.getDateTime() + "\t\t");
-            System.out.println(temp.getFromEvent() + "\t\t");
+            System.out.print(temp.getDateTime() + "\t\t");
+            System.out.print(temp.getFromEvent() + "\t\t");
             donation = temp.getDonation();
             System.out.println(donation.toString());
 
@@ -814,6 +814,7 @@ public class DonationManagement{
             totalItems += donation.getItemQuantity();
             count += 1;
         } while (count != numElement);
+        System.out.println(" Donation Management Report");
         System.out.println(" Total Donations: " + cll.getNumberOfEntries());
         System.out.println(" Total Item Quantity: " + totalItems);
         System.out.println(" Total Amount: $" + totalAmount);
