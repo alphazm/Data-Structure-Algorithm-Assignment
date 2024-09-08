@@ -4,7 +4,7 @@ package ADT;
 /**
  *
 
- * @author Heng Wei Long
+ * @author Heng Wei Long, Alden Ling Li Xuan, Chan Win Yit
  */
 public interface ListInterface<T> {
     public boolean add(T newEntry);

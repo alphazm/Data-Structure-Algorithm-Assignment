@@ -11,7 +11,8 @@ public class DonationManage {
     private String fromEvent;
     private Donation donation;
 
-    public DonationManage(int donationId, String donorId, String dateTime, String fromEvent, Donation donation) {
+    public DonationManage(int donationId, String donorId, String dateTime, 
+            String fromEvent, Donation donation) {
         this.donationId = donationId;
         this.donorId = donorId;
         this.dateTime = dateTime;
@@ -64,6 +65,7 @@ public class DonationManage {
 
     @Override
     public String toString() {
-        return String.format(donationId + "\t\t" + donorId + "\t\t" + dateTime + "\t\t" + fromEvent + "\t\t" + donation.toString());
+        return String.format(donationId + "\t\t" + donorId + "\t\t" + dateTime 
+                + "\t\t" + fromEvent + "\t\t" + donation.toString());
     }
 }

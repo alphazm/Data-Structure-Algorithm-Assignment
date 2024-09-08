@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ADT;
 
 /**
@@ -147,39 +143,31 @@ public class CircularLinkedList<T> implements ListInterface<T> {
     public boolean add(int newPosition, T newEntry) {
         return false;
     }
-
     @Override
     public boolean isFull() {
         return false;
     }
-
     @Override
     public boolean contains(T anEntry) {
         return false;
     }
-
     @Override
     public void addinArray(T item) {
     }
-
     @Override
     public T get(int index) {
         return null;
     }
-
     @Override
     public void removeOut(int index) {
     }
-
     @Override
     public int size() {
         return 0;
     }
-
     @Override
     public void expandArray() {
     }
-
     @Override
     public void update(int index, T newItem) {
     }
