@@ -261,6 +261,7 @@ public class DonationManagement{
                 break;
         }
         if (inputInt != 0) {
+            //This code need to run after running event subsystem
             if (donorId.equals("0")) {
                 System.out.println("Event ID");
                 Iterator<Event> iterator = eventQueue.getIterator();
@@ -511,31 +512,44 @@ public class DonationManagement{
     }
 
     public static void trackDonation() {
+        //This code need to run after running donation distribution subsystem
+        CircularLinkedList searchResult = new CircularLinkedList();
         System.out.println(" Track Donation Menu");
-        System.out.print("Enter donation id: ");
-        int inputInt = s.nextInt();
-        s.nextLine();
-        int index = -1;
-        for (int i = 0; i < donationDistributions.size(); i++) {
-            ArrayList<Integer> DonationIDs = donationDistributions.get(i).getDonationid();
-            for (int j = 0; j < DonationIDs.size(); j++) {
-                if (inputInt == DonationIDs.get(j)) {
-                    index = i;
-                    break;
+        CircularLinkedList filterResult = filterCategory(cll);
+        int numElementList = filterResult.getNumberOfEntries() + 1;
+        int countList = 1;
+        do {
+            DonationManage aDonation = (DonationManage) filterResult.getEntry(countList);
+            for (int i = 0; i < donationDistributions.size(); i++) {
+                ArrayList<Integer> DonationIDs = donationDistributions.get(i).getDonationid();
+                for (int j = 0; j < DonationIDs.size(); j++) {
+                    if (aDonation.getDonationId() == DonationIDs.get(j)) {
+                        searchResult.add(i);
+                        searchResult.add(aDonation.getDonationId());
+                        break;
+                    }
                 }
             }
-        }
-        // found id
-        if (index != -1) {
+            countList += 1;
+        } while (countList != numElementList);
+        DonationManage aDonation = (DonationManage) filterResult.getEntry(1);
+        String cate = aDonation.getDonation().getDonationCategory();
+        int i = 1;
+        do {
+            int index = (int) searchResult.getEntry(i);
+            System.out.println("ID of Donation under Category " + cate 
+                    + ": " + searchResult.getEntry(i+1));
             DonationDistribution distribution = donationDistributions.get(index);
             System.out.println("Donation Distribution Details:");
             System.out.println("Distribution ID: " + distribution.getdDistributionid());
             System.out.println("Donee ID: " + distribution.getDoneeid());
             System.out.println("Donation IDs: " + distribution.getDonationIdString());
             System.out.println("State: " + distribution.getState());
-        } else {
-            System.out.println("Track Donation with ID " + inputInt + " not found.");
-        }
+            System.out.println("");
+            searchResult.remove(0);// remove 1st
+            searchResult.remove(0);// remove 2nd
+            i += 2;
+        } while(i < searchResult.getNumberOfEntries());
     }
 
     public static void listDonationByDifferentDonor() {
