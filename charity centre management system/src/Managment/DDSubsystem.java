@@ -8,8 +8,8 @@ import ADT.ArrayList;
 import ADT.CircularLinkedList;
 import ADT.LinearLinkedList;
 import Entity.DonationDistribution;
+import Entity.DonationManage;
 import Entity.Donee;
-import static Managment.DonationManagement.DonationManagement;
 import java.time.LocalDate;
 import java.util.Scanner;
 import java.awt.AWTException;
@@ -33,9 +33,9 @@ public class DDSubsystem {
         int numElementList = donations.getNumberOfEntries() + 1;
         int countList = 1;
         do {
-            CircularLinkedList temp = (CircularLinkedList) donations.getEntry(countList);
+            DonationManage temp = (DonationManage) donations.getEntry(countList);
             // get donation id of donation
-            int i = (Integer) temp.getEntry(1);
+            int i = temp.getDonationId();
             DonationIDs.addinArray(i);
 
             countList += 1;
