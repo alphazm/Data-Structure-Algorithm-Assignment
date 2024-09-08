@@ -28,12 +28,13 @@ public class DonationManagement{
     static CircularLinkedList cll = new CircularLinkedList();
     static Donation donation = new Donation();
     static LinkedStack ls = new LinkedStack();
-    private static ArrayList<DonationDistribution> donationDistributions = new ArrayList<>();// dd array list
+    private static ArrayList<DonationDistribution> donationDistributions = DDSubsystem.getDDList();// dd array list
     
-    public static void main(String[] args) {
-        DonationManagement(false);
-        DonationManagement(true);
-    }
+//    public static void main(String[] args) {
+//        DonationManagement(false);
+//        DonationManagement(true);
+//    }
+//    
     public static CircularLinkedList getList() {
         return cll;
     }
@@ -99,8 +100,8 @@ public class DonationManagement{
                         generateDonationManagementReport();
                         cont = true;
                         break;
-                    case "0":     // exit
-                        exit();
+                    case "0":
+                        cont = false;
                         break;
                     default:
                         System.out.println("Invalid!");
@@ -472,6 +473,43 @@ public class DonationManagement{
         System.out.print("Enter donation id: ");
         int inputInt = s.nextInt();
         s.nextLine();
+
+        int index = -1;
+        for (int i = 0; i < donationDistributions.size(); i++) {
+            ArrayList<Integer> DonationIDs = donationDistributions.get(i).getDonationid();
+            for (int j = 0; j < DonationIDs.size(); j++) {
+                if (inputInt == DonationIDs.get(j)) {
+                    index = i;
+                    break;
+                }
+            }
+        }
+
+        // found id
+        if (index != -1) {
+            DonationDistribution distribution = donationDistributions.get(index);
+            System.out.println("Donation Distribution Details:");
+            System.out.println("Distribution ID: " + distribution.getdDistributionid());
+            System.out.println("Donee ID: " + distribution.getDoneeid());
+            System.out.println("Donation IDs: " + distribution.getDonationIdString());
+            System.out.println("State: " + distribution.getState());
+
+            System.out.print("Do you want to remove this distribution? (y/n) ");
+            String sureYa = s.nextLine();
+
+            // comfrim remove 
+            if ("Y".equals(sureYa) || "y".equals(sureYa)) {
+                clearJavaConsoleScreen();
+                donationDistributions.removeOut(index);
+                System.out.println("Donation Distribution removed successfully!");
+            } else {
+                clearJavaConsoleScreen();
+                System.out.println("Removal cancelled.");
+            }
+        } else {
+            clearJavaConsoleScreen();
+            System.out.println("Donation Distribution with ID " + inputInt + " not found.");
+        }
         
     }
 

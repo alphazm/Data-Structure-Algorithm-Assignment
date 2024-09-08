@@ -52,12 +52,11 @@ public class DDSubsystem {
             DoneeIDs.addinArray(doneeID);
         }
     }
+    
+    public static ArrayList<DonationDistribution> getDDList() {
+        return donationDistributions;
+    }
 
-//    public static void main(String[] args) {//////////////////////////////////add by wl to test purpose
-//        DonationManagement(false);
-//        DonationDistributionMainPage();
-//        DonationManagement(true);
-//    }
     // dd main page 
     public static void DonationDistributionMainPage() {
         //raw data
@@ -66,9 +65,9 @@ public class DDSubsystem {
             int firstId = generateDDistributionId();
 
             ArrayList<Integer> donationIds = new ArrayList<>();
-            donationIds.addinArray(240801);
-            donationIds.addinArray(240802);
-            donationIds.addinArray(240803);
+            donationIds.addinArray(10001);
+            donationIds.addinArray(10002);
+            donationIds.addinArray(10003);
 
             DonationDistribution firstData = new DonationDistribution();
             firstData.setdDistributionid(firstId);
