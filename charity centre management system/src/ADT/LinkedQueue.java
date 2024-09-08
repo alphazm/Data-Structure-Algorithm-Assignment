@@ -49,7 +49,7 @@ public class LinkedQueue<T> implements LinkedQueueInterface<T> {
         T data = front.data;    // Get the data from the front node
         front = front.next;     // Move the front pointer to the next node
         if (front == null) {
-            rear = null;        // If the queue is now empty, rear should also be null
+            rear = null; // If the queue is now empty, rear should also be null
         }
         size--;  // Decrement the size
         return data;

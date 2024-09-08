@@ -11,12 +11,14 @@ public class Event {
     private LocalDateTime startTime;        // Start time of the event
     private LocalDateTime endTime;          // End time of the event
     private String location;                // Location of the event
-    private List<volunteer> volunteers;     // List of volunteers assigned to the event
-    private boolean eventActive;               // Status indicating if the event is currently active
+    private List<volunteer> volunteers;//List of volunteers assigned to an event
+    private boolean eventActive;// Status indicating if the event is active
 
     // Constructor to initialize the Event object
-    public Event(String eventId, String eventTitle, String description, LocalDateTime startTime, 
-                 LocalDateTime endTime, String location, List<volunteer> volunteers, boolean eventActive) {
+    public Event(String eventId, String eventTitle, String description, 
+            LocalDateTime startTime, 
+                 LocalDateTime endTime, String location, 
+                 List<volunteer> volunteers, boolean eventActive) {
         this.eventId = eventId;
         this.eventTitle = eventTitle;
         this.description = description;
@@ -104,13 +106,16 @@ public class Event {
         report.append("Start Time:      ").append(startTime).append("\n");
         report.append("End Time:        ").append(endTime).append("\n");
         report.append("Location:        ").append(location).append("\n");
-        report.append("Status:          ").append(eventActive ? "Active" : "Inactive").append("\n");
-        report.append("Volunteers:      ").append(volunteers.size()).append(" volunteer(s)\n");
+        report.append("Status:          "
+                + "").append(eventActive ? "Active" : "Inactive").append("\n");
+        report.append("Volunteers:      "
+                + "").append(volunteers.size()).append(" volunteer(s)\n");
         report.append("----------------------------------------\n");
         report.append("Volunteer Details:\n");
 
         for (volunteer volunteer : volunteers) {
-            report.append("  - ").append(volunteer.getFirstName()).append(" ").append(volunteer.getLastName())
+            report.append("  - ").append(volunteer.getFirstName()).append(" "
+                    + "").append(volunteer.getLastName())
                 .append(" (Role: ").append(volunteer.getRole()).append(")\n");
         }
 

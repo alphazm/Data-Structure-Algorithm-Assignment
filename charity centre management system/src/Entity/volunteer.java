@@ -1,4 +1,3 @@
-
 package Entity;
 
 /**
@@ -12,12 +11,13 @@ public class volunteer {
     private String email;        // Email address of the volunteer
     private String phoneNumber;  // Phone number of the volunteer
     private String address;      // Address of the volunteer
-    private String role;         // Role of the volunteer (e.g., Coordinator, Helper)
-    private boolean isActive;    // Status indicating if the volunteer is currently active
+    private String role;     // Role of the volunteer (e.g.,Coordinator, Helper)
+    private boolean isActive;// Status indicating if the volunteer is active
 
     // Constructor to initialize the Volunteer object
     public volunteer(String id, String firstName, String lastName, String email, 
-                     String phoneNumber, String address, String role, boolean isActive) {
+                     String phoneNumber, String address, String role, 
+                     boolean isActive) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
