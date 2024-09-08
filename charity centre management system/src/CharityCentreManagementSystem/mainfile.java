@@ -40,7 +40,7 @@ public class mainfile {
                     break;
                 case 2:
                     clearJavaConsoleScreen();
-                    requsetDonation();
+                    addNewDonationDistribution();
                     break;
                 case 3:
                     clearJavaConsoleScreen();
@@ -125,9 +125,6 @@ public class mainfile {
         addDonation(temp.getDonorId());
     }
     
-    public static void requsetDonation(){
-        
-    }
     
     public static void management(){
         boolean repeat = true;
