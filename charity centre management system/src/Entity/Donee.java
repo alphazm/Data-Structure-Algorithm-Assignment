@@ -13,15 +13,16 @@ package Entity;
  * @author ChanWinYit
  */
 import ADT.LinearLinkedList;
+import ADT.ArrayList;
 
 public class Donee {
-    private static int idCounter = 0000;
+    private static int idCounter = 0;
     String doneeName;
     //doneeID: DE0001, DE0002
     String doneeID;
     String phoneNo;
     String address;
-    private LinearLinkedList<Requirement> requirements;
+    private ArrayList<String> receivedItems;
 
 
     public Donee(String doneeName,String phoneNo,String address){
@@ -29,12 +30,12 @@ public class Donee {
         this.doneeID = generatedId();
         this.phoneNo = phoneNo;
         this.address = address;
-        this.requirements = new LinearLinkedList<>();
+        this.receivedItems = new ArrayList<>();
     }
 
     private String generatedId(){
         CountId();
-        return "DE"+idCounter;
+        return String.format("DE%04d", idCounter);
     }
 
     private static int CountId(){
@@ -44,7 +45,7 @@ public class Donee {
     public void setDoneeName(String doneeName){
         this.doneeName=doneeName;
     }
-    public String getName(){
+    public String getDoneeName(){
         return doneeName;
     }
     public void setDoneeID(){
@@ -65,18 +66,39 @@ public class Donee {
     public String getAddress(){
         return address;
     }
-    public void addRequirement(Requirement requirement){
-        requirements.add(requirement);
+    
+    public void addReceivedItem(String item){
+        receivedItems.addinArray(item);
     }
-    public LinearLinkedList<Requirement> getRequirements(){
-        return requirements;
+    
+    public String getReceivedItem() {
+        if (receivedItems.size() == 0) {
+            return "None";
+        }
+        String string = new String();
+        for (int i = 0; i < receivedItems.size(); i++) {
+            if (i > 0) {
+                string.append(", ");
+            }
+            string.append(receivedItems.get(i));
+        }
+        return string.toString();
     }
+    
+    
     public String toString(){
         return
                 "Donee ID =" + doneeID +
                 "\nDonee Name =" + doneeName +
                 "\nDonee Contact Number =" + phoneNo +
-                "\nDonee Address =" + address +
-                "\nDonee requirements =" + requirements.toString();
+                "\nDonee Address =" + address;
+                
+    }
+    
+    public String toString2(){
+        return
+                "Donee ID ="+ doneeID +
+                "\nDonee Name =" + doneeName +
+                "Received Items =" + getReceivedItem();
     }
 }
