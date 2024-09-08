@@ -28,8 +28,7 @@ public class mainfile {
         while(repeat){
             System.out.println();
             System.out.println("1.  add donate");
-            System.out.println("2.  donate distribute");
-            System.out.println("3.  management");
+            System.out.println("2.  management");
             System.out.print("Enter selection: ");
             int selection = scanner.nextInt();
             scanner.nextLine(); 
@@ -39,10 +38,6 @@ public class mainfile {
                     newDonation();
                     break;
                 case 2:
-                    clearJavaConsoleScreen();
-                    addNewDonationDistribution();
-                    break;
-                case 3:
                     clearJavaConsoleScreen();
                     management();
                     break;
