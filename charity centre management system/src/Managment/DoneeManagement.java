@@ -1,43 +1,34 @@
-package Managment;
+package Management;
 
 /**
  *
  * @author ChanWinYit
  */
 import Entity.Donee;
-import Entity.Requirement;
+import Entity.DonationDistribution;
+import Management.DDSubsystem;
+import ADT.ArrayList;
 import ADT.LinearLinkedList;
-import static Managment.DDSubsystem.gettingDonee;
-import static Managment.DDSubsystem.DonationDistributionMainPage;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.util.Scanner;
 
 interface IDoneeManagement {
-
     void addDonee(String doneeName, String phoneNo, String address);
-
-    void addRequirementToDonee(String doneeID, Requirement requirement);
-
     void removeDonee(String doneeID);
-
     void updateDonee(String doneeID, String doneeName, String phoneNo, String address);
-
     Donee searchDonee(String doneeID);
-
     void listAllDonees();
+    void doneeReport();
 }
-
-public class DoneeManagement implements IDoneeManagement {
-
-    private static LinearLinkedList<Donee> doneeList;
-
+public class DoneeManagement implements IDoneeManagement{
+    private LinearLinkedList<Donee> doneeList;
     public DoneeManagement() {
         doneeList = new LinearLinkedList<>();
     }
-
-    public static void DoneeMenu() {
+       
+    public static void main(String[]args) {
         DoneeManagement doneeManagement = new DoneeManagement();
         Scanner scanner = new Scanner(System.in);
         int choice;
@@ -49,6 +40,7 @@ public class DoneeManagement implements IDoneeManagement {
             System.out.println("3. Remove Donee");
             System.out.println("4. Search Donee");
             System.out.println("5. List All Donees");
+            System.out.println("6. Donee Report");
             System.out.println("0. Exit");
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
@@ -66,7 +58,7 @@ public class DoneeManagement implements IDoneeManagement {
                     String address = scanner.nextLine();
                     doneeManagement.addDonee(doneeName, phoneNo, address);
                     break;
-
+                    
                 case 2:
                     clearJavaConsoleScreen();
                     System.out.println("\nUpdating a Donee:");
@@ -105,6 +97,12 @@ public class DoneeManagement implements IDoneeManagement {
                     System.out.println("\nList of all Donees:");
                     doneeManagement.listAllDonees();
                     break;
+                
+                case 6:
+                    clearJavaConsoleScreen();
+                    System.out.println("Donee Report");
+                    doneeManagement.doneeReport();
+                    break;
 
                 case 0:
                     clearJavaConsoleScreen();
@@ -117,43 +115,47 @@ public class DoneeManagement implements IDoneeManagement {
         } while (choice != 0);
     }
 
-    public void addDonee(String doneeName, String phoneNo, String address) {
-        // "" means the place where doneeID generate
-        Donee newDonee = new Donee(doneeName, phoneNo, address);
-        doneeList.add(newDonee);
-    }
+  public void addDonee(String doneeName, String phoneNo, String address) {
+    Donee newDonee = new Donee(doneeName, phoneNo, address);
 
-    public void addRequirementToDonee(String doneeID, Requirement requirement) {
-        Donee donee = searchDonee(doneeID);
-        if (donee != null) {
-            donee.addRequirement(requirement);
-            System.out.println("Requirement added to donee: " + doneeID);
-        } else {
-            System.out.println("Donee with ID " + doneeID + " not found.");
+    for (int i = 0; i < doneeList.size(); i++) {
+        Donee donee = doneeList.get(i);
+        if (donee.getDoneeName().equals(doneeName) && donee.getPhoneNo().equals(phoneNo) && donee.getAddress().equals(address)) {
+            System.out.println("The donee " + doneeName + " with the donee ID: " + donee.getDoneeID() + " is in the list already.");
+            return; // Exit the method without adding the donee
         }
     }
+    doneeList.add(newDonee);
+    System.out.println("Donee " + doneeName + " is added.");
+    System.out.println("Donee id =" + newDonee.getDoneeID());
+}
+
 
     public void removeDonee(String doneeID) {
-        if (doneeList.isEmpty()) {
-            System.out.println("No removable action needed");
-            return;
-        }
-        boolean found = false;
+    if (doneeList.isEmpty()) {
+        System.out.println("No removable action needed");
+        return;
+    }
+    
+    boolean found = false;
 
-        for (int i = 1; i <= doneeList.getNumberOfEntries(); ++i) {
-            Donee donee = doneeList.getEntry(i);
-            if (donee.getDoneeID().equalsIgnoreCase(doneeID)) {
-                doneeList.remove(donee);
-                System.out.println(donee + "has been removed");
-                found = true;
-                break;
-            }
-        }
-
-        if (!found) {
-            System.out.println("Invalid ID:" + doneeID);
+    // Loop through the list to find the donee with the matching ID
+    for (int i = 1; i <= doneeList.getNumberOfEntries(); ++i) {
+        Donee donee = doneeList.getEntry(i);
+        if (donee.getDoneeID().equalsIgnoreCase(doneeID)) {
+            doneeList.remove(i); // Correctly pass the index to remove method
+            System.out.println("Donee " + doneeID + " has been removed");
+            found = true;
+            break;
         }
     }
+
+    if (!found) {
+        System.out.println("Invalid ID: " + doneeID);
+    }
+}
+
+
 
     public void updateDonee(String doneeID, String doneeName, String phoneNo, String address) {
         if (doneeList.isEmpty()) {
@@ -205,26 +207,30 @@ public class DoneeManagement implements IDoneeManagement {
         }
 
         System.out.println("Listing all donees:");
-        for (int i = 1; i <= doneeList.getNumberOfEntries(); i++) {
+        for (int i = 1; i <= doneeList.getNumberOfEntries(); ++i) {
             Donee donee = doneeList.getEntry(i);
             System.out.println(donee);
         }
     }
+    
+    public void doneeReport() {
+    for (int i = 1; i <= doneeList.getNumberOfEntries(); i++) {
+        Donee donee = doneeList.getEntry(i);
+        System.out.println(donee.toString2());
+       
+    }
+}
 
     private static void clearJavaConsoleScreen() {
-        try {
+        try{
             Robot rob = new Robot();
             try {
-                rob.keyPress(KeyEvent.VK_CONTROL); // press "CTRL"
-                rob.keyPress(KeyEvent.VK_L); // press "L"
-                rob.keyRelease(KeyEvent.VK_L); // unpress "L"
-                rob.keyRelease(KeyEvent.VK_CONTROL); // unpress "CTRL"
-                Thread.sleep(1000); // add delay in milisecond, if not there will automatically stop after clear
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        } catch (AWTException e) {
-            e.printStackTrace();
-        }
+            rob.keyPress(KeyEvent.VK_CONTROL); // press "CTRL"
+            rob.keyPress(KeyEvent.VK_L); // press "L"
+            rob.keyRelease(KeyEvent.VK_L); // unpress "L"
+            rob.keyRelease(KeyEvent.VK_CONTROL); // unpress "CTRL"
+            Thread.sleep(1000); // add delay in milisecond, if not there will automatically stop after clear
+            } catch (InterruptedException e) { e.printStackTrace(); }
+        } catch(AWTException e) { e.printStackTrace(); }
     }
 }
