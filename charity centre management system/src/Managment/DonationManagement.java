@@ -183,6 +183,7 @@ public class DonationManagement{
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         String formattedDateTime = currentDateTime.format(formatter);
         donation = new Donation();
+        String fromEvent = "";
         if (donorId.equals("0")) {
             System.out.print("Enter Donor Id(If from event enter 0): ");
             donorId = s.nextLine();
@@ -212,17 +213,17 @@ public class DonationManagement{
                 break;
         }
         if (inputInt != 0) {
-            System.out.print("Is the donation come from Event?(if no click enter): ");
-            String fromEvent = s.nextLine();
-            if (!fromEvent.isEmpty()) {
-                System.out.println("Event ID");
-                Iterator<Event> iterator = eventQueue.getIterator();
-                while (iterator.hasNext()) {
-                    Event event = iterator.next();
-                    System.out.println(event.getEventId());
+            if (donorId.equals("0")) {
+                if (!fromEvent.isEmpty()) {
+                    System.out.println("Event ID");
+                    Iterator<Event> iterator = eventQueue.getIterator();
+                    while (iterator.hasNext()) {
+                        Event event = iterator.next();
+                        System.out.println(event.getEventId());
+                    }
+                    System.out.print("Enter Event Id: ");
+                    fromEvent = s.nextLine();
                 }
-                System.out.print("Enter Event Id: ");
-                fromEvent = s.nextLine();
             }
             
             System.out.println("Donation Id\tDonor Id\tEvent\tDonation Category\tItem Description\tItem Quantity\t    Amount");
