@@ -56,7 +56,7 @@ public class DonorManagement {
             System.out.println(" 5. remove donor");
             System.out.println(" 6. List Donation Donor with id");
             System.out.println(" 7. List All donor");
-            System.out.println(" 8. Generate Report");
+            System.out.println(" 8. Generate Summary Report");
             System.out.println(" 0. go back");
             System.out.print(" Enter Your Choice: ");
             choice = scanner.nextInt();
