@@ -518,7 +518,8 @@ public class DonationManagement{
         CircularLinkedList filterResult = filterCategory(cll);
         int numElementList = filterResult.getNumberOfEntries() + 1;
         int countList = 1;
-        do {
+        if (donationDistributions.size() != 0) {
+            do {
             DonationManage aDonation = (DonationManage) filterResult.getEntry(countList);
             for (int i = 0; i < donationDistributions.size(); i++) {
                 ArrayList<Integer> DonationIDs = donationDistributions.get(i).getDonationid();
@@ -548,6 +549,10 @@ public class DonationManagement{
             System.out.println("");
             i += 2;
         } while(i < searchResult.getNumberOfEntries());
+        }
+        else {
+            System.out.println("Donation Distribution Is Empty");
+        }
     }
 
     public static void listDonationByDifferentDonor() {
