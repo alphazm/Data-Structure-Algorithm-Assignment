@@ -21,7 +21,7 @@ public class mainfile {
     static DonorManagement donorCtrl = new DonorManagement();
     static EventManagementSystem eventCtrl = new EventManagementSystem();
     gettingDonations(call);
-    gettingDonee()
+    gettingDonee(doneeList);
     public static void main(String[] args)
     {
         DonationManagement(false);
