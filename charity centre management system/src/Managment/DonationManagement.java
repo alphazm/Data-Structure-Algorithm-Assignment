@@ -97,6 +97,7 @@ public class DonationManagement{
                         break;
                     case "0":
                         cont = false;
+                        DDSubsystem.gettingDonations(cll);
                         break;
                     default:
                         System.out.println("Invalid!");
