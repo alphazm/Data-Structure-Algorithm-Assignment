@@ -546,8 +546,6 @@ public class DonationManagement{
             System.out.println("Donation IDs: " + distribution.getDonationIdString());
             System.out.println("State: " + distribution.getState());
             System.out.println("");
-            searchResult.remove(0);// remove 1st
-            searchResult.remove(0);// remove 2nd
             i += 2;
         } while(i < searchResult.getNumberOfEntries());
     }
