@@ -28,6 +28,9 @@ public class DoneeManagement implements IDoneeManagement{
     public DoneeManagement() {
         doneeList = new LinearLinkedList<>();
     }
+    public static LinearLinkedList getDoneeList(){
+        return doneeList;
+    }
        
     public static void DoneeMenu() {
         DoneeManagement doneeManagement = new DoneeManagement();
@@ -108,6 +111,7 @@ public class DoneeManagement implements IDoneeManagement{
 
                 case 0:
                     clearJavaConsoleScreen();
+                    gettingDonee(getDoneeList());
                     System.out.println("Exiting the system...");
                     break;
 
