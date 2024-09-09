@@ -24,13 +24,11 @@ interface IDoneeManagement {
     void doneeReport();
 }
 public class DoneeManagement implements IDoneeManagement{
-    private LinearLinkedList<Donee> doneeList;
+    public static LinearLinkedList<Donee> doneeList;
     public DoneeManagement() {
         doneeList = new LinearLinkedList<>();
     }
-    public static LinearLinkedList getDoneeList(){
-        return doneeList;
-    }
+
        
     public static void DoneeMenu() {
         DoneeManagement doneeManagement = new DoneeManagement();
@@ -111,7 +109,7 @@ public class DoneeManagement implements IDoneeManagement{
 
                 case 0:
                     clearJavaConsoleScreen();
-                    gettingDonee(getDoneeList());
+                    DDSubsystem.gettingDonee(doneeList);
                     System.out.println("Exiting the system...");
                     break;
 
