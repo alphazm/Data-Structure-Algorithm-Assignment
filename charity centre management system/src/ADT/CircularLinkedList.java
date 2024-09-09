@@ -14,11 +14,6 @@ public class CircularLinkedList<T> implements ListInterface<T> {
         lastNode = null;
     }
 
-    @Override
-    public T remove(int anEntry) {
-       return null;
-    }
-
     public class Node {
 
         private final T data;
@@ -63,7 +58,7 @@ public class CircularLinkedList<T> implements ListInterface<T> {
     }
     
     @Override
-    public T remove(T anEntry) {
+    public T remove(int anEntry) {
         int givenPosition = (int) anEntry;
         T result = null;
         // Check if the list is empty or the position is invalid
@@ -175,6 +170,11 @@ public class CircularLinkedList<T> implements ListInterface<T> {
     }
     @Override
     public void update(int index, T newItem) {
+    }
+    
+    @Override
+    public T remove(T anEntry) {
+       return null;
     }
 }
 
