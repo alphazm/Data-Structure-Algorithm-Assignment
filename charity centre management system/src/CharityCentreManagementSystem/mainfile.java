@@ -20,8 +20,7 @@ public class mainfile {
     static Scanner scanner = new Scanner(System.in);
     static DonorManagement donorCtrl = new DonorManagement();
     static EventManagementSystem eventCtrl = new EventManagementSystem();
-    gettingDonations(call);
-    gettingDonee(doneeList);
+
     public static void main(String[] args)
     {
         DonationManagement(false);
